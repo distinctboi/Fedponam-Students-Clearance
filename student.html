@@ -1,0 +1,2365 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Student Dashboard</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body class="app-body">
+
+
+<!-- =============================================
+     MOBILE OVERLAY
+============================================== -->
+
+<div
+    class="mobile-overlay"
+    id="mobileOverlay"
+></div>
+
+
+<!-- =============================================
+     SIDEBAR
+============================================== -->
+
+<aside
+    class="sidebar"
+    id="sidebar"
+>
+
+
+    <!-- SIDEBAR BRAND -->
+
+    <div class="sidebar-brand">
+
+        <img
+            src="logo.png"
+            alt="Clearance System Logo"
+            class="sidebar-logo"
+        >
+
+
+        <div class="sidebar-brand-text">
+
+            <h2>
+                Clearance
+            </h2>
+
+            <small>
+                Student Portal
+            </small>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- SIDEBAR MENU -->
+
+    <nav
+        class="sidebar-menu"
+        aria-label="Student Navigation"
+    >
+
+
+        <!-- DASHBOARD -->
+
+        <button
+            type="button"
+            class="sidebar-link active"
+            data-section="dashboard"
+        >
+
+            <span
+                class="sidebar-icon"
+                aria-hidden="true"
+            >
+                🏠
+            </span>
+
+            <span class="sidebar-link-text">
+                Dashboard
+            </span>
+
+        </button>
+
+
+
+        <!-- MY CLEARANCE -->
+
+        <button
+            type="button"
+            class="sidebar-link"
+            data-section="clearance"
+        >
+
+            <span
+                class="sidebar-icon"
+                aria-hidden="true"
+            >
+                📋
+            </span>
+
+            <span class="sidebar-link-text">
+                My Clearance
+            </span>
+
+        </button>
+
+
+
+        <!-- MY PROFILE -->
+
+        <button
+            type="button"
+            class="sidebar-link"
+            data-section="profile"
+        >
+
+            <span
+                class="sidebar-icon"
+                aria-hidden="true"
+            >
+                👤
+            </span>
+
+            <span class="sidebar-link-text">
+                My Profile
+            </span>
+
+        </button>
+
+
+
+        <!-- NOTIFICATIONS -->
+
+        <button
+            type="button"
+            class="sidebar-link"
+            data-section="notifications"
+        >
+
+            <span
+                class="sidebar-icon"
+                aria-hidden="true"
+            >
+                🔔
+            </span>
+
+            <span class="sidebar-link-text">
+                Notifications
+            </span>
+
+
+            <span
+                class="notification-badge"
+                id="notificationBadge"
+            >
+                0
+            </span>
+
+        </button>
+
+
+    </nav>
+
+
+
+    <!-- SIDEBAR BOTTOM -->
+
+    <div class="sidebar-bottom">
+
+        <button
+            type="button"
+            class="sidebar-link logout-link"
+            onclick="logoutStudent()"
+        >
+
+            <span
+                class="sidebar-icon"
+                aria-hidden="true"
+            >
+                🚪
+            </span>
+
+            <span class="sidebar-link-text">
+                Logout
+            </span>
+
+        </button>
+
+    </div>
+
+
+</aside>
+
+
+
+<!-- =============================================
+     MAIN CONTENT
+============================================== -->
+
+<main class="main-content">
+
+
+    <!-- =========================================
+         TOP HEADER
+    ========================================== -->
+
+    <header class="top-header">
+
+
+        <!-- LEFT HEADER -->
+
+        <div class="header-left">
+
+
+            <!-- MOBILE MENU BUTTON -->
+
+            <button
+                type="button"
+                class="mobile-menu-btn"
+                id="mobileMenuBtn"
+                aria-label="Open navigation menu"
+            >
+                ☰
+            </button>
+
+
+
+            <!-- PAGE TITLE -->
+
+            <div class="page-title">
+
+                <h1 id="pageTitle">
+                    Student Dashboard
+                </h1>
+
+                <p id="pageSubtitle">
+                    Welcome back
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- HEADER USER -->
+
+        <div class="header-user">
+
+
+            <div class="header-user-info">
+
+                <strong id="headerStudentName">
+                    Student
+                </strong>
+
+                <small id="headerRegNumber">
+                    Registration Number
+                </small>
+
+            </div>
+
+
+
+            <img
+                src="logo.png"
+                alt="Student Profile"
+                class="header-profile-image"
+                id="headerProfileImage"
+            >
+
+
+        </div>
+
+
+    </header>
+
+
+
+    <!-- =========================================
+         DASHBOARD SECTION
+    ========================================== -->
+
+    <section
+        class="dashboard-section active-section"
+        id="dashboardSection"
+    >
+
+
+        <!-- WELCOME CARD -->
+
+        <div class="welcome-card">
+
+
+            <div class="welcome-content">
+
+                <p class="welcome-small">
+                    STUDENT PORTAL
+                </p>
+
+
+                <h2 id="welcomeName">
+                    Welcome
+                </h2>
+
+
+                <p class="welcome-description">
+
+                    Monitor your clearance progress
+                    and complete all required stages.
+
+                </p>
+
+            </div>
+
+
+
+            <div
+                class="welcome-icon"
+                aria-hidden="true"
+            >
+                🎓
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =========================================
+             STUDENT STATISTICS
+        ========================================== -->
+
+        <div class="student-stats-grid">
+
+
+            <!-- STATUS -->
+
+            <div class="student-stat-card">
+
+                <span class="stat-icon">
+                    📋
+                </span>
+
+
+                <div class="student-stat-content">
+
+                    <small>
+                        Clearance Status
+                    </small>
+
+
+                    <strong id="dashboardStatus">
+                        Not Started
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- PROGRESS -->
+
+            <div class="student-stat-card">
+
+                <span class="stat-icon">
+                    📊
+                </span>
+
+
+                <div class="student-stat-content">
+
+                    <small>
+                        Progress
+                    </small>
+
+
+                    <strong id="dashboardProgress">
+                        0%
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- APPROVED -->
+
+            <div class="student-stat-card">
+
+                <span class="stat-icon">
+                    ✓
+                </span>
+
+
+                <div class="student-stat-content">
+
+                    <small>
+                        Approved
+                    </small>
+
+
+                    <strong id="dashboardApproved">
+                        0 / 0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =========================================
+             CLEARANCE PROGRESS SUMMARY
+        ========================================== -->
+
+        <div class="content-card">
+
+
+            <div class="card-header">
+
+
+                <div>
+
+                    <h2>
+                        Clearance Progress
+                    </h2>
+
+                    <p>
+                        Your current clearance status
+                    </p>
+
+                </div>
+
+
+
+                <button
+                    type="button"
+                    class="primary-btn"
+                    id="startClearanceBtn"
+                    onclick="startStudentClearance()"
+                >
+                    Start Clearance
+                </button>
+
+
+            </div>
+
+
+
+            <div id="dashboardClearanceContent">
+
+
+                <!-- DEFAULT EMPTY STATE -->
+
+                <div class="empty-state">
+
+                    <div class="empty-icon">
+                        📋
+                    </div>
+
+
+                    <h3>
+                        Clearance Not Started
+                    </h3>
+
+
+                    <p>
+
+                        Start your clearance request
+                        to begin the clearance process.
+
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =========================================
+             PRINT CLEARANCE
+        ========================================== -->
+
+        <div
+            class="content-card print-card"
+            id="printCard"
+        >
+
+
+            <div>
+
+                <h2>
+                    Final Clearance Certificate
+                </h2>
+
+
+                <p id="printDescription">
+
+                    Complete all required clearance
+                    stages before printing.
+
+                </p>
+
+            </div>
+
+
+
+            <button
+                type="button"
+                class="print-clearance-btn"
+                id="printClearanceBtn"
+                onclick="openClearanceCertificate()"
+                disabled
+            >
+                🔒 Print Clearance
+            </button>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =========================================
+         MY CLEARANCE SECTION
+    ========================================== -->
+
+    <section
+        class="dashboard-section"
+        id="clearanceSection"
+    >
+
+
+        <div class="content-card">
+
+
+            <div class="card-header">
+
+                <div>
+
+                    <h2>
+                        My Clearance
+                    </h2>
+
+                    <p>
+
+                        View all clearance stages
+                        and their current status.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div
+                id="clearanceStagesContainer"
+            ></div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =========================================
+         PROFILE SECTION
+    ========================================== -->
+
+    <section
+        class="dashboard-section"
+        id="profileSection"
+    >
+
+
+        <div class="content-card">
+
+
+            <div class="card-header">
+
+                <div>
+
+                    <h2>
+                        My Profile
+                    </h2>
+
+                    <p>
+
+                        View and update your profile
+                        information.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="profile-layout">
+
+
+                <!-- =================================
+                     PROFILE IMAGE
+                ================================== -->
+
+                <div class="profile-image-area">
+
+
+                    <div class="profile-image-wrapper">
+
+                        <img
+                            src="logo.png"
+                            alt="Student Profile"
+                            id="studentProfileImage"
+                            class="student-profile-image"
+                        >
+
+                    </div>
+
+
+
+                    <label
+                        for="profileImageInput"
+                        class="upload-image-btn"
+                    >
+                        📷 Change Photo
+                    </label>
+
+
+
+                    <input
+                        type="file"
+                        id="profileImageInput"
+                        accept="image/*"
+                        hidden
+                    >
+
+
+
+                    <button
+                        type="button"
+                        class="remove-image-btn"
+                        id="removeImageBtn"
+                        onclick="removeProfileImage()"
+                    >
+                        Remove Photo
+                    </button>
+
+
+                </div>
+
+
+
+                <!-- =================================
+                     PROFILE FORM
+                ================================== -->
+
+                <form
+                    id="profileForm"
+                    class="profile-form"
+                >
+
+
+                    <div class="profile-form-grid">
+
+
+                        <!-- FULL NAME -->
+
+                        <div class="form-group">
+
+                            <label for="profileFullName">
+                                Full Name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="profileFullName"
+                                readonly
+                            >
+
+                        </div>
+
+
+
+                        <!-- REGISTRATION NUMBER -->
+
+                        <div class="form-group">
+
+                            <label for="profileRegNumber">
+                                Registration Number
+                            </label>
+
+                            <input
+                                type="text"
+                                id="profileRegNumber"
+                                readonly
+                            >
+
+                        </div>
+
+
+
+                        <!-- DEPARTMENT -->
+
+                        <div class="form-group">
+
+                            <label for="profileDepartment">
+                                Department
+                            </label>
+
+                            <input
+                                type="text"
+                                id="profileDepartment"
+                                readonly
+                            >
+
+                        </div>
+
+
+
+                        <!-- LEVEL -->
+
+                        <div class="form-group">
+
+                            <label for="profileLevel">
+                                Level
+                            </label>
+
+                            <input
+                                type="text"
+                                id="profileLevel"
+                                readonly
+                            >
+
+                        </div>
+
+
+
+                        <!-- EMAIL -->
+
+                        <div class="form-group">
+
+                            <label for="profileEmail">
+                                Email
+                            </label>
+
+                            <input
+                                type="email"
+                                id="profileEmail"
+                                placeholder="Enter email address"
+                            >
+
+                        </div>
+
+
+
+                        <!-- PHONE -->
+
+                        <div class="form-group">
+
+                            <label for="profilePhone">
+                                Phone Number
+                            </label>
+
+                            <input
+                                type="tel"
+                                id="profilePhone"
+                                placeholder="Enter phone number"
+                            >
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <button
+                        type="submit"
+                        class="primary-btn"
+                    >
+                        Save Changes
+                    </button>
+
+
+                </form>
+
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =========================================
+         NOTIFICATIONS SECTION
+    ========================================== -->
+
+    <section
+        class="dashboard-section"
+        id="notificationsSection"
+    >
+
+
+        <div class="content-card">
+
+
+            <div class="card-header">
+
+
+                <div>
+
+                    <h2>
+                        Notifications
+                    </h2>
+
+                    <p>
+                        Clearance updates and messages.
+                    </p>
+
+                </div>
+
+
+
+                <button
+                    type="button"
+                    class="secondary-btn"
+                    onclick="markAllStudentNotificationsRead()"
+                >
+                    Mark All Read
+                </button>
+
+
+            </div>
+
+
+
+            <div
+                id="notificationsContainer"
+                class="notifications-list"
+            ></div>
+
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+
+<!-- =============================================
+     TOAST MESSAGE
+============================================== -->
+
+<div
+    class="toast"
+    id="toast"
+></div>
+
+
+
+<!-- =============================================
+     DATABASE SCRIPT
+============================================== -->
+
+<script src="db.js"></script>
+
+
+
+<!-- =============================================
+     STUDENT DASHBOARD SCRIPT
+============================================== -->
+
+<script>
+
+"use strict";
+
+
+/* ============================================
+   GLOBAL VARIABLES
+============================================ */
+
+let currentUser = null;
+let currentStudent = null;
+let currentRequest = null;
+
+
+/* ============================================
+   PAGE INITIALIZATION
+============================================ */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        checkStudentAccess();
+
+        loadStudentDashboard();
+
+        setupNavigation();
+
+        setupMobileMenu();
+
+        setupImageUpload();
+
+        setupProfileForm();
+
+    }
+);
+
+
+/* ============================================
+   CHECK STUDENT ACCESS
+============================================ */
+
+function checkStudentAccess() {
+
+    currentUser =
+        getCurrentUser();
+
+
+    if (
+        !currentUser ||
+        currentUser.role !== "student"
+    ) {
+
+        window.location.href =
+            "index.html";
+
+        return;
+    }
+
+
+    currentStudent =
+        getStudentByUserId(
+            currentUser.userId
+        );
+
+
+    if (!currentStudent) {
+
+        logoutCurrentUser();
+
+        window.location.href =
+            "index.html";
+
+        return;
+    }
+}
+
+
+/* ============================================
+   LOAD STUDENT DASHBOARD
+============================================ */
+
+function loadStudentDashboard() {
+
+    currentStudent =
+        getStudentByUserId(
+            currentUser.userId
+        );
+
+
+    currentRequest =
+        getStudentClearanceRequest(
+            currentStudent.id
+        );
+
+
+    loadStudentHeader();
+
+    loadDashboardStatistics();
+
+    loadClearanceDashboard();
+
+    loadClearanceStages();
+
+    loadProfile();
+
+    loadNotifications();
+
+    updatePrintButton();
+}
+
+
+/* ============================================
+   LOAD HEADER
+============================================ */
+
+function loadStudentHeader() {
+
+    document
+        .getElementById(
+            "headerStudentName"
+        )
+        .textContent =
+        currentStudent.fullName;
+
+
+    document
+        .getElementById(
+            "headerRegNumber"
+        )
+        .textContent =
+        currentStudent.registrationNumber;
+
+
+    document
+        .getElementById(
+            "welcomeName"
+        )
+        .textContent =
+        "Welcome, " +
+        currentStudent.fullName;
+
+
+    updateStudentImages();
+}
+
+
+/* ============================================
+   UPDATE PROFILE IMAGES
+============================================ */
+
+function updateStudentImages() {
+
+    const image =
+        currentStudent.profileImage ||
+        "logo.png";
+
+
+    document
+        .getElementById(
+            "headerProfileImage"
+        )
+        .src = image;
+
+
+    document
+        .getElementById(
+            "studentProfileImage"
+        )
+        .src = image;
+}
+
+
+/* ============================================
+   DASHBOARD STATISTICS
+============================================ */
+
+function loadDashboardStatistics() {
+
+    let status =
+        "Not Started";
+
+    let percentage = 0;
+
+    let approved = 0;
+
+    let total = 0;
+
+
+    if (currentRequest) {
+
+        status =
+            formatStatus(
+                currentRequest.overallStatus
+            );
+
+
+        percentage =
+            currentRequest.percentage;
+
+
+        total =
+            currentRequest.stages.filter(
+                stage =>
+                    stage.required
+            ).length;
+
+
+        approved =
+            currentRequest.stages.filter(
+                stage =>
+                    stage.required &&
+                    stage.status ===
+                    "approved"
+            ).length;
+    }
+
+
+    document
+        .getElementById(
+            "dashboardStatus"
+        )
+        .textContent =
+        status;
+
+
+    document
+        .getElementById(
+            "dashboardProgress"
+        )
+        .textContent =
+        percentage + "%";
+
+
+    document
+        .getElementById(
+            "dashboardApproved"
+        )
+        .textContent =
+        approved +
+        " / " +
+        total;
+}
+
+
+/* ============================================
+   DASHBOARD CLEARANCE CONTENT
+============================================ */
+
+function loadClearanceDashboard() {
+
+    const container =
+        document.getElementById(
+            "dashboardClearanceContent"
+        );
+
+
+    const startButton =
+        document.getElementById(
+            "startClearanceBtn"
+        );
+
+
+    if (!currentRequest) {
+
+        startButton.style.display =
+            "inline-flex";
+
+
+        container.innerHTML = `
+
+            <div class="empty-state">
+
+                <div class="empty-icon">
+                    📋
+                </div>
+
+                <h3>
+                    Clearance Not Started
+                </h3>
+
+                <p>
+                    Start your clearance request
+                    to begin the clearance process.
+                </p>
+
+            </div>
+        `;
+
+        return;
+    }
+
+
+    startButton.style.display =
+        "none";
+
+
+    const percentage =
+        currentRequest.percentage || 0;
+
+
+    const statusClass =
+        getStatusClass(
+            currentRequest.overallStatus
+        );
+
+
+    container.innerHTML = `
+
+        <div class="clearance-progress-wrapper">
+
+            <div class="progress-header">
+
+                <strong>
+                    Overall Progress
+                </strong>
+
+                <strong>
+                    ${percentage}%
+                </strong>
+
+            </div>
+
+
+            <div class="progress-bar">
+
+                <div
+                    class="progress-fill"
+                    style="width: ${percentage}%"
+                ></div>
+
+            </div>
+
+
+            <div class="clearance-summary-status">
+
+                <span
+                    class="status-badge ${statusClass}"
+                >
+                    ${formatStatus(
+                        currentRequest.overallStatus
+                    )}
+                </span>
+
+            </div>
+
+        </div>
+    `;
+}
+
+
+/* ============================================
+   START CLEARANCE
+============================================ */
+
+function startStudentClearance() {
+
+    if (!currentStudent) {
+        return;
+    }
+
+
+    const result =
+        createClearanceRequest(
+            currentStudent.id
+        );
+
+
+    if (!result.success) {
+
+        showToast(
+            result.message,
+            "error"
+        );
+
+        return;
+    }
+
+
+    showToast(
+        "Clearance request started successfully.",
+        "success"
+    );
+
+
+    loadStudentDashboard();
+}
+
+
+/* ============================================
+   LOAD CLEARANCE STAGES
+============================================ */
+
+function loadClearanceStages() {
+
+    const container =
+        document.getElementById(
+            "clearanceStagesContainer"
+        );
+
+
+    if (!currentRequest) {
+
+        container.innerHTML = `
+
+            <div class="empty-state">
+
+                <div class="empty-icon">
+                    📋
+                </div>
+
+                <h3>
+                    No Clearance Request
+                </h3>
+
+                <p>
+                    You have not started your
+                    clearance request yet.
+                </p>
+
+                <button
+                    type="button"
+                    class="primary-btn"
+                    onclick="startStudentClearance()"
+                >
+                    Start Clearance
+                </button>
+
+            </div>
+        `;
+
+        return;
+    }
+
+
+    const sortedStages =
+        [...currentRequest.stages]
+            .sort(
+                (a, b) =>
+                    a.stageOrder -
+                    b.stageOrder
+            );
+
+
+    let html = `
+        <div class="clearance-stage-list">
+    `;
+
+
+    sortedStages.forEach(
+        function (stage) {
+
+            const statusClass =
+                getStatusClass(
+                    stage.status
+                );
+
+
+            let statusIcon = "⏳";
+
+
+            if (
+                stage.status ===
+                "approved"
+            ) {
+                statusIcon = "✓";
+            }
+
+
+            if (
+                stage.status ===
+                "rejected"
+            ) {
+                statusIcon = "✕";
+            }
+
+
+            if (
+                stage.status ===
+                "locked"
+            ) {
+                statusIcon = "🔒";
+            }
+
+
+            html += `
+
+                <div
+                    class="clearance-stage-item ${stage.status}"
+                >
+
+                    <div class="stage-number">
+                        ${stage.stageOrder}
+                    </div>
+
+
+                    <div class="stage-details">
+
+                        <h3>
+                            ${escapeHtml(
+                                stage.name
+                            )}
+                        </h3>
+
+                        <p>
+                            ${escapeHtml(
+                                stage.unit
+                            )}
+                        </p>
+
+
+                        ${
+                            stage.comment
+                                ? `
+
+                                <div class="stage-comment">
+
+                                    <strong>
+                                        Comment:
+                                    </strong>
+
+                                    ${escapeHtml(
+                                        stage.comment
+                                    )}
+
+                                </div>
+
+                                `
+                                : ""
+                        }
+
+                    </div>
+
+
+                    <div class="stage-status-area">
+
+                        <span
+                            class="stage-status-icon ${stage.status}"
+                        >
+                            ${statusIcon}
+                        </span>
+
+
+                        <span
+                            class="status-badge ${statusClass}"
+                        >
+                            ${formatStatus(
+                                stage.status
+                            )}
+                        </span>
+
+                    </div>
+
+                </div>
+            `;
+        }
+    );
+
+
+    html += `
+        </div>
+    `;
+
+
+    container.innerHTML = html;
+}
+
+
+/* ============================================
+   PRINT BUTTON
+============================================ */
+
+function updatePrintButton() {
+
+    const printButton =
+        document.getElementById(
+            "printClearanceBtn"
+        );
+
+
+    const description =
+        document.getElementById(
+            "printDescription"
+        );
+
+
+    if (
+        currentRequest &&
+        currentRequest.overallStatus ===
+        "completed"
+    ) {
+
+        printButton.disabled = false;
+
+        printButton.innerHTML =
+            "🖨 Print Clearance";
+
+
+        description.textContent =
+            "Congratulations! All clearance stages have been approved. Your final clearance certificate is ready.";
+    }
+
+    else {
+
+        printButton.disabled = true;
+
+        printButton.innerHTML =
+            "🔒 Print Clearance";
+
+
+        description.textContent =
+            "Complete all required clearance stages before printing.";
+    }
+}
+
+
+/* ============================================
+   OPEN CLEARANCE CERTIFICATE
+============================================ */
+
+function openClearanceCertificate() {
+
+    if (!currentStudent) {
+        return;
+    }
+
+
+    if (
+        !canStudentPrintClearance(
+            currentStudent.id
+        )
+    ) {
+
+        showToast(
+            "Your clearance is not completed yet.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    window.location.href =
+        "clearance.html";
+}
+
+
+/* ============================================
+   LOAD PROFILE
+============================================ */
+
+function loadProfile() {
+
+    document
+        .getElementById(
+            "profileFullName"
+        )
+        .value =
+        currentStudent.fullName || "";
+
+
+    document
+        .getElementById(
+            "profileRegNumber"
+        )
+        .value =
+        currentStudent.registrationNumber || "";
+
+
+    document
+        .getElementById(
+            "profileDepartment"
+        )
+        .value =
+        currentStudent.department || "";
+
+
+    document
+        .getElementById(
+            "profileLevel"
+        )
+        .value =
+        currentStudent.level || "";
+
+
+    document
+        .getElementById(
+            "profileEmail"
+        )
+        .value =
+        currentStudent.email || "";
+
+
+    document
+        .getElementById(
+            "profilePhone"
+        )
+        .value =
+        currentStudent.phone || "";
+}
+
+
+/* ============================================
+   IMAGE UPLOAD
+============================================ */
+
+function setupImageUpload() {
+
+    const imageInput =
+        document.getElementById(
+            "profileImageInput"
+        );
+
+
+    imageInput.addEventListener(
+        "change",
+        function (event) {
+
+            const file =
+                event.target.files[0];
+
+
+            if (!file) {
+                return;
+            }
+
+
+            if (
+                !file.type.startsWith(
+                    "image/"
+                )
+            ) {
+
+                showToast(
+                    "Please select a valid image.",
+                    "error"
+                );
+
+                return;
+            }
+
+
+            const maxSize =
+                2 * 1024 * 1024;
+
+
+            if (
+                file.size > maxSize
+            ) {
+
+                showToast(
+                    "Image must not be larger than 2MB.",
+                    "error"
+                );
+
+                return;
+            }
+
+
+            const reader =
+                new FileReader();
+
+
+            reader.onload =
+                function (loadEvent) {
+
+                    const imageData =
+                        loadEvent.target.result;
+
+
+                    const result =
+                        updateStudentImage(
+                            currentStudent.id,
+                            imageData
+                        );
+
+
+                    if (
+                        result.success
+                    ) {
+
+                        currentStudent =
+                            result.data;
+
+
+                        updateStudentImages();
+
+
+                        showToast(
+                            "Profile image updated successfully.",
+                            "success"
+                        );
+                    }
+                };
+
+
+            reader.readAsDataURL(
+                file
+            );
+        }
+    );
+}
+
+
+/* ============================================
+   REMOVE PROFILE IMAGE
+============================================ */
+
+function removeProfileImage() {
+
+    const confirmed =
+        confirm(
+            "Remove your profile image?"
+        );
+
+
+    if (!confirmed) {
+        return;
+    }
+
+
+    const result =
+        removeStudentImage(
+            currentStudent.id
+        );
+
+
+    if (
+        result.success
+    ) {
+
+        currentStudent =
+            result.data;
+
+
+        updateStudentImages();
+
+
+        showToast(
+            "Profile image removed.",
+            "success"
+        );
+    }
+}
+
+
+/* ============================================
+   PROFILE FORM
+============================================ */
+
+function setupProfileForm() {
+
+    document
+        .getElementById(
+            "profileForm"
+        )
+        .addEventListener(
+            "submit",
+            function (event) {
+
+                event.preventDefault();
+
+
+                const email =
+                    document
+                        .getElementById(
+                            "profileEmail"
+                        )
+                        .value
+                        .trim();
+
+
+                const phone =
+                    document
+                        .getElementById(
+                            "profilePhone"
+                        )
+                        .value
+                        .trim();
+
+
+                const result =
+                    updateStudent(
+                        currentStudent.id,
+                        {
+                            email:
+                                email,
+
+                            phone:
+                                phone
+                        }
+                    );
+
+
+                if (
+                    result.success
+                ) {
+
+                    currentStudent =
+                        result.data;
+
+
+                    updateUser(
+                        currentStudent.userId,
+                        {
+                            email:
+                                email,
+
+                            phone:
+                                phone
+                        }
+                    );
+
+
+                    showToast(
+                        "Profile updated successfully.",
+                        "success"
+                    );
+                }
+
+            }
+        );
+}
+
+
+/* ============================================
+   LOAD NOTIFICATIONS
+============================================ */
+
+function loadNotifications() {
+
+    const container =
+        document.getElementById(
+            "notificationsContainer"
+        );
+
+
+    const notifications =
+        getUserNotifications(
+            currentUser.userId
+        );
+
+
+    const unreadCount =
+        getUnreadNotificationCount(
+            currentUser.userId
+        );
+
+
+    document
+        .getElementById(
+            "notificationBadge"
+        )
+        .textContent =
+        unreadCount;
+
+
+    if (
+        notifications.length === 0
+    ) {
+
+        container.innerHTML = `
+
+            <div class="empty-state">
+
+                <div class="empty-icon">
+                    🔔
+                </div>
+
+                <h3>
+                    No Notifications
+                </h3>
+
+                <p>
+                    Clearance updates will appear here.
+                </p>
+
+            </div>
+        `;
+
+        return;
+    }
+
+
+    let html = "";
+
+
+    notifications.forEach(
+        function (notification) {
+
+            html += `
+
+                <div
+                    class="notification-item ${
+                        notification.isRead
+                            ? "read"
+                            : "unread"
+                    }"
+                >
+
+                    <div class="notification-icon">
+                        🔔
+                    </div>
+
+
+                    <div class="notification-content">
+
+                        <p>
+                            ${escapeHtml(
+                                notification.message
+                            )}
+                        </p>
+
+
+                        <small>
+                            ${formatDateTime(
+                                notification.createdAt
+                            )}
+                        </small>
+
+                    </div>
+
+                </div>
+            `;
+        }
+    );
+
+
+    container.innerHTML = html;
+}
+
+
+/* ============================================
+   MARK ALL NOTIFICATIONS READ
+============================================ */
+
+function markAllStudentNotificationsRead() {
+
+    markAllNotificationsAsRead(
+        currentUser.userId
+    );
+
+
+    loadNotifications();
+
+
+    showToast(
+        "All notifications marked as read.",
+        "success"
+    );
+}
+
+
+/* ============================================
+   NAVIGATION
+============================================ */
+
+function setupNavigation() {
+
+    const links =
+        document.querySelectorAll(
+            ".sidebar-link[data-section]"
+        );
+
+
+    links.forEach(
+        function (link) {
+
+            link.addEventListener(
+                "click",
+                function () {
+
+                    const section =
+                        this.dataset.section;
+
+
+                    showSection(
+                        section
+                    );
+
+
+                    closeMobileMenu();
+
+                }
+            );
+        }
+    );
+}
+
+
+function showSection(sectionName) {
+
+    document
+        .querySelectorAll(
+            ".dashboard-section"
+        )
+        .forEach(
+            section => {
+
+                section.classList.remove(
+                    "active-section"
+                );
+            }
+        );
+
+
+    const selectedSection =
+        document.getElementById(
+            sectionName +
+            "Section"
+        );
+
+
+    if (selectedSection) {
+
+        selectedSection.classList.add(
+            "active-section"
+        );
+    }
+
+
+    document
+        .querySelectorAll(
+            ".sidebar-link[data-section]"
+        )
+        .forEach(
+            link => {
+
+                link.classList.remove(
+                    "active"
+                );
+            }
+        );
+
+
+    const activeLink =
+        document.querySelector(
+            `[data-section="${sectionName}"]`
+        );
+
+
+    if (activeLink) {
+
+        activeLink.classList.add(
+            "active"
+        );
+    }
+
+
+    const titles = {
+
+        dashboard:
+            {
+                title:
+                    "Student Dashboard",
+
+                subtitle:
+                    "Welcome back"
+            },
+
+        clearance:
+            {
+                title:
+                    "My Clearance",
+
+                subtitle:
+                    "Monitor your clearance stages"
+            },
+
+        profile:
+            {
+                title:
+                    "My Profile",
+
+                subtitle:
+                    "Manage your profile information"
+            },
+
+        notifications:
+            {
+                title:
+                    "Notifications",
+
+                subtitle:
+                    "View your latest updates"
+            }
+    };
+
+
+    if (
+        titles[sectionName]
+    ) {
+
+        document
+            .getElementById(
+                "pageTitle"
+            )
+            .textContent =
+            titles[sectionName]
+                .title;
+
+
+        document
+            .getElementById(
+                "pageSubtitle"
+            )
+            .textContent =
+            titles[sectionName]
+                .subtitle;
+    }
+}
+
+
+/* ============================================
+   MOBILE MENU
+============================================ */
+
+function setupMobileMenu() {
+
+    document
+        .getElementById(
+            "mobileMenuBtn"
+        )
+        .addEventListener(
+            "click",
+            openMobileMenu
+        );
+
+
+    document
+        .getElementById(
+            "mobileOverlay"
+        )
+        .addEventListener(
+            "click",
+            closeMobileMenu
+        );
+}
+
+
+function openMobileMenu() {
+
+    document
+        .getElementById(
+            "sidebar"
+        )
+        .classList.add(
+            "active"
+        );
+
+
+    document
+        .getElementById(
+            "mobileOverlay"
+        )
+        .classList.add(
+            "active"
+        );
+}
+
+
+function closeMobileMenu() {
+
+    document
+        .getElementById(
+            "sidebar"
+        )
+        .classList.remove(
+            "active"
+        );
+
+
+    document
+        .getElementById(
+            "mobileOverlay"
+        )
+        .classList.remove(
+            "active"
+        );
+}
+
+
+/* ============================================
+   LOGOUT
+============================================ */
+
+function logoutStudent() {
+
+    const confirmed =
+        confirm(
+            "Are you sure you want to logout?"
+        );
+
+
+    if (!confirmed) {
+        return;
+    }
+
+
+    logoutCurrentUser();
+
+
+    window.location.href =
+        "index.html";
+}
+
+
+/* ============================================
+   FORMAT STATUS
+============================================ */
+
+function formatStatus(status) {
+
+    if (!status) {
+        return "Unknown";
+    }
+
+
+    return status
+        .replace(
+            /_/g,
+            " "
+        )
+        .replace(
+            /\b\w/g,
+            letter =>
+                letter.toUpperCase()
+        );
+}
+
+
+/* ============================================
+   GET STATUS CLASS
+============================================ */
+
+function getStatusClass(status) {
+
+    return "status-" +
+        (status || "pending");
+}
+
+
+/* ============================================
+   FORMAT DATE TIME
+============================================ */
+
+function formatDateTime(dateString) {
+
+    if (!dateString) {
+        return "";
+    }
+
+
+    const date =
+        new Date(
+            dateString
+        );
+
+
+    return date.toLocaleString(
+        "en-GB",
+        {
+            dateStyle:
+                "medium",
+
+            timeStyle:
+                "short"
+        }
+    );
+}
+
+
+/* ============================================
+   ESCAPE HTML
+============================================ */
+
+function escapeHtml(value) {
+
+    const text =
+        String(
+            value || ""
+        );
+
+
+    const div =
+        document.createElement(
+            "div"
+        );
+
+
+    div.textContent =
+        text;
+
+
+    return div.innerHTML;
+}
+
+
+/* ============================================
+   TOAST MESSAGE
+============================================ */
+
+let toastTimer = null;
+
+
+function showToast(
+    message,
+    type = "success"
+) {
+
+    const toast =
+        document.getElementById(
+            "toast"
+        );
+
+
+    clearTimeout(
+        toastTimer
+    );
+
+
+    toast.textContent =
+        message;
+
+
+    toast.className =
+        "toast " +
+        type +
+        " show";
+
+
+    toastTimer =
+        setTimeout(
+            function () {
+
+                toast.classList.remove(
+                    "show"
+                );
+
+            },
+            3500
+        );
+}
+
+</script>
+
+
+</body>
+</html>

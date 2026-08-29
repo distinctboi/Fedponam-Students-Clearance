@@ -1,0 +1,3539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Admin Dashboard</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <!-- Modern Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+</head>
+
+<body class="app-body">
+
+<!-- ========================================
+     MOBILE OVERLAY
+========================================= -->
+
+<div
+    class="mobile-overlay"
+    id="mobileOverlay"
+></div>
+
+
+<!-- ========================================
+     SIDEBAR
+========================================= -->
+
+<aside
+    class="sidebar admin-sidebar"
+    id="sidebar"
+>
+
+    <div class="sidebar-brand">
+
+        <img
+            src="logo.png"
+            alt="Logo"
+            class="sidebar-logo"
+        >
+
+        <div>
+            <h2>Clearance</h2>
+            <small>Administrator</small>
+        </div>
+
+    </div>
+
+
+    <nav class="sidebar-menu">
+
+        <button
+            type="button"
+            class="sidebar-link active"
+            data-section="dashboard"
+        >
+            <i data-lucide="layout-dashboard"></i>
+            <span>Dashboard</span>
+        </button>
+
+
+        <button
+            type="button"
+            class="sidebar-link"
+            data-section="students"
+        >
+            <i data-lucide="graduation-cap"></i>
+            <span>Students</span>
+        </button>
+
+
+        <button
+            type="button"
+            class="sidebar-link"
+            data-section="officers"
+        >
+            <i data-lucide="shield-check"></i>
+            <span>Officers</span>
+        </button>
+
+
+        <button
+            type="button"
+            class="sidebar-link"
+            data-section="departments"
+        >
+            <i data-lucide="building-2"></i>
+            <span>Departments</span>
+        </button>
+
+
+        <button
+            type="button"
+            class="sidebar-link"
+            data-section="stages"
+        >
+            <i data-lucide="list-checks"></i>
+            <span>Clearance Stages</span>
+        </button>
+
+
+        <button
+            type="button"
+            class="sidebar-link"
+            data-section="requests"
+        >
+            <i data-lucide="clipboard-list"></i>
+            <span>Clearance Requests</span>
+        </button>
+
+
+        <button
+            type="button"
+            class="sidebar-link"
+            data-section="settings"
+        >
+            <i data-lucide="settings"></i>
+            <span>Settings</span>
+        </button>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+        <button
+            type="button"
+            class="sidebar-link logout-link"
+            onclick="logoutAdmin()"
+        >
+            <i data-lucide="log-out"></i>
+            <span>Logout</span>
+        </button>
+
+    </div>
+
+</aside>
+
+
+<!-- ========================================
+     MAIN CONTENT
+========================================= -->
+
+<main class="main-content">
+
+
+    <!-- HEADER -->
+
+    <header class="top-header">
+
+        <div class="header-left">
+
+            <button
+                type="button"
+                class="mobile-menu-btn"
+                id="mobileMenuBtn"
+            >
+                <i data-lucide="menu"></i>
+            </button>
+
+
+            <div class="page-title">
+
+                <h1 id="pageTitle">
+                    Admin Dashboard
+                </h1>
+
+                <p id="pageSubtitle">
+                    Manage your clearance system
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="header-user">
+
+            <div class="header-user-info">
+
+                <strong id="adminName">
+                    Administrator
+                </strong>
+
+                <small>
+                    System Administrator
+                </small>
+
+            </div>
+
+
+            <div class="admin-avatar">
+                <i data-lucide="user"></i>
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- ========================================
+         DASHBOARD
+    ========================================= -->
+
+    <section
+        class="dashboard-section active-section"
+        id="dashboardSection"
+    >
+
+        <div class="admin-stats-grid">
+
+            <div class="admin-stat-card">
+
+                <div class="admin-stat-icon students-icon">
+                    <i data-lucide="graduation-cap"></i>
+                </div>
+
+                <div>
+                    <small>Total Students</small>
+
+                    <strong id="totalStudents">
+                        0
+                    </strong>
+                </div>
+
+            </div>
+
+
+            <div class="admin-stat-card">
+
+                <div class="admin-stat-icon officers-icon">
+                    <i data-lucide="shield-check"></i>
+                </div>
+
+                <div>
+                    <small>Total Officers</small>
+
+                    <strong id="totalOfficers">
+                        0
+                    </strong>
+                </div>
+
+            </div>
+
+
+            <div class="admin-stat-card">
+
+                <div class="admin-stat-icon pending-icon">
+                    <i data-lucide="clock-3"></i>
+                </div>
+
+                <div>
+                    <small>Pending Requests</small>
+
+                    <strong id="pendingRequests">
+                        0
+                    </strong>
+                </div>
+
+            </div>
+
+
+            <div class="admin-stat-card">
+
+                <div class="admin-stat-icon completed-icon">
+                    <i data-lucide="circle-check-big"></i>
+                </div>
+
+                <div>
+                    <small>Completed</small>
+
+                    <strong id="completedRequests">
+                        0
+                    </strong>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- QUICK ACTIONS -->
+
+        <div class="content-card">
+
+            <div class="card-header">
+
+                <div>
+                    <h2>Quick Actions</h2>
+
+                    <p>
+                        Quickly manage the system.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="quick-actions-grid">
+
+                <button
+                    type="button"
+                    class="quick-action-btn"
+                    onclick="showSection('students'); openStudentModal();"
+                >
+                    <i data-lucide="user-plus"></i>
+
+                    <span>Add Student</span>
+                </button>
+
+
+                <button
+                    type="button"
+                    class="quick-action-btn"
+                    onclick="showSection('officers'); openOfficerModal();"
+                >
+                    <i data-lucide="shield-plus"></i>
+
+                    <span>Add Officer</span>
+                </button>
+
+
+                <button
+                    type="button"
+                    class="quick-action-btn"
+                    onclick="showSection('requests')"
+                >
+                    <i data-lucide="clipboard-search"></i>
+
+                    <span>View Requests</span>
+                </button>
+
+
+                <button
+                    type="button"
+                    class="quick-action-btn"
+                    onclick="showSection('settings')"
+                >
+                    <i data-lucide="settings-2"></i>
+
+                    <span>System Settings</span>
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- SYSTEM OVERVIEW -->
+
+        <div class="content-card">
+
+            <div class="card-header">
+
+                <div>
+                    <h2>System Overview</h2>
+
+                    <p>
+                        Current clearance system information.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="system-overview-grid">
+
+                <div class="overview-item">
+
+                    <i data-lucide="building-2"></i>
+
+                    <div>
+                        <small>Institution</small>
+
+                        <strong id="overviewInstitution">
+                            -
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <div class="overview-item">
+
+                    <i data-lucide="calendar-days"></i>
+
+                    <div>
+                        <small>Clearance Session</small>
+
+                        <strong id="overviewSession">
+                            -
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <div class="overview-item">
+
+                    <i data-lucide="building"></i>
+
+                    <div>
+                        <small>Departments</small>
+
+                        <strong id="overviewDepartments">
+                            0
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <div class="overview-item">
+
+                    <i data-lucide="list-checks"></i>
+
+                    <div>
+                        <small>Clearance Stages</small>
+
+                        <strong id="overviewStages">
+                            0
+                        </strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================================
+         STUDENTS
+    ========================================= -->
+
+    <section
+        class="dashboard-section"
+        id="studentsSection"
+    >
+
+        <div class="content-card">
+
+            <div class="card-header">
+
+                <div>
+                    <h2>Students</h2>
+
+                    <p>
+                        Add and manage student accounts.
+                    </p>
+                </div>
+
+
+                <button
+                    type="button"
+                    class="primary-btn"
+                    onclick="openStudentModal()"
+                >
+                    <i data-lucide="user-plus"></i>
+                    Add Student
+                </button>
+
+            </div>
+
+
+            <div class="table-tools">
+
+                <div class="search-box">
+
+                    <i data-lucide="search"></i>
+
+                    <input
+                        type="text"
+                        id="studentSearch"
+                        placeholder="Search student..."
+                        oninput="renderStudents()"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>Student</th>
+                            <th>Registration No.</th>
+                            <th>Department</th>
+                            <th>Level</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody
+                        id="studentsTableBody"
+                    ></tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================================
+         OFFICERS
+    ========================================= -->
+
+    <section
+        class="dashboard-section"
+        id="officersSection"
+    >
+
+        <div class="content-card">
+
+            <div class="card-header">
+
+                <div>
+                    <h2>Clearance Officers</h2>
+
+                    <p>
+                        Manage officers responsible for clearance.
+                    </p>
+                </div>
+
+
+                <button
+                    type="button"
+                    class="primary-btn"
+                    onclick="openOfficerModal()"
+                >
+                    <i data-lucide="shield-plus"></i>
+                    Add Officer
+                </button>
+
+            </div>
+
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>Officer</th>
+                            <th>Username</th>
+                            <th>Unit</th>
+                            <th>Email</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody
+                        id="officersTableBody"
+                    ></tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================================
+         DEPARTMENTS
+    ========================================= -->
+
+    <section
+        class="dashboard-section"
+        id="departmentsSection"
+    >
+
+        <div class="content-card">
+
+            <div class="card-header">
+
+                <div>
+                    <h2>Departments</h2>
+
+                    <p>
+                        Manage institution departments.
+                    </p>
+                </div>
+
+
+                <button
+                    type="button"
+                    class="primary-btn"
+                    onclick="openDepartmentModal()"
+                >
+                    <i data-lucide="plus"></i>
+                    Add Department
+                </button>
+
+            </div>
+
+
+            <div
+                class="department-grid"
+                id="departmentsContainer"
+            ></div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================================
+         CLEARANCE STAGES
+    ========================================= -->
+
+    <section
+        class="dashboard-section"
+        id="stagesSection"
+    >
+
+        <div class="content-card">
+
+            <div class="card-header">
+
+                <div>
+                    <h2>Clearance Stages</h2>
+
+                    <p>
+                        Configure the clearance process.
+                    </p>
+                </div>
+
+
+                <button
+                    type="button"
+                    class="primary-btn"
+                    onclick="openStageModal()"
+                >
+                    <i data-lucide="plus"></i>
+                    Add Stage
+                </button>
+
+            </div>
+
+
+            <div
+                class="stages-admin-list"
+                id="stagesContainer"
+            ></div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================================
+         CLEARANCE REQUESTS
+    ========================================= -->
+
+    <section
+        class="dashboard-section"
+        id="requestsSection"
+    >
+
+        <div class="content-card">
+
+            <div class="card-header">
+
+                <div>
+                    <h2>Clearance Requests</h2>
+
+                    <p>
+                        Monitor all student clearance requests.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="table-tools">
+
+                <div class="search-box">
+
+                    <i data-lucide="search"></i>
+
+                    <input
+                        type="text"
+                        id="requestSearch"
+                        placeholder="Search clearance requests..."
+                        oninput="renderRequests()"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>Student</th>
+                            <th>Registration No.</th>
+                            <th>Department</th>
+                            <th>Progress</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody
+                        id="requestsTableBody"
+                    ></tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================================
+         SETTINGS
+    ========================================= -->
+
+    <section
+        class="dashboard-section"
+        id="settingsSection"
+    >
+
+        <div class="content-card">
+
+            <div class="card-header">
+
+                <div>
+                    <h2>System Settings</h2>
+
+                    <p>
+                        Configure your clearance system.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <form
+                id="settingsForm"
+                class="settings-form"
+            >
+
+                <div class="profile-form-grid">
+
+                    <div class="form-group">
+
+                        <label>System Name</label>
+
+                        <input
+                            type="text"
+                            id="systemNameInput"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Institution Name</label>
+
+                        <input
+                            type="text"
+                            id="institutionNameInput"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Clearance Session</label>
+
+                        <input
+                            type="text"
+                            id="clearanceSessionInput"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Institution Short Name</label>
+
+                        <input
+                            type="text"
+                            id="institutionShortNameInput"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <label class="settings-checkbox">
+
+                    <input
+                        type="checkbox"
+                        id="allowNewClearance"
+                    >
+
+                    <span>
+                        Allow students to start new clearance
+                    </span>
+
+                </label>
+
+
+                <button
+                    type="submit"
+                    class="primary-btn"
+                >
+                    <i data-lucide="save"></i>
+                    Save Settings
+                </button>
+
+            </form>
+
+
+            <div class="danger-zone">
+
+                <h3>System Data</h3>
+
+                <p>
+                    Export or reset the Local Storage database.
+                </p>
+
+
+                <div class="danger-actions">
+
+                    <button
+                        type="button"
+                        class="secondary-btn"
+                        onclick="downloadDatabaseBackup()"
+                    >
+                        <i data-lucide="download"></i>
+                        Backup Database
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="danger-btn"
+                        onclick="resetSystemData()"
+                    >
+                        <i data-lucide="trash-2"></i>
+                        Reset System
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- ========================================
+     STUDENT MODAL
+========================================= -->
+
+<div
+    class="modal"
+    id="studentModal"
+>
+
+    <div class="modal-box">
+
+        <div class="modal-header">
+
+            <div>
+                <h2>Add Student</h2>
+
+                <p>
+                    Create a new student account.
+                </p>
+            </div>
+
+
+            <button
+                type="button"
+                class="modal-close"
+                onclick="closeModal('studentModal')"
+            >
+                <i data-lucide="x"></i>
+            </button>
+
+        </div>
+
+
+        <form id="studentForm">
+
+            <div class="profile-form-grid">
+
+                <div class="form-group">
+
+                    <label>Full Name</label>
+
+                    <input
+                        type="text"
+                        id="studentFullName"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Registration Number</label>
+
+                    <input
+                        type="text"
+                        id="studentRegNumber"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Department</label>
+
+                    <select
+                        id="studentDepartment"
+                        required
+                    ></select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Level</label>
+
+                    <input
+                        type="text"
+                        id="studentLevel"
+                        placeholder="e.g. ND II"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Email</label>
+
+                    <input
+                        type="email"
+                        id="studentEmail"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Phone</label>
+
+                    <input
+                        type="tel"
+                        id="studentPhone"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Password</label>
+
+                    <input
+                        type="password"
+                        id="studentPassword"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    class="secondary-btn"
+                    onclick="closeModal('studentModal')"
+                >
+                    Cancel
+                </button>
+
+
+                <button
+                    type="submit"
+                    class="primary-btn"
+                >
+                    <i data-lucide="user-plus"></i>
+                    Create Student
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- ========================================
+     OFFICER MODAL
+========================================= -->
+
+<div
+    class="modal"
+    id="officerModal"
+>
+
+    <div class="modal-box">
+
+        <div class="modal-header">
+
+            <div>
+                <h2>Add Officer</h2>
+
+                <p>
+                    Create a clearance officer account.
+                </p>
+            </div>
+
+
+            <button
+                type="button"
+                class="modal-close"
+                onclick="closeModal('officerModal')"
+            >
+                <i data-lucide="x"></i>
+            </button>
+
+        </div>
+
+
+        <form id="officerForm">
+
+            <div class="profile-form-grid">
+
+                <div class="form-group">
+
+                    <label>Full Name</label>
+
+                    <input
+                        type="text"
+                        id="officerFullName"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Username</label>
+
+                    <input
+                        type="text"
+                        id="officerUsername"
+                        required
+                        autocomplete="off"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Clearance Unit</label>
+
+                    <select
+                        id="officerUnit"
+                        required
+                    >
+
+                        <option value="">
+                            Select Unit
+                        </option>
+
+                        <option value="Department">
+                            Department
+                        </option>
+
+                        <option value="Library">
+                            Library
+                        </option>
+
+                        <option value="Bursary">
+                            Bursary
+                        </option>
+
+                        <option value="Students' Affairs">
+                            Students' Affairs
+                        </option>
+
+                        <option value="Records Unit">
+                            Records Unit
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Email</label>
+
+                    <input
+                        type="email"
+                        id="officerEmail"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Phone</label>
+
+                    <input
+                        type="tel"
+                        id="officerPhone"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Password</label>
+
+                    <input
+                        type="password"
+                        id="officerPassword"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    class="secondary-btn"
+                    onclick="closeModal('officerModal')"
+                >
+                    Cancel
+                </button>
+
+
+                <button
+                    type="submit"
+                    class="primary-btn"
+                    id="createOfficerButton"
+                >
+                    <i data-lucide="shield-plus"></i>
+                    Create Officer
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- ========================================
+     DEPARTMENT MODAL
+========================================= -->
+
+<div
+    class="modal"
+    id="departmentModal"
+>
+
+    <div class="modal-box small-modal">
+
+        <div class="modal-header">
+
+            <div>
+                <h2>Add Department</h2>
+            </div>
+
+
+            <button
+                type="button"
+                class="modal-close"
+                onclick="closeModal('departmentModal')"
+            >
+                <i data-lucide="x"></i>
+            </button>
+
+        </div>
+
+
+        <form id="departmentForm">
+
+            <div class="form-group">
+
+                <label>Department Name</label>
+
+                <input
+                    type="text"
+                    id="departmentName"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Department Code</label>
+
+                <input
+                    type="text"
+                    id="departmentCode"
+                >
+
+            </div>
+
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    class="secondary-btn"
+                    onclick="closeModal('departmentModal')"
+                >
+                    Cancel
+                </button>
+
+
+                <button
+                    type="submit"
+                    class="primary-btn"
+                >
+                    Add Department
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- ========================================
+     STAGE MODAL
+========================================= -->
+
+<div
+    class="modal"
+    id="stageModal"
+>
+
+    <div class="modal-box">
+
+        <div class="modal-header">
+
+            <div>
+                <h2>Add Clearance Stage</h2>
+            </div>
+
+
+            <button
+                type="button"
+                class="modal-close"
+                onclick="closeModal('stageModal')"
+            >
+                <i data-lucide="x"></i>
+            </button>
+
+        </div>
+
+
+        <form id="stageForm">
+
+            <div class="profile-form-grid">
+
+                <div class="form-group">
+
+                    <label>Stage Name</label>
+
+                    <input
+                        type="text"
+                        id="stageName"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Responsible Unit</label>
+
+                    <input
+                        type="text"
+                        id="stageUnit"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Stage Order</label>
+
+                    <input
+                        type="number"
+                        id="stageOrder"
+                        min="1"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    class="secondary-btn"
+                    onclick="closeModal('stageModal')"
+                >
+                    Cancel
+                </button>
+
+
+                <button
+                    type="submit"
+                    class="primary-btn"
+                >
+                    Add Stage
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- ========================================
+     TOAST
+========================================= -->
+
+<div
+    class="toast"
+    id="toast"
+></div>
+
+
+<!-- ========================================
+     SCRIPTS
+========================================= -->
+
+<script src="db.js"></script>
+
+
+<script>
+
+"use strict";
+
+
+let currentUser = null;
+let toastTimer = null;
+
+
+/* ========================================
+   INITIALIZE
+========================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        if (!checkAdminAccess()) {
+            return;
+        }
+
+        setupNavigation();
+        setupMobileMenu();
+        setupForms();
+
+        loadAdminDashboard();
+
+        if (window.lucide) {
+            lucide.createIcons();
+        }
+
+    }
+);
+
+
+/* ========================================
+   ADMIN ACCESS
+========================================= */
+
+function checkAdminAccess() {
+
+    currentUser = getCurrentUser();
+
+    if (
+        !currentUser ||
+        String(currentUser.role).toLowerCase() !== "admin"
+    ) {
+
+        window.location.href = "index.html";
+
+        return false;
+    }
+
+
+    document
+        .getElementById("adminName")
+        .textContent =
+        currentUser.fullName ||
+        currentUser.name ||
+        "Administrator";
+
+
+    return true;
+}
+
+
+/* ========================================
+   LOAD DASHBOARD
+========================================= */
+
+function loadAdminDashboard() {
+
+    loadStatistics();
+
+    loadSystemOverview();
+
+    renderStudents();
+
+    renderOfficers();
+
+    renderDepartments();
+
+    renderStages();
+
+    renderRequests();
+
+    loadSettings();
+
+    if (window.lucide) {
+        lucide.createIcons();
+    }
+}
+
+
+/* ========================================
+   STATISTICS
+========================================= */
+
+function loadStatistics() {
+
+    const stats =
+        getDashboardStatistics() || {};
+
+
+    document
+        .getElementById("totalStudents")
+        .textContent =
+        stats.totalStudents || 0;
+
+
+    document
+        .getElementById("totalOfficers")
+        .textContent =
+        stats.totalOfficers || 0;
+
+
+    document
+        .getElementById("pendingRequests")
+        .textContent =
+        stats.pendingRequests || 0;
+
+
+    document
+        .getElementById("completedRequests")
+        .textContent =
+        stats.completedRequests || 0;
+}
+
+
+/* ========================================
+   SYSTEM OVERVIEW
+========================================= */
+
+function loadSystemOverview() {
+
+    const system =
+        getSystemInfo() || {};
+
+    const settings =
+        getSettings() || {};
+
+
+    document
+        .getElementById("overviewInstitution")
+        .textContent =
+        system.institutionName || "-";
+
+
+    document
+        .getElementById("overviewSession")
+        .textContent =
+        settings.clearanceSession || "-";
+
+
+    document
+        .getElementById("overviewDepartments")
+        .textContent =
+        getDepartments().length;
+
+
+    document
+        .getElementById("overviewStages")
+        .textContent =
+        getClearanceStages().length;
+}
+
+
+/* ========================================
+   STUDENTS
+========================================= */
+
+function renderStudents() {
+
+    const body =
+        document.getElementById(
+            "studentsTableBody"
+        );
+
+
+    const search =
+        document
+            .getElementById("studentSearch")
+            .value
+            .trim();
+
+
+    const students =
+        search
+            ? searchStudents(search)
+            : getStudents();
+
+
+    if (!students.length) {
+
+        body.innerHTML = `
+            <tr>
+                <td
+                    colspan="6"
+                    class="empty-table"
+                >
+                    No students found.
+                </td>
+            </tr>
+        `;
+
+        return;
+    }
+
+
+    body.innerHTML =
+        students.map(
+            function (student) {
+
+                return `
+
+                    <tr>
+
+                        <td>
+                            <strong>
+                                ${escapeHtml(student.fullName)}
+                            </strong>
+                        </td>
+
+
+                        <td>
+                            ${escapeHtml(
+                                student.registrationNumber
+                            )}
+                        </td>
+
+
+                        <td>
+                            ${escapeHtml(
+                                student.department
+                            )}
+                        </td>
+
+
+                        <td>
+                            ${escapeHtml(
+                                student.level || "-"
+                            )}
+                        </td>
+
+
+                        <td>
+
+                            <span
+                                class="status-badge status-${escapeAttribute(student.clearanceStatus || "pending")}"
+                            >
+                                ${formatStatus(
+                                    student.clearanceStatus ||
+                                    "pending"
+                                )}
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            <button
+                                type="button"
+                                class="table-action danger-action"
+                                onclick="deleteStudentAccount('${escapeAttribute(student.id)}')"
+                                title="Delete Student"
+                            >
+                                <i data-lucide="trash-2"></i>
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+                `;
+            }
+        ).join("");
+
+
+    refreshIcons();
+}
+
+
+/* ========================================
+   OFFICERS
+========================================= */
+
+function renderOfficers() {
+
+    const body =
+        document.getElementById(
+            "officersTableBody"
+        );
+
+
+    const officers =
+        getOfficers() || [];
+
+
+    if (!officers.length) {
+
+        body.innerHTML = `
+            <tr>
+                <td
+                    colspan="6"
+                    class="empty-table"
+                >
+                    No officers found.
+                </td>
+            </tr>
+        `;
+
+        return;
+    }
+
+
+    body.innerHTML =
+        officers.map(
+            function (officer) {
+
+                const status =
+                    officer.status ||
+                    (officer.active === false
+                        ? "inactive"
+                        : "active");
+
+
+                return `
+
+                    <tr>
+
+                        <td>
+                            <strong>
+                                ${escapeHtml(
+                                    officer.fullName ||
+                                    officer.name ||
+                                    "Unnamed Officer"
+                                )}
+                            </strong>
+                        </td>
+
+
+                        <td>
+                            ${escapeHtml(
+                                officer.username || "-"
+                            )}
+                        </td>
+
+
+                        <td>
+                            ${escapeHtml(
+                                officer.unit || "-"
+                            )}
+                        </td>
+
+
+                        <td>
+                            ${escapeHtml(
+                                officer.email || "-"
+                            )}
+                        </td>
+
+
+                        <td>
+
+                            <span
+                                class="status-badge status-${escapeAttribute(status)}"
+                            >
+                                ${formatStatus(status)}
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            <button
+                                type="button"
+                                class="table-action danger-action"
+                                onclick="deleteOfficerAccount('${escapeAttribute(officer.id)}')"
+                                title="Delete Officer"
+                            >
+                                <i data-lucide="trash-2"></i>
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+                `;
+            }
+        ).join("");
+
+
+    refreshIcons();
+}
+
+
+/* ========================================
+   DEPARTMENTS
+========================================= */
+
+function renderDepartments() {
+
+    const container =
+        document.getElementById(
+            "departmentsContainer"
+        );
+
+
+    const departments =
+        getDepartments() || [];
+
+
+    if (!departments.length) {
+
+        container.innerHTML = `
+            <div class="empty-state">
+                No departments found.
+            </div>
+        `;
+
+        return;
+    }
+
+
+    container.innerHTML =
+        departments.map(
+            function (department) {
+
+                return `
+
+                    <div class="department-card">
+
+                        <div class="department-card-icon">
+                            <i data-lucide="building-2"></i>
+                        </div>
+
+
+                        <div class="department-card-content">
+
+                            <h3>
+                                ${escapeHtml(
+                                    department.name
+                                )}
+                            </h3>
+
+
+                            <p>
+                                ${escapeHtml(
+                                    department.code ||
+                                    "No Code"
+                                )}
+                            </p>
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            class="department-delete-btn"
+                            onclick="deleteDepartmentItem('${escapeAttribute(department.id)}')"
+                        >
+                            <i data-lucide="trash-2"></i>
+                        </button>
+
+                    </div>
+
+                `;
+            }
+        ).join("");
+
+
+    refreshIcons();
+}
+
+
+/* ========================================
+   CLEARANCE STAGES
+========================================= */
+
+function renderStages() {
+
+    const container =
+        document.getElementById(
+            "stagesContainer"
+        );
+
+
+    const stages =
+        (getClearanceStages() || [])
+            .slice()
+            .sort(
+                function (a, b) {
+
+                    return (
+                        Number(a.stageOrder) -
+                        Number(b.stageOrder)
+                    );
+                }
+            );
+
+
+    if (!stages.length) {
+
+        container.innerHTML = `
+            <div class="empty-state">
+                No clearance stages configured.
+            </div>
+        `;
+
+        return;
+    }
+
+
+    container.innerHTML =
+        stages.map(
+            function (stage) {
+
+                return `
+
+                    <div class="admin-stage-item">
+
+                        <div class="admin-stage-number">
+                            ${escapeHtml(stage.stageOrder)}
+                        </div>
+
+
+                        <div class="admin-stage-content">
+
+                            <h3>
+                                ${escapeHtml(stage.name)}
+                            </h3>
+
+
+                            <p>
+
+                                <i
+                                    data-lucide="building-2"
+                                ></i>
+
+                                ${escapeHtml(stage.unit)}
+
+                            </p>
+
+                        </div>
+
+
+                        <div class="admin-stage-actions">
+
+                            <span
+                                class="status-badge status-active"
+                            >
+                                Active
+                            </span>
+
+
+                            <button
+                                type="button"
+                                class="table-action danger-action"
+                                onclick="deleteStageItem('${escapeAttribute(stage.id)}')"
+                            >
+                                <i data-lucide="trash-2"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                `;
+            }
+        ).join("");
+
+
+    refreshIcons();
+}
+
+
+/* ========================================
+   CLEARANCE REQUESTS
+========================================= */
+
+function renderRequests() {
+
+    const body =
+        document.getElementById(
+            "requestsTableBody"
+        );
+
+
+    const search =
+        document
+            .getElementById("requestSearch")
+            .value
+            .trim();
+
+
+    const requests =
+        search
+            ? searchClearanceRequests(search)
+            : getClearanceRequests();
+
+
+    if (!requests.length) {
+
+        body.innerHTML = `
+            <tr>
+                <td
+                    colspan="6"
+                    class="empty-table"
+                >
+                    No clearance requests found.
+                </td>
+            </tr>
+        `;
+
+        return;
+    }
+
+
+    body.innerHTML =
+        requests.map(
+            function (request) {
+
+                const percentage =
+                    Number(request.percentage) || 0;
+
+
+                return `
+
+                    <tr>
+
+                        <td>
+                            ${escapeHtml(
+                                request.studentName
+                            )}
+                        </td>
+
+
+                        <td>
+                            ${escapeHtml(
+                                request.registrationNumber
+                            )}
+                        </td>
+
+
+                        <td>
+                            ${escapeHtml(
+                                request.department
+                            )}
+                        </td>
+
+
+                        <td>
+
+                            <div class="mini-progress">
+
+                                <div
+                                    class="mini-progress-track"
+                                >
+
+                                    <div
+                                        class="mini-progress-fill"
+                                        style="width:${Math.min(Math.max(percentage, 0), 100)}%"
+                                    ></div>
+
+                                </div>
+
+
+                                <small>
+                                    ${percentage}%
+                                </small>
+
+                            </div>
+
+                        </td>
+
+
+                        <td>
+
+                            <span
+                                class="status-badge status-${escapeAttribute(request.overallStatus || "pending")}"
+                            >
+                                ${formatStatus(
+                                    request.overallStatus ||
+                                    "pending"
+                                )}
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            <button
+                                type="button"
+                                class="table-action"
+                                onclick="viewRequest('${escapeAttribute(request.id)}')"
+                                title="View Request"
+                            >
+                                <i data-lucide="eye"></i>
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+                `;
+            }
+        ).join("");
+
+
+    refreshIcons();
+}
+
+
+/* ========================================
+   SETTINGS
+========================================= */
+
+function loadSettings() {
+
+    const system =
+        getSystemInfo() || {};
+
+    const settings =
+        getSettings() || {};
+
+
+    document
+        .getElementById("systemNameInput")
+        .value =
+        system.systemName || "";
+
+
+    document
+        .getElementById("institutionNameInput")
+        .value =
+        system.institutionName || "";
+
+
+    document
+        .getElementById(
+            "institutionShortNameInput"
+        )
+        .value =
+        system.institutionShortName || "";
+
+
+    document
+        .getElementById(
+            "clearanceSessionInput"
+        )
+        .value =
+        settings.clearanceSession || "";
+
+
+    document
+        .getElementById(
+            "allowNewClearance"
+        )
+        .checked =
+        Boolean(settings.allowNewClearance);
+}
+
+
+/* ========================================
+   FORM EVENTS
+========================================= */
+
+function setupForms() {
+
+    document
+        .getElementById("studentForm")
+        .addEventListener(
+            "submit",
+            createStudentAccount
+        );
+
+
+    document
+        .getElementById("officerForm")
+        .addEventListener(
+            "submit",
+            createOfficerAccount
+        );
+
+
+    document
+        .getElementById("departmentForm")
+        .addEventListener(
+            "submit",
+            createDepartmentItem
+        );
+
+
+    document
+        .getElementById("stageForm")
+        .addEventListener(
+            "submit",
+            createStageItem
+        );
+
+
+    document
+        .getElementById("settingsForm")
+        .addEventListener(
+            "submit",
+            saveSystemSettings
+        );
+}
+
+
+/* ========================================
+   CREATE STUDENT
+========================================= */
+
+function createStudentAccount(event) {
+
+    event.preventDefault();
+
+
+    const departmentId =
+        document
+            .getElementById("studentDepartment")
+            .value;
+
+
+    const department =
+        getDepartmentById(departmentId);
+
+
+    if (!departmentId || !department) {
+
+        showToast(
+            "Please select a valid department.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    const result =
+        createStudent({
+
+            fullName:
+                document
+                    .getElementById("studentFullName")
+                    .value
+                    .trim(),
+
+            registrationNumber:
+                document
+                    .getElementById("studentRegNumber")
+                    .value
+                    .trim(),
+
+            departmentId:
+                departmentId,
+
+            department:
+                department.name,
+
+            level:
+                document
+                    .getElementById("studentLevel")
+                    .value
+                    .trim(),
+
+            email:
+                document
+                    .getElementById("studentEmail")
+                    .value
+                    .trim(),
+
+            phone:
+                document
+                    .getElementById("studentPhone")
+                    .value
+                    .trim(),
+
+            password:
+                document
+                    .getElementById("studentPassword")
+                    .value
+
+        });
+
+
+    if (!result || !result.success) {
+
+        showToast(
+            result && result.message
+                ? result.message
+                : "Unable to create student.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    event.target.reset();
+
+    closeModal("studentModal");
+
+    loadAdminDashboard();
+
+    showToast(
+        "Student created successfully.",
+        "success"
+    );
+}
+
+
+/* ========================================
+   CREATE OFFICER
+========================================= */
+
+function createOfficerAccount(event) {
+
+    event.preventDefault();
+
+
+    const fullName =
+        document
+            .getElementById("officerFullName")
+            .value
+            .trim();
+
+
+    const username =
+        document
+            .getElementById("officerUsername")
+            .value
+            .trim();
+
+
+    const unit =
+        document
+            .getElementById("officerUnit")
+            .value
+            .trim();
+
+
+    const email =
+        document
+            .getElementById("officerEmail")
+            .value
+            .trim();
+
+
+    const phone =
+        document
+            .getElementById("officerPhone")
+            .value
+            .trim();
+
+
+    const password =
+        document
+            .getElementById("officerPassword")
+            .value;
+
+
+    /* Important:
+       Validate before calling createOfficer().
+    */
+
+    if (!fullName) {
+
+        showToast(
+            "Officer full name is required.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    if (!username) {
+
+        showToast(
+            "Officer username is required.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    if (!unit) {
+
+        showToast(
+            "Please select a clearance unit.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    if (!password) {
+
+        showToast(
+            "Officer password is required.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    const submitButton =
+        document.getElementById(
+            "createOfficerButton"
+        );
+
+
+    submitButton.disabled = true;
+
+
+    const originalButtonText =
+        submitButton.innerHTML;
+
+
+    submitButton.innerHTML =
+        "Creating...";
+
+
+    let result;
+
+
+    try {
+
+        /*
+         * The corrected db.js is responsible for:
+         *
+         * 1. Creating the officer record.
+         * 2. Creating/synchronizing the login user.
+         * 3. Preventing duplicate usernames.
+         * 4. Setting role = officer.
+         */
+
+        result =
+            createOfficer({
+
+                fullName:
+                    fullName,
+
+                username:
+                    username,
+
+                unit:
+                    unit,
+
+                email:
+                    email,
+
+                phone:
+                    phone,
+
+                password:
+                    password
+
+            });
+
+    } catch (error) {
+
+        console.error(
+            "Officer creation error:",
+            error
+        );
+
+
+        result = {
+            success: false,
+            message:
+                "An unexpected error occurred while creating the officer."
+        };
+    }
+
+
+    submitButton.disabled = false;
+
+    submitButton.innerHTML =
+        originalButtonText;
+
+
+    refreshIcons();
+
+
+    if (
+        !result ||
+        result.success !== true
+    ) {
+
+        showToast(
+            result && result.message
+                ? result.message
+                : "Unable to create officer.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    /*
+     * Success:
+     * Reset form first, close modal,
+     * then reload officers/statistics.
+     */
+
+    event.target.reset();
+
+    closeModal("officerModal");
+
+    loadAdminDashboard();
+
+
+    showToast(
+        result.message ||
+        "Officer created successfully.",
+        "success"
+    );
+}
+
+
+/* ========================================
+   CREATE DEPARTMENT
+========================================= */
+
+function createDepartmentItem(event) {
+
+    event.preventDefault();
+
+
+    const name =
+        document
+            .getElementById("departmentName")
+            .value
+            .trim();
+
+
+    const code =
+        document
+            .getElementById("departmentCode")
+            .value
+            .trim();
+
+
+    if (!name) {
+
+        showToast(
+            "Department name is required.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    const result =
+        createDepartment({
+            name: name,
+            code: code
+        });
+
+
+    if (
+        result &&
+        result.success === false
+    ) {
+
+        showToast(
+            result.message ||
+            "Unable to add department.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    event.target.reset();
+
+    closeModal("departmentModal");
+
+    loadAdminDashboard();
+
+
+    showToast(
+        "Department added successfully.",
+        "success"
+    );
+}
+
+
+/* ========================================
+   CREATE STAGE
+========================================= */
+
+function createStageItem(event) {
+
+    event.preventDefault();
+
+
+    const name =
+        document
+            .getElementById("stageName")
+            .value
+            .trim();
+
+
+    const unit =
+        document
+            .getElementById("stageUnit")
+            .value
+            .trim();
+
+
+    const stageOrder =
+        Number(
+            document
+                .getElementById("stageOrder")
+                .value
+        );
+
+
+    if (
+        !name ||
+        !unit ||
+        !stageOrder
+    ) {
+
+        showToast(
+            "Please complete all stage fields.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    const result =
+        createClearanceStage({
+
+            name: name,
+
+            unit: unit,
+
+            stageOrder: stageOrder
+
+        });
+
+
+    if (
+        result &&
+        result.success === false
+    ) {
+
+        showToast(
+            result.message ||
+            "Unable to create clearance stage.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    event.target.reset();
+
+    closeModal("stageModal");
+
+    loadAdminDashboard();
+
+
+    showToast(
+        "Clearance stage added successfully.",
+        "success"
+    );
+}
+
+
+/* ========================================
+   SAVE SETTINGS
+========================================= */
+
+function saveSystemSettings(event) {
+
+    event.preventDefault();
+
+
+    updateSystemInfo({
+
+        systemName:
+            document
+                .getElementById("systemNameInput")
+                .value
+                .trim(),
+
+        institutionName:
+            document
+                .getElementById("institutionNameInput")
+                .value
+                .trim(),
+
+        institutionShortName:
+            document
+                .getElementById(
+                    "institutionShortNameInput"
+                )
+                .value
+                .trim()
+
+    });
+
+
+    updateSettings({
+
+        clearanceSession:
+            document
+                .getElementById(
+                    "clearanceSessionInput"
+                )
+                .value
+                .trim(),
+
+        allowNewClearance:
+            document
+                .getElementById(
+                    "allowNewClearance"
+                )
+                .checked
+
+    });
+
+
+    loadSystemOverview();
+
+
+    showToast(
+        "Settings saved successfully.",
+        "success"
+    );
+}
+
+
+/* ========================================
+   DELETE STUDENT
+========================================= */
+
+function deleteStudentAccount(id) {
+
+    if (
+        !confirm(
+            "Delete this student account?"
+        )
+    ) {
+        return;
+    }
+
+
+    const result =
+        deleteStudent(id);
+
+
+    if (
+        result &&
+        result.success === false
+    ) {
+
+        showToast(
+            result.message ||
+            "Unable to delete student.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    loadAdminDashboard();
+
+
+    showToast(
+        "Student deleted.",
+        "success"
+    );
+}
+
+
+/* ========================================
+   DELETE OFFICER
+========================================= */
+
+function deleteOfficerAccount(id) {
+
+    if (
+        !confirm(
+            "Delete this officer account?"
+        )
+    ) {
+        return;
+    }
+
+
+    const result =
+        deleteOfficer(id);
+
+
+    if (
+        result &&
+        result.success === false
+    ) {
+
+        showToast(
+            result.message ||
+            "Unable to delete officer.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    loadAdminDashboard();
+
+
+    showToast(
+        "Officer deleted.",
+        "success"
+    );
+}
+
+
+/* ========================================
+   DELETE DEPARTMENT
+========================================= */
+
+function deleteDepartmentItem(id) {
+
+    if (
+        !confirm(
+            "Delete this department?"
+        )
+    ) {
+        return;
+    }
+
+
+    const result =
+        deleteDepartment(id);
+
+
+    if (
+        result &&
+        result.success === false
+    ) {
+
+        showToast(
+            result.message ||
+            "Unable to delete department.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    loadAdminDashboard();
+
+
+    showToast(
+        "Department deleted.",
+        "success"
+    );
+}
+
+
+/* ========================================
+   DELETE STAGE
+========================================= */
+
+function deleteStageItem(id) {
+
+    if (
+        !confirm(
+            "Delete this clearance stage?"
+        )
+    ) {
+        return;
+    }
+
+
+    const result =
+        deleteClearanceStage(id);
+
+
+    if (
+        result &&
+        result.success === false
+    ) {
+
+        showToast(
+            result.message ||
+            "Unable to delete clearance stage.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    loadAdminDashboard();
+
+
+    showToast(
+        "Clearance stage deleted.",
+        "success"
+    );
+}
+
+
+/* ========================================
+   VIEW REQUEST
+========================================= */
+
+function viewRequest(id) {
+
+    const request =
+        getClearanceRequestById(id);
+
+
+    if (!request) {
+
+        showToast(
+            "Clearance request not found.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    const stages =
+        Array.isArray(request.stages)
+            ? request.stages
+                .map(
+                    function (stage) {
+
+                        return (
+                            stage.stageOrder +
+                            ". " +
+                            stage.name +
+                            ": " +
+                            formatStatus(
+                                stage.status
+                            )
+                        );
+                    }
+                )
+                .join("\n")
+            : "No stages available.";
+
+
+    alert(
+
+        "STUDENT: " +
+        (request.studentName || "-") +
+
+        "\nREGISTRATION: " +
+        (request.registrationNumber || "-") +
+
+        "\n\nSTATUS: " +
+        formatStatus(
+            request.overallStatus ||
+            "pending"
+        ) +
+
+        "\nPROGRESS: " +
+        (request.percentage || 0) +
+        "%" +
+
+        "\n\nCLEARANCE STAGES:\n" +
+        stages
+
+    );
+}
+
+
+/* ========================================
+   MODALS
+========================================= */
+
+function openStudentModal() {
+
+    populateDepartmentSelect();
+
+    openModal("studentModal");
+}
+
+
+function openOfficerModal() {
+
+    const form =
+        document.getElementById(
+            "officerForm"
+        );
+
+
+    form.reset();
+
+    openModal("officerModal");
+}
+
+
+function openDepartmentModal() {
+
+    document
+        .getElementById("departmentForm")
+        .reset();
+
+
+    openModal("departmentModal");
+}
+
+
+function openStageModal() {
+
+    const form =
+        document.getElementById(
+            "stageForm"
+        );
+
+
+    form.reset();
+
+
+    const stages =
+        getClearanceStages() || [];
+
+
+    const highestOrder =
+        stages.reduce(
+            function (highest, stage) {
+
+                return Math.max(
+                    highest,
+                    Number(stage.stageOrder) || 0
+                );
+
+            },
+            0
+        );
+
+
+    document
+        .getElementById("stageOrder")
+        .value =
+        highestOrder + 1;
+
+
+    openModal("stageModal");
+}
+
+
+function openModal(id) {
+
+    const modal =
+        document.getElementById(id);
+
+
+    if (!modal) {
+        return;
+    }
+
+
+    modal.classList.add("active");
+}
+
+
+function closeModal(id) {
+
+    const modal =
+        document.getElementById(id);
+
+
+    if (!modal) {
+        return;
+    }
+
+
+    modal.classList.remove("active");
+}
+
+
+/* ========================================
+   POPULATE DEPARTMENTS
+========================================= */
+
+function populateDepartmentSelect() {
+
+    const select =
+        document.getElementById(
+            "studentDepartment"
+        );
+
+
+    const departments =
+        getDepartments() || [];
+
+
+    select.innerHTML = `
+        <option value="">
+            Select Department
+        </option>
+    `;
+
+
+    departments.forEach(
+        function (department) {
+
+            const option =
+                document.createElement("option");
+
+
+            option.value =
+                department.id;
+
+
+            option.textContent =
+                department.name;
+
+
+            select.appendChild(option);
+
+        }
+    );
+}
+
+
+/* ========================================
+   NAVIGATION
+========================================= */
+
+function setupNavigation() {
+
+    document
+        .querySelectorAll(
+            ".sidebar-link[data-section]"
+        )
+        .forEach(
+            function (link) {
+
+                link.addEventListener(
+                    "click",
+                    function () {
+
+                        showSection(
+                            this.dataset.section
+                        );
+
+                    }
+                );
+
+            }
+        );
+}
+
+
+function showSection(sectionName) {
+
+    document
+        .querySelectorAll(
+            ".dashboard-section"
+        )
+        .forEach(
+            function (section) {
+
+                section.classList.remove(
+                    "active-section"
+                );
+
+            }
+        );
+
+
+    const targetSection =
+        document.getElementById(
+            sectionName +
+            "Section"
+        );
+
+
+    if (!targetSection) {
+        return;
+    }
+
+
+    targetSection.classList.add(
+        "active-section"
+    );
+
+
+    document
+        .querySelectorAll(
+            ".sidebar-link[data-section]"
+        )
+        .forEach(
+            function (link) {
+
+                link.classList.remove(
+                    "active"
+                );
+
+            }
+        );
+
+
+    const activeLink =
+        document.querySelector(
+            `[data-section="${sectionName}"]`
+        );
+
+
+    if (activeLink) {
+
+        activeLink.classList.add(
+            "active"
+        );
+    }
+
+
+    const titles = {
+
+        dashboard:
+            [
+                "Admin Dashboard",
+                "Manage your clearance system"
+            ],
+
+        students:
+            [
+                "Students",
+                "Manage student accounts"
+            ],
+
+        officers:
+            [
+                "Clearance Officers",
+                "Manage officer accounts"
+            ],
+
+        departments:
+            [
+                "Departments",
+                "Manage institution departments"
+            ],
+
+        stages:
+            [
+                "Clearance Stages",
+                "Configure clearance stages"
+            ],
+
+        requests:
+            [
+                "Clearance Requests",
+                "Monitor all student requests"
+            ],
+
+        settings:
+            [
+                "System Settings",
+                "Configure the system"
+            ]
+
+    };
+
+
+    if (titles[sectionName]) {
+
+        document
+            .getElementById("pageTitle")
+            .textContent =
+            titles[sectionName][0];
+
+
+        document
+            .getElementById("pageSubtitle")
+            .textContent =
+            titles[sectionName][1];
+    }
+
+
+    closeMobileMenu();
+}
+
+
+/* ========================================
+   MOBILE MENU
+========================================= */
+
+function setupMobileMenu() {
+
+    const menuButton =
+        document.getElementById(
+            "mobileMenuBtn"
+        );
+
+
+    const overlay =
+        document.getElementById(
+            "mobileOverlay"
+        );
+
+
+    menuButton.addEventListener(
+        "click",
+        function () {
+
+            document
+                .getElementById("sidebar")
+                .classList.add("active");
+
+
+            overlay.classList.add("active");
+
+        }
+    );
+
+
+    overlay.addEventListener(
+        "click",
+        closeMobileMenu
+    );
+}
+
+
+function closeMobileMenu() {
+
+    document
+        .getElementById("sidebar")
+        .classList.remove("active");
+
+
+    document
+        .getElementById("mobileOverlay")
+        .classList.remove("active");
+}
+
+
+/* ========================================
+   RESET SYSTEM
+========================================= */
+
+function resetSystemData() {
+
+    const confirmed =
+        confirm(
+            "WARNING: This will delete all system data. Continue?"
+        );
+
+
+    if (!confirmed) {
+        return;
+    }
+
+
+    const secondConfirmation =
+        confirm(
+            "This action cannot be undone. Reset system now?"
+        );
+
+
+    if (!secondConfirmation) {
+        return;
+    }
+
+
+    resetSystem();
+
+    logoutCurrentUser();
+
+    window.location.href =
+        "index.html";
+}
+
+
+/* ========================================
+   LOGOUT
+========================================= */
+
+function logoutAdmin() {
+
+    if (
+        !confirm(
+            "Are you sure you want to logout?"
+        )
+    ) {
+        return;
+    }
+
+
+    logoutCurrentUser();
+
+    window.location.href =
+        "index.html";
+}
+
+
+/* ========================================
+   UTILITIES
+========================================= */
+
+function formatStatus(status) {
+
+    return String(
+        status || "unknown"
+    )
+        .replace(
+            /_/g,
+            " "
+        )
+        .replace(
+            /\b\w/g,
+            function (letter) {
+
+                return letter.toUpperCase();
+
+            }
+        );
+}
+
+
+function escapeHtml(value) {
+
+    const div =
+        document.createElement("div");
+
+
+    div.textContent =
+        String(value ?? "");
+
+
+    return div.innerHTML;
+}
+
+
+function escapeAttribute(value) {
+
+    return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
+}
+
+
+function refreshIcons() {
+
+    if (window.lucide) {
+        lucide.createIcons();
+    }
+}
+
+
+/* ========================================
+   TOAST
+========================================= */
+
+function showToast(
+    message,
+    type = "success"
+) {
+
+    const toast =
+        document.getElementById("toast");
+
+
+    clearTimeout(toastTimer);
+
+
+    toast.textContent =
+        message;
+
+
+    toast.className =
+        `toast ${type} show`;
+
+
+    toastTimer =
+        setTimeout(
+            function () {
+
+                toast.classList.remove(
+                    "show"
+                );
+
+            },
+            3000
+        );
+}
+
+</script>
+
+</body>
+</html>

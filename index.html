@@ -1,0 +1,2306 @@
+<!DOCTYPE html><html lang="en">
+<head><meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>
+    Student Clearance Management System
+</title>
+
+
+<!-- MAIN CSS -->
+
+<link
+    rel="stylesheet"
+    href="style.css"
+>
+
+
+<!-- LUCIDE ICONS -->
+
+<script
+    src="https://unpkg.com/lucide@latest"
+></script>
+
+</head><body class="portal-page"><!-- =====================================
+     BACKGROUND OVERLAY
+====================================== -->
+
+<div class="portal-overlay"></div>
+
+
+
+<!-- =====================================
+     MAIN PORTAL
+====================================== -->
+
+<main class="portal-wrapper">
+
+
+    <!-- =================================
+         LEFT INTRODUCTION SECTION
+    ================================== -->
+
+    <section class="portal-intro">
+
+
+        <!-- SCHOOL BRAND -->
+
+        <div class="portal-school-brand">
+
+
+            <img
+                src="logo.png"
+                alt="FEDPONAM Logo"
+                class="portal-logo"
+            >
+
+
+            <div>
+
+                <h1>
+                    Federal Polytechnic
+                </h1>
+
+                <p>
+                    Kaura Namoda
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- INTRO CONTENT -->
+
+        <div class="portal-intro-content">
+
+
+            <div class="welcome-badge">
+
+                <i data-lucide="shield-check"></i>
+
+                <span>
+                    Secure Online Clearance
+                </span>
+
+            </div>
+
+
+
+            <h2>
+
+                Complete Your Clearance
+
+                <span>
+                    The Easy Way.
+                </span>
+
+            </h2>
+
+
+
+            <p>
+
+                Access the Online Students Clearance
+                Management System to register, submit
+                clearance requests, monitor your progress
+                and receive clearance approval.
+
+            </p>
+
+
+
+            <!-- FEATURES -->
+
+            <div class="portal-features">
+
+
+                <div class="portal-feature">
+
+
+                    <div class="feature-icon">
+
+                        <i
+                            data-lucide="circle-check-big"
+                        ></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            Track Your Clearance
+                        </strong>
+
+                        <small>
+                            Monitor every clearance stage
+                        </small>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="portal-feature">
+
+
+                    <div class="feature-icon">
+
+                        <i
+                            data-lucide="bell"
+                        ></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            Receive Updates
+                        </strong>
+
+                        <small>
+                            Get notified about your clearance
+                        </small>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="portal-feature">
+
+
+                    <div class="feature-icon">
+
+                        <i
+                            data-lucide="printer"
+                        ></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            Print Your Clearance
+                        </strong>
+
+                        <small>
+                            Print after final approval
+                        </small>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- COPYRIGHT -->
+
+        <div class="portal-copyright">
+
+            ©
+            <span id="currentYear"></span>
+
+            Federal Polytechnic Kaura Namoda
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =================================
+         AUTHENTICATION SECTION
+    ================================== -->
+
+    <section class="portal-auth-section">
+
+
+        <div class="portal-auth-card">
+
+
+            <!-- MOBILE LOGO -->
+
+            <div class="mobile-portal-logo">
+
+
+                <img
+                    src="logo.png"
+                    alt="FEDPONAM Logo"
+                >
+
+
+                <h2>
+                    Student Clearance
+                </h2>
+
+
+            </div>
+
+
+
+            <!-- =============================
+                 LOGIN / REGISTER SWITCH
+            ============================== -->
+
+            <div class="auth-main-switch">
+
+
+                <button
+                    type="button"
+                    class="auth-switch-btn active"
+                    data-auth="login"
+                >
+
+                    <i data-lucide="log-in"></i>
+
+                    <span>
+                        Login
+                    </span>
+
+                </button>
+
+
+
+                <button
+                    type="button"
+                    class="auth-switch-btn"
+                    data-auth="register"
+                >
+
+                    <i data-lucide="user-plus"></i>
+
+                    <span>
+                        Register
+                    </span>
+
+                </button>
+
+
+            </div>
+
+
+
+            <!-- =================================
+                 LOGIN PANEL
+            ================================== -->
+
+            <section
+                id="loginPanel"
+                class="auth-content active-auth-content"
+            >
+
+
+                <div class="auth-title">
+
+                    <h2>
+                        Welcome Back
+                    </h2>
+
+                    <p>
+                        Select your account type and login.
+                    </p>
+
+                </div>
+
+
+
+                <!-- =============================
+                     ROLE SWITCH
+                ============================== -->
+
+                <div class="role-switch">
+
+
+                    <button
+                        type="button"
+                        class="role-btn active"
+                        data-role="student"
+                    >
+
+                        <i
+                            data-lucide="graduation-cap"
+                        ></i>
+
+                        <span>
+                            Student
+                        </span>
+
+                    </button>
+
+
+
+                    <button
+                        type="button"
+                        class="role-btn"
+                        data-role="admin"
+                    >
+
+                        <i
+                            data-lucide="shield"
+                        ></i>
+
+                        <span>
+                            Admin
+                        </span>
+
+                    </button>
+
+
+
+                    <button
+                        type="button"
+                        class="role-btn"
+                        data-role="officer"
+                    >
+
+                        <i
+                            data-lucide="briefcase-business"
+                        ></i>
+
+                        <span>
+                            Officer
+                        </span>
+
+                    </button>
+
+
+                </div>
+
+
+
+                <!-- =============================
+                     STUDENT LOGIN FORM
+                ============================== -->
+
+                <form
+                    id="studentLoginForm"
+                    class="role-login-form active-role-form"
+                >
+
+
+                    <div class="form-group">
+
+                        <label
+                            for="studentLoginUsername"
+                        >
+                            Registration Number
+                        </label>
+
+
+                        <div class="portal-input">
+
+                            <i
+                                data-lucide="id-card"
+                            ></i>
+
+
+                            <input
+                                type="text"
+                                id="studentLoginUsername"
+                                placeholder="Enter registration number"
+                                autocomplete="username"
+                                required
+                            >
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div class="form-group">
+
+                        <label
+                            for="studentLoginPassword"
+                        >
+                            Password
+                        </label>
+
+
+                        <div class="portal-input">
+
+                            <i
+                                data-lucide="lock-keyhole"
+                            ></i>
+
+
+                            <input
+                                type="password"
+                                id="studentLoginPassword"
+                                placeholder="Enter password"
+                                autocomplete="current-password"
+                                required
+                            >
+
+
+                            <button
+                                type="button"
+                                class="password-toggle"
+                                data-target="studentLoginPassword"
+                            >
+
+                                <i
+                                    data-lucide="eye"
+                                ></i>
+
+                            </button>
+
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <button
+                        type="submit"
+                        class="portal-submit-btn"
+                    >
+
+                        <i
+                            data-lucide="log-in"
+                        ></i>
+
+                        <span>
+                            Login as Student
+                        </span>
+
+                    </button>
+
+
+                </form>
+
+
+
+                <!-- =============================
+                     ADMIN LOGIN FORM
+                ============================== -->
+
+                <form
+                    id="adminLoginForm"
+                    class="role-login-form"
+                >
+
+
+                    <div class="form-group">
+
+                        <label
+                            for="adminLoginUsername"
+                        >
+                            Username
+                        </label>
+
+
+                        <div class="portal-input">
+
+                            <i
+                                data-lucide="user"
+                            ></i>
+
+
+                            <input
+                                type="text"
+                                id="adminLoginUsername"
+                                placeholder="Enter admin username"
+                                autocomplete="username"
+                                required
+                            >
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div class="form-group">
+
+                        <label
+                            for="adminLoginPassword"
+                        >
+                            Password
+                        </label>
+
+
+                        <div class="portal-input">
+
+                            <i
+                                data-lucide="lock-keyhole"
+                            ></i>
+
+
+                            <input
+                                type="password"
+                                id="adminLoginPassword"
+                                placeholder="Enter password"
+                                autocomplete="current-password"
+                                required
+                            >
+
+
+                            <button
+                                type="button"
+                                class="password-toggle"
+                                data-target="adminLoginPassword"
+                            >
+
+                                <i
+                                    data-lucide="eye"
+                                ></i>
+
+                            </button>
+
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <button
+                        type="submit"
+                        class="portal-submit-btn"
+                    >
+
+                        <i
+                            data-lucide="shield-check"
+                        ></i>
+
+                        <span>
+                            Login as Admin
+                        </span>
+
+                    </button>
+
+
+                </form>
+
+
+
+                <!-- =============================
+                     OFFICER LOGIN FORM
+                ============================== -->
+
+                <form
+                    id="officerLoginForm"
+                    class="role-login-form"
+                >
+
+
+                    <div class="form-group">
+
+                        <label
+                            for="officerLoginUsername"
+                        >
+                            Officer Username
+                        </label>
+
+
+                        <div class="portal-input">
+
+                            <i
+                                data-lucide="user-round"
+                            ></i>
+
+
+                            <input
+                                type="text"
+                                id="officerLoginUsername"
+                                placeholder="Enter officer username"
+                                autocomplete="username"
+                                required
+                            >
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div class="form-group">
+
+                        <label
+                            for="officerLoginPassword"
+                        >
+                            Password
+                        </label>
+
+
+                        <div class="portal-input">
+
+                            <i
+                                data-lucide="lock-keyhole"
+                            ></i>
+
+
+                            <input
+                                type="password"
+                                id="officerLoginPassword"
+                                placeholder="Enter password"
+                                autocomplete="current-password"
+                                required
+                            >
+
+
+                            <button
+                                type="button"
+                                class="password-toggle"
+                                data-target="officerLoginPassword"
+                            >
+
+                                <i
+                                    data-lucide="eye"
+                                ></i>
+
+                            </button>
+
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <button
+                        type="submit"
+                        class="portal-submit-btn"
+                    >
+
+                        <i
+                            data-lucide="briefcase-business"
+                        ></i>
+
+                        <span>
+                            Login as Officer
+                        </span>
+
+                    </button>
+
+
+                </form>
+
+
+            </section>
+
+
+
+            <!-- =================================
+                 REGISTRATION PANEL
+            ================================== -->
+
+            <section
+                id="registerPanel"
+                class="auth-content"
+            >
+
+
+                <div class="auth-title">
+
+                    <h2>
+                        Create Student Account
+                    </h2>
+
+                    <p>
+                        Register your student account to begin
+                        the clearance process.
+                    </p>
+
+                </div>
+
+
+
+                <div class="register-role-notice">
+
+                    <i
+                        data-lucide="graduation-cap"
+                    ></i>
+
+                    <span>
+                        Student Registration
+                    </span>
+
+                </div>
+
+
+
+                <!-- =============================
+                     STUDENT REGISTRATION FORM
+                ============================== -->
+
+                <form
+                    id="studentRegisterForm"
+                >
+
+
+                    <!-- PHOTO UPLOAD -->
+
+                    <div class="register-photo-area">
+
+
+                        <div
+                            class="register-photo-preview"
+                        >
+
+                            <img
+                                id="studentPhotoPreview"
+                                src="logo.png"
+                                alt="Student Photo"
+                            >
+
+                        </div>
+
+
+
+                        <div
+                            class="register-photo-action"
+                        >
+
+
+                            <label
+                                for="studentPhoto"
+                                class="upload-photo-btn"
+                            >
+
+                                <i
+                                    data-lucide="camera"
+                                ></i>
+
+                                <span>
+                                    Upload Photo
+                                </span>
+
+                            </label>
+
+
+                            <input
+                                type="file"
+                                id="studentPhoto"
+                                accept="image/*"
+                                hidden
+                            >
+
+
+                            <small>
+                                Passport photograph
+                            </small>
+
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- FORM GRID -->
+
+                    <div
+                        class="register-form-grid"
+                    >
+
+
+                        <!-- FULL NAME -->
+
+                        <div class="form-group">
+
+                            <label
+                                for="studentFullName"
+                            >
+                                Full Name
+                            </label>
+
+
+                            <div
+                                class="portal-input"
+                            >
+
+                                <i
+                                    data-lucide="user"
+                                ></i>
+
+
+                                <input
+                                    type="text"
+                                    id="studentFullName"
+                                    placeholder="Enter full name"
+                                    required
+                                >
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <!-- REGISTRATION NUMBER -->
+
+                        <div class="form-group">
+
+                            <label
+                                for="studentRegistrationNumber"
+                            >
+                                Registration Number
+                            </label>
+
+
+                            <div
+                                class="portal-input"
+                            >
+
+                                <i
+                                    data-lucide="id-card"
+                                ></i>
+
+
+                                <input
+                                    type="text"
+                                    id="studentRegistrationNumber"
+                                    placeholder="Registration number"
+                                    required
+                                >
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <!-- EMAIL -->
+
+                        <div class="form-group">
+
+                            <label
+                                for="studentEmail"
+                            >
+                                Email Address
+                            </label>
+
+
+                            <div
+                                class="portal-input"
+                            >
+
+                                <i
+                                    data-lucide="mail"
+                                ></i>
+
+
+                                <input
+                                    type="email"
+                                    id="studentEmail"
+                                    placeholder="Email address"
+                                    required
+                                >
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <!-- PHONE -->
+
+                        <div class="form-group">
+
+                            <label
+                                for="studentPhone"
+                            >
+                                Phone Number
+                            </label>
+
+
+                            <div
+                                class="portal-input"
+                            >
+
+                                <i
+                                    data-lucide="phone"
+                                ></i>
+
+
+                                <input
+                                    type="tel"
+                                    id="studentPhone"
+                                    placeholder="Phone number"
+                                >
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <!-- DEPARTMENT -->
+
+                        <div class="form-group">
+
+                            <label
+                                for="studentDepartment"
+                            >
+                                Department
+                            </label>
+
+
+                            <div
+                                class="portal-input"
+                            >
+
+                                <i
+                                    data-lucide="building-2"
+                                ></i>
+
+
+                                <select
+                                    id="studentDepartment"
+                                    required
+                                >
+
+                                    <option value="">
+                                        Select Department
+                                    </option>
+
+                                </select>
+
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <!-- LEVEL -->
+
+                        <div class="form-group">
+
+                            <label
+                                for="studentLevel"
+                            >
+                                Level
+                            </label>
+
+
+                            <div
+                                class="portal-input"
+                            >
+
+                                <i
+                                    data-lucide="layers-3"
+                                ></i>
+
+
+                                <select
+                                    id="studentLevel"
+                                    required
+                                >
+
+                                    <option value="">
+                                        Select Level
+                                    </option>
+
+                                    <option value="ND I">
+                                        ND I
+                                    </option>
+
+                                    <option value="ND II">
+                                        ND II
+                                    </option>
+
+                                    <option value="HND I">
+                                        HND I
+                                    </option>
+
+                                    <option value="HND II">
+                                        HND II
+                                    </option>
+
+                                </select>
+
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <!-- PASSWORD -->
+
+                        <div class="form-group">
+
+                            <label
+                                for="studentCreatePassword"
+                            >
+                                Password
+                            </label>
+
+
+                            <div
+                                class="portal-input"
+                            >
+
+                                <i
+                                    data-lucide="lock"
+                                ></i>
+
+
+                                <input
+                                    type="password"
+                                    id="studentCreatePassword"
+                                    placeholder="Create password"
+                                    autocomplete="new-password"
+                                    required
+                                >
+
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <!-- CONFIRM PASSWORD -->
+
+                        <div class="form-group">
+
+                            <label
+                                for="studentConfirmPassword"
+                            >
+                                Confirm Password
+                            </label>
+
+
+                            <div
+                                class="portal-input"
+                            >
+
+                                <i
+                                    data-lucide="shield-check"
+                                ></i>
+
+
+                                <input
+                                    type="password"
+                                    id="studentConfirmPassword"
+                                    placeholder="Confirm password"
+                                    autocomplete="new-password"
+                                    required
+                                >
+
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <button
+                        type="submit"
+                        class="portal-submit-btn"
+                    >
+
+                        <i
+                            data-lucide="user-plus"
+                        ></i>
+
+                        <span>
+                            Create Student Account
+                        </span>
+
+                    </button>
+
+
+                </form>
+
+
+            </section>
+
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+
+<!-- =====================================
+     TOAST
+====================================== -->
+
+<div
+    id="toast"
+    class="toast"
+></div>
+
+
+
+<!-- =====================================
+     DATABASE
+====================================== -->
+
+<script src="db.js"></script>
+
+
+
+<!-- =====================================
+     PAGE JAVASCRIPT
+====================================== -->
+
+<script>
+
+
+    "use strict";
+
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        function () {
+
+
+            /* =============================
+               CREATE ICONS
+            ============================== */
+
+            if (window.lucide) {
+
+                lucide.createIcons();
+
+            }
+
+
+
+            /* =============================
+               CURRENT YEAR
+            ============================== */
+
+            const currentYear =
+                document.getElementById(
+                    "currentYear"
+                );
+
+
+            if (currentYear) {
+
+                currentYear.textContent =
+                    new Date().getFullYear();
+
+            }
+
+
+
+            /* =============================
+               DOM ELEMENTS
+            ============================== */
+
+            const authButtons =
+                document.querySelectorAll(
+                    ".auth-switch-btn"
+                );
+
+
+            const loginPanel =
+                document.getElementById(
+                    "loginPanel"
+                );
+
+
+            const registerPanel =
+                document.getElementById(
+                    "registerPanel"
+                );
+
+
+            const roleButtons =
+                document.querySelectorAll(
+                    ".role-btn"
+                );
+
+
+            const roleForms = {
+
+                student:
+                    document.getElementById(
+                        "studentLoginForm"
+                    ),
+
+                admin:
+                    document.getElementById(
+                        "adminLoginForm"
+                    ),
+
+                officer:
+                    document.getElementById(
+                        "officerLoginForm"
+                    )
+
+            };
+
+
+            const toast =
+                document.getElementById(
+                    "toast"
+                );
+
+
+            let selectedPhoto = "";
+
+
+
+            /* =============================
+               TOAST
+            ============================== */
+
+            function showToast(
+                message,
+                type = "success"
+            ) {
+
+
+                toast.textContent =
+                    message;
+
+
+                toast.className =
+                    "toast " +
+                    type +
+                    " show";
+
+
+                setTimeout(
+                    function () {
+
+                        toast.classList.remove(
+                            "show"
+                        );
+
+                    },
+                    3500
+                );
+
+
+            }
+
+
+
+            /* =============================
+               SHOW AUTH PANEL
+            ============================== */
+
+            function showAuthPanel(
+                panelName
+            ) {
+
+
+                authButtons.forEach(
+                    function (button) {
+
+
+                        button.classList.toggle(
+                            "active",
+
+                            button.dataset.auth ===
+                            panelName
+                        );
+
+
+                    }
+                );
+
+
+                if (
+                    panelName === "login"
+                ) {
+
+
+                    loginPanel.classList.add(
+                        "active-auth-content"
+                    );
+
+
+                    registerPanel.classList.remove(
+                        "active-auth-content"
+                    );
+
+
+                } else {
+
+
+                    registerPanel.classList.add(
+                        "active-auth-content"
+                    );
+
+
+                    loginPanel.classList.remove(
+                        "active-auth-content"
+                    );
+
+
+                }
+
+
+            }
+
+
+
+            /* =============================
+               AUTH BUTTON EVENTS
+            ============================== */
+
+            authButtons.forEach(
+                function (button) {
+
+
+                    button.addEventListener(
+                        "click",
+                        function () {
+
+
+                            showAuthPanel(
+                                button.dataset.auth
+                            );
+
+
+                        }
+                    );
+
+
+                }
+            );
+
+
+
+            /* =============================
+               SHOW ROLE FORM
+            ============================== */
+
+            function showRole(
+                role
+            ) {
+
+
+                roleButtons.forEach(
+                    function (button) {
+
+
+                        button.classList.toggle(
+                            "active",
+
+                            button.dataset.role ===
+                            role
+                        );
+
+
+                    }
+                );
+
+
+                Object.keys(
+                    roleForms
+                ).forEach(
+                    function (key) {
+
+
+                        roleForms[key]
+                            .classList
+                            .toggle(
+
+                                "active-role-form",
+
+                                key === role
+
+                            );
+
+
+                    }
+                );
+
+
+            }
+
+
+
+            /* =============================
+               ROLE BUTTON EVENTS
+            ============================== */
+
+            roleButtons.forEach(
+                function (button) {
+
+
+                    button.addEventListener(
+                        "click",
+                        function () {
+
+
+                            showRole(
+                                button.dataset.role
+                            );
+
+
+                        }
+                    );
+
+
+                }
+            );
+
+
+
+            /* =============================
+               PASSWORD TOGGLE
+            ============================== */
+
+            const passwordButtons =
+                document.querySelectorAll(
+                    ".password-toggle"
+                );
+
+
+            passwordButtons.forEach(
+                function (button) {
+
+
+                    button.addEventListener(
+                        "click",
+                        function () {
+
+
+                            const input =
+                                document.getElementById(
+                                    button.dataset.target
+                                );
+
+
+                            if (!input) return;
+
+
+                            const isPassword =
+                                input.type ===
+                                "password";
+
+
+                            input.type =
+                                isPassword
+                                    ? "text"
+                                    : "password";
+
+
+                            button.innerHTML =
+                                isPassword
+                                    ? '<i data-lucide="eye-off"></i>'
+                                    : '<i data-lucide="eye"></i>';
+
+
+                            if (window.lucide) {
+
+                                lucide.createIcons();
+
+                            }
+
+
+                        }
+                    );
+
+
+                }
+            );
+
+
+
+            /* =============================
+               LOAD DEPARTMENTS
+               FROM db.js
+            ============================== */
+
+            function loadDepartments() {
+
+
+                const departmentSelect =
+                    document.getElementById(
+                        "studentDepartment"
+                    );
+
+
+                if (
+                    !departmentSelect
+                ) {
+                    return;
+                }
+
+
+                const departments =
+                    getDepartments()
+                        .filter(
+                            function (department) {
+
+                                return (
+                                    department.status ===
+                                    "active"
+                                );
+
+                            }
+                        );
+
+
+                departments.forEach(
+                    function (department) {
+
+
+                        const option =
+                            document.createElement(
+                                "option"
+                            );
+
+
+                        option.value =
+                            department.id;
+
+
+                        option.textContent =
+                            department.name;
+
+
+                        option.dataset.name =
+                            department.name;
+
+
+                        departmentSelect.appendChild(
+                            option
+                        );
+
+
+                    }
+                );
+
+
+            }
+
+
+
+            loadDepartments();
+
+
+
+            /* =============================
+               STUDENT PHOTO UPLOAD
+            ============================== */
+
+            const photoInput =
+                document.getElementById(
+                    "studentPhoto"
+                );
+
+
+            const photoPreview =
+                document.getElementById(
+                    "studentPhotoPreview"
+                );
+
+
+            photoInput.addEventListener(
+                "change",
+                function () {
+
+
+                    const file =
+                        photoInput.files[0];
+
+
+                    if (!file) {
+
+                        return;
+
+                    }
+
+
+                    if (
+                        !file.type.startsWith(
+                            "image/"
+                        )
+                    ) {
+
+
+                        showToast(
+                            "Please select a valid image file.",
+                            "error"
+                        );
+
+
+                        photoInput.value =
+                            "";
+
+
+                        return;
+
+                    }
+
+
+                    const reader =
+                        new FileReader();
+
+
+                    reader.onload =
+                        function (event) {
+
+
+                            selectedPhoto =
+                                event.target.result;
+
+
+                            photoPreview.src =
+                                selectedPhoto;
+
+
+                        };
+
+
+                    reader.readAsDataURL(
+                        file
+                    );
+
+
+                }
+            );
+
+
+
+            /* =============================
+               LOGIN FUNCTION
+               Uses db.js USERS database
+            ============================== */
+
+            function loginUser(
+                username,
+                password,
+                expectedRole
+            ) {
+
+
+                const user =
+                    getUserByUsername(
+                        username.trim()
+                    );
+
+
+                if (!user) {
+
+
+                    return {
+
+                        success: false,
+
+                        message:
+                            "Invalid username or password."
+
+                    };
+
+
+                }
+
+
+                if (
+                    user.password !== password
+                ) {
+
+
+                    return {
+
+                        success: false,
+
+                        message:
+                            "Invalid username or password."
+
+                    };
+
+
+                }
+
+
+                if (
+                    user.status !== "active"
+                ) {
+
+
+                    return {
+
+                        success: false,
+
+                        message:
+                            "This account is inactive."
+
+                    };
+
+
+                }
+
+
+                if (
+                    user.role !== expectedRole
+                ) {
+
+
+                    return {
+
+                        success: false,
+
+                        message:
+                            "Please select the correct account type."
+
+                    };
+
+
+                }
+
+
+                setCurrentUser(
+                    user
+                );
+
+
+                return {
+
+                    success: true,
+
+                    message:
+                        "Login successful.",
+
+                    data:
+                        user
+
+                };
+
+
+            }
+
+
+
+            /* =============================
+               STUDENT LOGIN
+            ============================== */
+
+            document
+                .getElementById(
+                    "studentLoginForm"
+                )
+                .addEventListener(
+                    "submit",
+                    function (event) {
+
+
+                        event.preventDefault();
+
+
+                        const username =
+                            document
+                                .getElementById(
+                                    "studentLoginUsername"
+                                )
+                                .value
+                                .trim();
+
+
+                        const password =
+                            document
+                                .getElementById(
+                                    "studentLoginPassword"
+                                )
+                                .value;
+
+
+                        const result =
+                            loginUser(
+                                username,
+                                password,
+                                "student"
+                            );
+
+
+                        if (
+                            !result.success
+                        ) {
+
+
+                            showToast(
+                                result.message,
+                                "error"
+                            );
+
+
+                            return;
+
+                        }
+
+
+                        showToast(
+                            "Student login successful.",
+                            "success"
+                        );
+
+
+                        setTimeout(
+                            function () {
+
+
+                                window.location.href =
+                                    "student.html";
+
+
+                            },
+                            700
+                        );
+
+
+                    }
+                );
+
+
+
+            /* =============================
+               ADMIN LOGIN
+            ============================== */
+
+            document
+                .getElementById(
+                    "adminLoginForm"
+                )
+                .addEventListener(
+                    "submit",
+                    function (event) {
+
+
+                        event.preventDefault();
+
+
+                        const username =
+                            document
+                                .getElementById(
+                                    "adminLoginUsername"
+                                )
+                                .value
+                                .trim();
+
+
+                        const password =
+                            document
+                                .getElementById(
+                                    "adminLoginPassword"
+                                )
+                                .value;
+
+
+                        const result =
+                            loginUser(
+                                username,
+                                password,
+                                "admin"
+                            );
+
+
+                        if (
+                            !result.success
+                        ) {
+
+
+                            showToast(
+                                result.message,
+                                "error"
+                            );
+
+
+                            return;
+
+                        }
+
+
+                        showToast(
+                            "Admin login successful.",
+                            "success"
+                        );
+
+
+                        setTimeout(
+                            function () {
+
+
+                                window.location.href =
+                                    "admin.html";
+
+
+                            },
+                            700
+                        );
+
+
+                    }
+                );
+
+
+
+            /* =============================
+               OFFICER LOGIN
+            ============================== */
+
+            document
+                .getElementById(
+                    "officerLoginForm"
+                )
+                .addEventListener(
+                    "submit",
+                    function (event) {
+
+
+                        event.preventDefault();
+
+
+                        const username =
+                            document
+                                .getElementById(
+                                    "officerLoginUsername"
+                                )
+                                .value
+                                .trim();
+
+
+                        const password =
+                            document
+                                .getElementById(
+                                    "officerLoginPassword"
+                                )
+                                .value;
+
+
+                        const result =
+                            loginUser(
+                                username,
+                                password,
+                                "officer"
+                            );
+
+
+                        if (
+                            !result.success
+                        ) {
+
+
+                            showToast(
+                                result.message,
+                                "error"
+                            );
+
+
+                            return;
+
+                        }
+
+
+                        showToast(
+                            "Officer login successful.",
+                            "success"
+                        );
+
+
+                        setTimeout(
+                            function () {
+
+
+                                window.location.href =
+                                    "officer.html";
+
+
+                            },
+                            700
+                        );
+
+
+                    }
+                );
+
+
+
+            /* =============================
+               STUDENT REGISTRATION
+               Uses createStudent() from db.js
+            ============================== */
+
+            document
+                .getElementById(
+                    "studentRegisterForm"
+                )
+                .addEventListener(
+                    "submit",
+                    function (event) {
+
+
+                        event.preventDefault();
+
+
+                        const fullName =
+                            document
+                                .getElementById(
+                                    "studentFullName"
+                                )
+                                .value
+                                .trim();
+
+
+                        const registrationNumber =
+                            document
+                                .getElementById(
+                                    "studentRegistrationNumber"
+                                )
+                                .value
+                                .trim();
+
+
+                        const email =
+                            document
+                                .getElementById(
+                                    "studentEmail"
+                                )
+                                .value
+                                .trim();
+
+
+                        const phone =
+                            document
+                                .getElementById(
+                                    "studentPhone"
+                                )
+                                .value
+                                .trim();
+
+
+                        const departmentSelect =
+                            document
+                                .getElementById(
+                                    "studentDepartment"
+                                );
+
+
+                        const departmentId =
+                            departmentSelect.value;
+
+
+                        const department =
+                            departmentSelect
+                                .options[
+                                    departmentSelect.selectedIndex
+                                ]
+                                .dataset.name || "";
+
+
+                        const level =
+                            document
+                                .getElementById(
+                                    "studentLevel"
+                                )
+                                .value;
+
+
+                        const password =
+                            document
+                                .getElementById(
+                                    "studentCreatePassword"
+                                )
+                                .value;
+
+
+                        const confirmPassword =
+                            document
+                                .getElementById(
+                                    "studentConfirmPassword"
+                                )
+                                .value;
+
+
+                        /* PASSWORD VALIDATION */
+
+                        if (
+                            password !==
+                            confirmPassword
+                        ) {
+
+
+                            showToast(
+                                "Passwords do not match.",
+                                "error"
+                            );
+
+
+                            return;
+
+                        }
+
+
+                        if (
+                            password.length < 4
+                        ) {
+
+
+                            showToast(
+                                "Password must contain at least 4 characters.",
+                                "error"
+                            );
+
+
+                            return;
+
+                        }
+
+
+                        /* DATABASE REGISTRATION */
+
+                        const result =
+                            createStudent({
+
+                                fullName:
+                                    fullName,
+
+                                registrationNumber:
+                                    registrationNumber,
+
+                                departmentId:
+                                    departmentId,
+
+                                department:
+                                    department,
+
+                                level:
+                                    level,
+
+                                email:
+                                    email,
+
+                                phone:
+                                    phone,
+
+                                profileImage:
+                                    selectedPhoto,
+
+                                password:
+                                    password
+
+                            });
+
+
+                        if (
+                            !result.success
+                        ) {
+
+
+                            showToast(
+                                result.message,
+                                "error"
+                            );
+
+
+                            return;
+
+                        }
+
+
+                        showToast(
+                            "Student account created successfully. You can now login.",
+                            "success"
+                        );
+
+
+                        /* RESET FORM */
+
+                        event.target.reset();
+
+
+                        selectedPhoto = "";
+
+
+                        photoPreview.src =
+                            "logo.png";
+
+
+                        /* SWITCH TO LOGIN */
+
+                        setTimeout(
+                            function () {
+
+
+                                showAuthPanel(
+                                    "login"
+                                );
+
+
+                                showRole(
+                                    "student"
+                                );
+
+
+                                document
+                                    .getElementById(
+                                        "studentLoginUsername"
+                                    )
+                                    .value =
+                                    registrationNumber;
+
+
+                                document
+                                    .getElementById(
+                                        "studentLoginPassword"
+                                    )
+                                    .focus();
+
+
+                            },
+                            900
+                        );
+
+
+                    }
+                );
+
+
+        }
+    );
+
+
+</script>
+
+</body>
+</html>

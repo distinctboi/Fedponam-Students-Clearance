@@ -1,0 +1,3136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Clearance Officer Dashboard
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <script
+        src="https://unpkg.com/lucide@latest"
+    ></script>
+
+</head>
+
+
+<body class="dashboard-page">
+
+
+<!-- =====================================
+     MOBILE SIDEBAR OVERLAY
+====================================== -->
+
+<div
+    id="sidebarOverlay"
+    class="sidebar-overlay"
+></div>
+
+
+
+<!-- =====================================
+     OFFICER SIDEBAR
+====================================== -->
+
+<aside
+    id="officerSidebar"
+    class="dashboard-sidebar officer-sidebar"
+>
+
+
+    <!-- BRAND -->
+
+    <div class="sidebar-brand">
+
+        <img
+            src="logo.png"
+            alt="School Logo"
+            class="sidebar-logo"
+        >
+
+
+        <div>
+
+            <strong
+                id="systemBrandName"
+            >
+                Student Clearance
+            </strong>
+
+
+            <small>
+                Officer Portal
+            </small>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- NAVIGATION -->
+
+    <nav class="sidebar-nav">
+
+
+        <button
+            type="button"
+            class="sidebar-link active"
+            data-view="dashboard"
+        >
+
+            <i data-lucide="layout-dashboard"></i>
+
+            <span>
+                Dashboard
+            </span>
+
+        </button>
+
+
+
+        <button
+            type="button"
+            class="sidebar-link"
+            data-view="requests"
+        >
+
+            <i data-lucide="clipboard-check"></i>
+
+            <span>
+                Assigned Requests
+            </span>
+
+
+            <b
+                id="sidebarPendingCount"
+                class="nav-count"
+            >
+                0
+            </b>
+
+        </button>
+
+
+
+        <button
+            type="button"
+            class="sidebar-link"
+            data-view="profile"
+        >
+
+            <i data-lucide="user-round"></i>
+
+            <span>
+                My Profile
+            </span>
+
+        </button>
+
+
+    </nav>
+
+
+
+    <!-- SIDEBAR FOOTER -->
+
+    <div class="sidebar-bottom">
+
+
+        <div class="sidebar-user">
+
+
+            <div
+                id="sidebarOfficerImage"
+                class="sidebar-user-image"
+            >
+
+                <i data-lucide="user"></i>
+
+            </div>
+
+
+            <div>
+
+                <strong
+                    id="sidebarOfficerName"
+                >
+                    Officer
+                </strong>
+
+
+                <small
+                    id="sidebarOfficerUnit"
+                >
+                    Clearance Officer
+                </small>
+
+            </div>
+
+        </div>
+
+
+
+        <button
+            type="button"
+            id="logoutButton"
+            class="sidebar-logout"
+        >
+
+            <i data-lucide="log-out"></i>
+
+            <span>
+                Logout
+            </span>
+
+        </button>
+
+
+    </div>
+
+
+</aside>
+
+
+
+<!-- =====================================
+     MAIN CONTENT
+====================================== -->
+
+<main class="dashboard-main">
+
+
+    <!-- =================================
+         TOP HEADER
+    ================================== -->
+
+    <header class="dashboard-header">
+
+
+        <div class="header-left">
+
+
+            <button
+                type="button"
+                id="sidebarToggle"
+                class="mobile-menu-button"
+            >
+
+                <i data-lucide="menu"></i>
+
+            </button>
+
+
+
+            <div>
+
+                <h1
+                    id="pageTitle"
+                >
+                    Officer Dashboard
+                </h1>
+
+
+                <p
+                    id="headerGreeting"
+                >
+                    Manage your assigned clearance requests.
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="header-right">
+
+
+            <div class="header-officer">
+
+
+                <div
+                    id="headerOfficerImage"
+                    class="header-officer-image"
+                >
+
+                    <i data-lucide="user"></i>
+
+                </div>
+
+
+                <div>
+
+                    <strong
+                        id="headerOfficerName"
+                    >
+                        Officer
+                    </strong>
+
+
+                    <small
+                        id="headerOfficerUnit"
+                    >
+                        Clearance Officer
+                    </small>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </header>
+
+
+
+    <!-- =================================
+         DASHBOARD VIEW
+    ================================== -->
+
+    <section
+        id="dashboardView"
+        class="officer-view active-view"
+    >
+
+
+        <!-- WELCOME -->
+
+        <div class="dashboard-welcome">
+
+
+            <div>
+
+                <span class="welcome-small">
+                    CLEARANCE OFFICER PORTAL
+                </span>
+
+
+                <h2>
+
+                    Welcome,
+
+                    <span
+                        id="welcomeOfficerName"
+                    >
+                        Officer
+                    </span>
+
+                </h2>
+
+
+                <p
+                    id="welcomeOfficerMessage"
+                >
+                    Review and manage clearance requests assigned to your unit.
+                </p>
+
+
+            </div>
+
+
+
+            <div class="welcome-icon">
+
+                <i data-lucide="badge-check"></i>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- STATISTICS -->
+
+        <div class="stats-grid">
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+
+                    <i data-lucide="clipboard-list"></i>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Assigned Requests
+                    </span>
+
+
+                    <strong
+                        id="totalAssigned"
+                    >
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+
+                    <i data-lucide="clock-3"></i>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Pending Review
+                    </span>
+
+
+                    <strong
+                        id="pendingAssigned"
+                    >
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+
+                    <i data-lucide="circle-check-big"></i>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Approved
+                    </span>
+
+
+                    <strong
+                        id="approvedAssigned"
+                    >
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+
+                    <i data-lucide="circle-x"></i>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Rejected
+                    </span>
+
+
+                    <strong
+                        id="rejectedAssigned"
+                    >
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- UNIT INFORMATION -->
+
+        <div class="dashboard-section">
+
+
+            <div class="content-card officer-unit-card">
+
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <h3>
+                            Your Clearance Assignment
+                        </h3>
+
+
+                        <p>
+                            Requests assigned to your clearance responsibility.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="system-overview-grid">
+
+
+                    <div class="overview-item">
+
+                        <i data-lucide="building-2"></i>
+
+
+                        <div>
+
+                            <small>
+                                Assigned Unit
+                            </small>
+
+
+                            <strong
+                                id="dashboardOfficerUnit"
+                            >
+                                -
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="overview-item">
+
+                        <i data-lucide="shield-check"></i>
+
+
+                        <div>
+
+                            <small>
+                                Account Status
+                            </small>
+
+
+                            <strong
+                                id="dashboardOfficerStatus"
+                            >
+                                Active
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- RECENT REQUESTS -->
+
+        <div class="dashboard-section">
+
+
+            <div class="section-heading">
+
+
+                <div>
+
+                    <h3>
+                        Pending Clearance Requests
+                    </h3>
+
+
+                    <p>
+                        Requests currently waiting for your review.
+                    </p>
+
+                </div>
+
+
+
+                <button
+                    type="button"
+                    id="viewAllRequestsButton"
+                    class="outline-button"
+                >
+
+                    <span>
+                        View All
+                    </span>
+
+                    <i data-lucide="arrow-right"></i>
+
+                </button>
+
+
+            </div>
+
+
+
+            <div
+                id="recentRequestsContainer"
+                class="requests-list"
+            ></div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =================================
+         ASSIGNED REQUESTS VIEW
+    ================================== -->
+
+    <section
+        id="requestsView"
+        class="officer-view"
+    >
+
+
+        <div class="view-heading">
+
+            <div>
+
+                <h2>
+                    Assigned Clearance Requests
+                </h2>
+
+
+                <p>
+                    Review students assigned to your clearance responsibility.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- FILTERS -->
+
+        <div class="request-toolbar">
+
+
+            <div class="search-box">
+
+                <i data-lucide="search"></i>
+
+
+                <input
+                    type="search"
+                    id="requestSearch"
+                    placeholder="Search student or registration number"
+                >
+
+            </div>
+
+
+
+            <select
+                id="requestStatusFilter"
+            >
+
+                <option value="all">
+                    All Status
+                </option>
+
+                <option value="pending">
+                    Pending
+                </option>
+
+                <option value="approved">
+                    Approved
+                </option>
+
+                <option value="rejected">
+                    Rejected
+                </option>
+
+                <option value="locked">
+                    Locked
+                </option>
+
+            </select>
+
+
+        </div>
+
+
+
+        <!-- TABLE -->
+
+        <div class="table-card">
+
+
+            <div class="table-responsive">
+
+
+                <table class="data-table">
+
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Student
+                            </th>
+
+                            <th>
+                                Registration No.
+                            </th>
+
+                            <th>
+                                Department
+                            </th>
+
+                            <th>
+                                Clearance Stage
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                            <th>
+                                Action
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+
+                    <tbody
+                        id="requestsTableBody"
+                    ></tbody>
+
+
+                </table>
+
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =================================
+         PROFILE VIEW
+    ================================== -->
+
+    <section
+        id="profileView"
+        class="officer-view"
+    >
+
+
+        <div class="view-heading">
+
+            <div>
+
+                <h2>
+                    My Profile
+                </h2>
+
+
+                <p>
+                    Your clearance officer account information.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="profile-card">
+
+
+            <div class="profile-card-top">
+
+
+                <div
+                    id="profileOfficerImage"
+                    class="large-profile-image"
+                >
+
+                    <i data-lucide="user"></i>
+
+                </div>
+
+
+
+                <div>
+
+                    <h2
+                        id="profileOfficerName"
+                    >
+                        Officer
+                    </h2>
+
+
+                    <p
+                        id="profileOfficerUsername"
+                    >
+                        Username
+                    </p>
+
+
+                    <span
+                        id="profileOfficerStatus"
+                        class="status-badge active"
+                    >
+                        Active
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="profile-info-grid">
+
+
+                <div class="profile-info-item">
+
+                    <span>
+                        Email Address
+                    </span>
+
+
+                    <strong
+                        id="profileOfficerEmail"
+                    >
+                        -
+                    </strong>
+
+                </div>
+
+
+
+                <div class="profile-info-item">
+
+                    <span>
+                        Phone Number
+                    </span>
+
+
+                    <strong
+                        id="profileOfficerPhone"
+                    >
+                        -
+                    </strong>
+
+                </div>
+
+
+
+                <div class="profile-info-item">
+
+                    <span>
+                        Assigned Unit
+                    </span>
+
+
+                    <strong
+                        id="profileOfficerUnit"
+                    >
+                        -
+                    </strong>
+
+                </div>
+
+
+
+                <div class="profile-info-item">
+
+                    <span>
+                        Officer ID
+                    </span>
+
+
+                    <strong
+                        id="profileOfficerDepartment"
+                    >
+                        -
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+
+<!-- =====================================
+     REVIEW MODAL
+====================================== -->
+
+<div
+    id="reviewModal"
+    class="modal-overlay"
+>
+
+
+    <div class="review-modal">
+
+
+        <div class="modal-header">
+
+
+            <div>
+
+                <h2>
+                    Review Clearance
+                </h2>
+
+
+                <p>
+                    Review the student's clearance information and make your decision.
+                </p>
+
+            </div>
+
+
+
+            <button
+                type="button"
+                id="closeReviewModal"
+                class="modal-close"
+            >
+
+                <i data-lucide="x"></i>
+
+            </button>
+
+
+        </div>
+
+
+
+        <!-- STUDENT -->
+
+        <div
+            id="reviewStudentInfo"
+            class="review-student-info"
+        ></div>
+
+
+
+        <!-- CURRENT STAGE -->
+
+        <div
+            id="reviewStageInfo"
+            class="review-stage-info"
+        ></div>
+
+
+
+        <!-- REQUEST PROGRESS -->
+
+        <div
+            id="reviewProgressInfo"
+            class="review-progress-info"
+        ></div>
+
+
+
+        <!-- COMMENT -->
+
+        <div class="form-group">
+
+
+            <label
+                for="reviewComment"
+            >
+                Officer Comment
+            </label>
+
+
+
+            <textarea
+                id="reviewComment"
+                rows="4"
+                placeholder="Enter a comment or reason for your decision..."
+            ></textarea>
+
+
+
+            <small class="form-help">
+                A reason is required when rejecting a clearance request.
+            </small>
+
+
+        </div>
+
+
+
+        <!-- ACTIONS -->
+
+        <div class="review-actions">
+
+
+            <button
+                type="button"
+                id="rejectButton"
+                class="danger-button"
+            >
+
+                <i data-lucide="circle-x"></i>
+
+                <span>
+                    Reject
+                </span>
+
+            </button>
+
+
+
+            <button
+                type="button"
+                id="approveButton"
+                class="success-button"
+            >
+
+                <i data-lucide="circle-check-big"></i>
+
+                <span>
+                    Approve
+                </span>
+
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+<!-- =====================================
+     TOAST
+====================================== -->
+
+<div
+    id="toast"
+    class="toast"
+></div>
+
+
+
+<!-- =====================================
+     DATABASE
+====================================== -->
+
+<script src="db.js"></script>
+
+
+
+<!-- =====================================
+     OFFICER JAVASCRIPT
+====================================== -->
+
+<script>
+
+
+"use strict";
+
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+
+        /* =====================================
+           AUTHENTICATION
+        ====================================== */
+
+        const currentUser =
+            getCurrentUser();
+
+
+        if (
+            !currentUser ||
+            currentUser.role !== "officer"
+        ) {
+
+            window.location.href =
+                "index.html";
+
+            return;
+
+        }
+
+
+        const currentOfficer =
+            getOfficerByUserId(
+                currentUser.userId
+            );
+
+
+        if (!currentOfficer) {
+
+            alert(
+                "Your officer profile could not be found."
+            );
+
+
+            logoutCurrentUser();
+
+
+            window.location.href =
+                "index.html";
+
+            return;
+
+        }
+
+
+        if (
+            String(
+                currentOfficer.status || "active"
+            )
+                .toLowerCase() !==
+            "active"
+        ) {
+
+            alert(
+                "Your officer account is currently inactive."
+            );
+
+
+            logoutCurrentUser();
+
+
+            window.location.href =
+                "index.html";
+
+            return;
+
+        }
+
+
+
+        /* =====================================
+           STATE
+        ====================================== */
+
+        let selectedReview = null;
+
+        let toastTimer = null;
+
+
+
+        /* =====================================
+           DOM
+        ====================================== */
+
+        const views =
+            document.querySelectorAll(
+                ".officer-view"
+            );
+
+
+        const navButtons =
+            document.querySelectorAll(
+                ".sidebar-link[data-view]"
+            );
+
+
+        const reviewModal =
+            document.getElementById(
+                "reviewModal"
+            );
+
+
+        const reviewComment =
+            document.getElementById(
+                "reviewComment"
+            );
+
+
+        const sidebar =
+            document.getElementById(
+                "officerSidebar"
+            );
+
+
+        const sidebarOverlay =
+            document.getElementById(
+                "sidebarOverlay"
+            );
+
+
+
+        /* =====================================
+           ESCAPE HTML
+        ====================================== */
+
+        function escapeHTML(value) {
+
+            const div =
+                document.createElement(
+                    "div"
+                );
+
+
+            div.textContent =
+                String(
+                    value ?? ""
+                );
+
+
+            return div.innerHTML;
+
+        }
+
+
+
+        /* =====================================
+           FORMAT STATUS
+        ====================================== */
+
+        function formatStatus(status) {
+
+            return String(
+                status || "unknown"
+            )
+                .replace(
+                    /_/g,
+                    " "
+                )
+                .replace(
+                    /\b\w/g,
+                    function (letter) {
+
+                        return letter.toUpperCase();
+
+                    }
+                );
+
+        }
+
+
+
+        /* =====================================
+           NORMALIZE STATUS
+        ====================================== */
+
+        function normalizeStatus(status) {
+
+            return String(
+                status || "pending"
+            )
+                .trim()
+                .toLowerCase();
+
+        }
+
+
+
+        /* =====================================
+           TOAST
+        ====================================== */
+
+        function showToast(
+            message,
+            type = "success"
+        ) {
+
+            const toast =
+                document.getElementById(
+                    "toast"
+                );
+
+
+            clearTimeout(
+                toastTimer
+            );
+
+
+            toast.textContent =
+                message;
+
+
+            toast.className =
+                "toast " +
+                type +
+                " show";
+
+
+            toastTimer =
+                setTimeout(
+                    function () {
+
+                        toast.classList.remove(
+                            "show"
+                        );
+
+                    },
+                    3500
+                );
+
+        }
+
+
+
+        /* =====================================
+           STATUS BADGE
+        ====================================== */
+
+        function getStatusBadge(status) {
+
+            const normalized =
+                normalizeStatus(
+                    status
+                );
+
+
+            return `
+                <span
+                    class="status-badge ${escapeHTML(normalized)}"
+                >
+                    ${escapeHTML(formatStatus(normalized))}
+                </span>
+            `;
+
+        }
+
+
+
+        /* =====================================
+           OFFICER IMAGE
+        ====================================== */
+
+        function loadOfficerImage(elementId) {
+
+            const element =
+                document.getElementById(
+                    elementId
+                );
+
+
+            if (!element) {
+
+                return;
+
+            }
+
+
+            if (
+                currentOfficer.profileImage
+            ) {
+
+                element.innerHTML =
+                    `
+                        <img
+                            src="${escapeHTML(currentOfficer.profileImage)}"
+                            alt="Officer"
+                        >
+                    `;
+
+            }
+
+        }
+
+
+
+        /* =====================================
+           LOAD OFFICER DETAILS
+        ====================================== */
+
+        function loadOfficerDetails() {
+
+            const system =
+                getSystemInfo();
+
+
+            const officerName =
+                currentOfficer.fullName ||
+                currentUser.fullName ||
+                "Officer";
+
+
+            const officerUnit =
+                currentOfficer.unit ||
+                "Clearance Officer";
+
+
+            const officerStatus =
+                currentOfficer.status ||
+                "active";
+
+
+            document
+                .getElementById(
+                    "systemBrandName"
+                )
+                .textContent =
+                system.systemName ||
+                "Student Clearance";
+
+
+            document
+                .getElementById(
+                    "sidebarOfficerName"
+                )
+                .textContent =
+                officerName;
+
+
+            document
+                .getElementById(
+                    "headerOfficerName"
+                )
+                .textContent =
+                officerName;
+
+
+            document
+                .getElementById(
+                    "welcomeOfficerName"
+                )
+                .textContent =
+                officerName;
+
+
+            document
+                .getElementById(
+                    "sidebarOfficerUnit"
+                )
+                .textContent =
+                officerUnit;
+
+
+            document
+                .getElementById(
+                    "headerOfficerUnit"
+                )
+                .textContent =
+                officerUnit;
+
+
+            document
+                .getElementById(
+                    "dashboardOfficerUnit"
+                )
+                .textContent =
+                officerUnit;
+
+
+            document
+                .getElementById(
+                    "dashboardOfficerStatus"
+                )
+                .textContent =
+                formatStatus(
+                    officerStatus
+                );
+
+
+            document
+                .getElementById(
+                    "profileOfficerName"
+                )
+                .textContent =
+                officerName;
+
+
+            document
+                .getElementById(
+                    "profileOfficerUsername"
+                )
+                .textContent =
+                currentOfficer.username ||
+                currentUser.username ||
+                "-";
+
+
+            document
+                .getElementById(
+                    "profileOfficerEmail"
+                )
+                .textContent =
+                currentOfficer.email ||
+                "-";
+
+
+            document
+                .getElementById(
+                    "profileOfficerPhone"
+                )
+                .textContent =
+                currentOfficer.phone ||
+                "-";
+
+
+            document
+                .getElementById(
+                    "profileOfficerUnit"
+                )
+                .textContent =
+                officerUnit;
+
+
+            document
+                .getElementById(
+                    "profileOfficerDepartment"
+                )
+                .textContent =
+                currentOfficer.id ||
+                "-";
+
+
+            const profileStatus =
+                document.getElementById(
+                    "profileOfficerStatus"
+                );
+
+
+            profileStatus.textContent =
+                formatStatus(
+                    officerStatus
+                );
+
+
+            profileStatus.className =
+                "status-badge " +
+                normalizeStatus(
+                    officerStatus
+                );
+
+
+            loadOfficerImage(
+                "sidebarOfficerImage"
+            );
+
+
+            loadOfficerImage(
+                "headerOfficerImage"
+            );
+
+
+            loadOfficerImage(
+                "profileOfficerImage"
+            );
+
+        }
+
+
+
+        /* =====================================
+           ASSIGNED REQUESTS
+        ====================================== */
+
+        function getAssignedRequests() {
+
+            const requests =
+                getClearanceRequests() || [];
+
+
+            const assigned = [];
+
+
+            requests.forEach(
+                function (request) {
+
+
+                    if (
+                        !Array.isArray(
+                            request.stages
+                        )
+                    ) {
+
+                        return;
+
+                    }
+
+
+                    request.stages.forEach(
+                        function (stage) {
+
+
+                            const stageOfficerId =
+                                stage.officerId || "";
+
+
+                            const stageUnit =
+                                String(
+                                    stage.unit || ""
+                                )
+                                .trim()
+                                .toLowerCase();
+
+
+                            const officerUnit =
+                                String(
+                                    currentOfficer.unit || ""
+                                )
+                                .trim()
+                                .toLowerCase();
+
+
+                            const directlyAssigned =
+                                String(
+                                    stageOfficerId
+                                ) ===
+                                String(
+                                    currentOfficer.id
+                                );
+
+
+                            const assignedByUnit =
+                                !stageOfficerId &&
+                                stageUnit &&
+                                officerUnit &&
+                                stageUnit ===
+                                officerUnit;
+
+
+                            if (
+                                directlyAssigned ||
+                                assignedByUnit
+                            ) {
+
+                                assigned.push({
+
+                                    request:
+                                        request,
+
+                                    stage:
+                                        stage,
+
+                                    student:
+                                        getStudentById(
+                                            request.studentId
+                                        )
+
+                                });
+
+                            }
+
+
+                        }
+                    );
+
+
+                }
+            );
+
+
+            return assigned;
+
+        }
+
+
+
+        /* =====================================
+           STATISTICS
+        ====================================== */
+
+        function updateStatistics() {
+
+            const assigned =
+                getAssignedRequests();
+
+
+            const pending =
+                assigned.filter(
+                    function (item) {
+
+                        return (
+                            normalizeStatus(
+                                item.stage.status
+                            ) ===
+                            "pending"
+                        );
+
+                    }
+                ).length;
+
+
+            const approved =
+                assigned.filter(
+                    function (item) {
+
+                        return (
+                            normalizeStatus(
+                                item.stage.status
+                            ) ===
+                            "approved"
+                        );
+
+                    }
+                ).length;
+
+
+            const rejected =
+                assigned.filter(
+                    function (item) {
+
+                        return (
+                            normalizeStatus(
+                                item.stage.status
+                            ) ===
+                            "rejected"
+                        );
+
+                    }
+                ).length;
+
+
+            document
+                .getElementById(
+                    "totalAssigned"
+                )
+                .textContent =
+                assigned.length;
+
+
+            document
+                .getElementById(
+                    "pendingAssigned"
+                )
+                .textContent =
+                pending;
+
+
+            document
+                .getElementById(
+                    "approvedAssigned"
+                )
+                .textContent =
+                approved;
+
+
+            document
+                .getElementById(
+                    "rejectedAssigned"
+                )
+                .textContent =
+                rejected;
+
+
+            document
+                .getElementById(
+                    "sidebarPendingCount"
+                )
+                .textContent =
+                pending;
+
+        }
+
+
+
+        /* =====================================
+           RECENT REQUESTS
+        ====================================== */
+
+        function renderRecentRequests() {
+
+            const container =
+                document.getElementById(
+                    "recentRequestsContainer"
+                );
+
+
+            const requests =
+                getAssignedRequests()
+                    .filter(
+                        function (item) {
+
+                            return (
+                                normalizeStatus(
+                                    item.stage.status
+                                ) ===
+                                "pending"
+                            );
+
+                        }
+                    )
+                    .slice(
+                        0,
+                        5
+                    );
+
+
+            if (
+                requests.length === 0
+            ) {
+
+                container.innerHTML =
+                    `
+                        <div class="empty-state">
+
+                            <i
+                                data-lucide="clipboard-check"
+                            ></i>
+
+                            <h3>
+                                No pending requests
+                            </h3>
+
+                            <p>
+                                You currently have no clearance requests waiting for review.
+                            </p>
+
+                        </div>
+                    `;
+
+
+                if (window.lucide) {
+
+                    lucide.createIcons();
+
+                }
+
+
+                return;
+
+            }
+
+
+            container.innerHTML =
+                requests.map(
+                    function (item) {
+
+
+                        const student =
+                            item.student || {};
+
+
+                        return `
+
+                            <div class="request-row">
+
+
+                                <div class="request-student">
+
+
+                                    <div class="student-avatar">
+
+                                        ${
+                                            student.profileImage
+
+                                                ? `
+                                                    <img
+                                                        src="${escapeHTML(student.profileImage)}"
+                                                        alt="Student"
+                                                    >
+                                                `
+
+                                                : `
+                                                    <i
+                                                        data-lucide="user"
+                                                    ></i>
+                                                `
+                                        }
+
+                                    </div>
+
+
+
+                                    <div>
+
+                                        <strong>
+                                            ${escapeHTML(item.request.studentName)}
+                                        </strong>
+
+
+                                        <small>
+                                            ${escapeHTML(item.request.registrationNumber)}
+                                        </small>
+
+                                    </div>
+
+
+                                </div>
+
+
+
+                                <div class="request-stage">
+
+                                    <span>
+                                        ${escapeHTML(item.stage.name)}
+                                    </span>
+
+
+                                    <small>
+                                        ${escapeHTML(item.stage.unit || "")}
+                                    </small>
+
+                                </div>
+
+
+
+                                <div>
+
+                                    ${getStatusBadge(item.stage.status)}
+
+                                </div>
+
+
+
+                                <button
+                                    type="button"
+                                    class="small-action-button review-request-button"
+                                    data-request-id="${escapeHTML(item.request.id)}"
+                                    data-stage-id="${escapeHTML(item.stage.id)}"
+                                >
+
+                                    Review
+
+                                    <i
+                                        data-lucide="arrow-right"
+                                    ></i>
+
+                                </button>
+
+
+                            </div>
+
+                        `;
+
+
+                    }
+                )
+                .join("");
+
+
+            if (window.lucide) {
+
+                lucide.createIcons();
+
+            }
+
+        }
+
+
+
+        /* =====================================
+           REQUEST TABLE
+        ====================================== */
+
+        function renderRequestsTable() {
+
+            const tableBody =
+                document.getElementById(
+                    "requestsTableBody"
+                );
+
+
+            const searchTerm =
+                document
+                    .getElementById(
+                        "requestSearch"
+                    )
+                    .value
+                    .trim()
+                    .toLowerCase();
+
+
+            const filterStatus =
+                document
+                    .getElementById(
+                        "requestStatusFilter"
+                    )
+                    .value;
+
+
+            let requests =
+                getAssignedRequests();
+
+
+            requests =
+                requests.filter(
+                    function (item) {
+
+
+                        const studentName =
+                            String(
+                                item.request.studentName ||
+                                ""
+                            )
+                            .toLowerCase();
+
+
+                        const registrationNumber =
+                            String(
+                                item.request.registrationNumber ||
+                                ""
+                            )
+                            .toLowerCase();
+
+
+                        const stageStatus =
+                            normalizeStatus(
+                                item.stage.status
+                            );
+
+
+                        const matchesSearch =
+                            !searchTerm ||
+
+                            studentName.includes(
+                                searchTerm
+                            ) ||
+
+                            registrationNumber.includes(
+                                searchTerm
+                            );
+
+
+                        const matchesStatus =
+                            filterStatus === "all" ||
+
+                            stageStatus ===
+                            filterStatus;
+
+
+                        return (
+                            matchesSearch &&
+                            matchesStatus
+                        );
+
+
+                    }
+                );
+
+
+            if (
+                requests.length === 0
+            ) {
+
+                tableBody.innerHTML =
+                    `
+                        <tr>
+
+                            <td
+                                colspan="6"
+                            >
+
+                                <div class="empty-table">
+
+                                    No assigned clearance requests found.
+
+                                </div>
+
+                            </td>
+
+                        </tr>
+                    `;
+
+
+                return;
+
+            }
+
+
+            tableBody.innerHTML =
+                requests.map(
+                    function (item) {
+
+
+                        const student =
+                            item.student || {};
+
+
+                        const canReview =
+                            normalizeStatus(
+                                item.stage.status
+                            ) ===
+                            "pending";
+
+
+                        return `
+
+                            <tr>
+
+
+                                <td>
+
+                                    <div class="table-student">
+
+
+                                        <div class="table-student-image">
+
+                                            ${
+                                                student.profileImage
+
+                                                    ? `
+                                                        <img
+                                                            src="${escapeHTML(student.profileImage)}"
+                                                            alt="Student"
+                                                        >
+                                                    `
+
+                                                    : `
+                                                        <i
+                                                            data-lucide="user"
+                                                        ></i>
+                                                    `
+                                            }
+
+                                        </div>
+
+
+
+                                        <strong>
+                                            ${escapeHTML(item.request.studentName)}
+                                        </strong>
+
+
+                                    </div>
+
+                                </td>
+
+
+
+                                <td>
+                                    ${escapeHTML(item.request.registrationNumber)}
+                                </td>
+
+
+
+                                <td>
+                                    ${escapeHTML(item.request.department)}
+                                </td>
+
+
+
+                                <td>
+
+                                    <strong>
+                                        ${escapeHTML(item.stage.name)}
+                                    </strong>
+
+                                    <br>
+
+                                    <small>
+                                        ${escapeHTML(item.stage.unit || "")}
+                                    </small>
+
+                                </td>
+
+
+
+                                <td>
+
+                                    ${getStatusBadge(item.stage.status)}
+
+                                </td>
+
+
+
+                                <td>
+
+                                    <button
+                                        type="button"
+                                        class="table-action-button review-request-button"
+                                        data-request-id="${escapeHTML(item.request.id)}"
+                                        data-stage-id="${escapeHTML(item.stage.id)}"
+                                        ${
+                                            canReview
+                                                ? ""
+                                                : "disabled"
+                                        }
+                                    >
+
+                                        ${
+                                            canReview
+                                                ? "Review"
+                                                : "Reviewed"
+                                        }
+
+                                    </button>
+
+                                </td>
+
+
+                            </tr>
+
+                        `;
+
+
+                    }
+                )
+                .join("");
+
+
+            if (window.lucide) {
+
+                lucide.createIcons();
+
+            }
+
+        }
+
+
+
+        /* =====================================
+           VALIDATE ASSIGNMENT
+        ====================================== */
+
+        function isStageAssignedToOfficer(stage) {
+
+            const stageOfficerId =
+                stage.officerId || "";
+
+
+            if (
+                stageOfficerId &&
+                String(
+                    stageOfficerId
+                ) ===
+                String(
+                    currentOfficer.id
+                )
+            ) {
+
+                return true;
+
+            }
+
+
+            if (
+                stageOfficerId
+            ) {
+
+                return false;
+
+            }
+
+
+            const stageUnit =
+                String(
+                    stage.unit || ""
+                )
+                .trim()
+                .toLowerCase();
+
+
+            const officerUnit =
+                String(
+                    currentOfficer.unit || ""
+                )
+                .trim()
+                .toLowerCase();
+
+
+            return Boolean(
+                stageUnit &&
+                officerUnit &&
+                stageUnit === officerUnit
+            );
+
+        }
+
+
+
+        /* =====================================
+           OPEN REVIEW MODAL
+        ====================================== */
+
+        function openReviewModal(
+            requestId,
+            stageId
+        ) {
+
+            const request =
+                getClearanceRequestById(
+                    requestId
+                );
+
+
+            if (!request) {
+
+                showToast(
+                    "Clearance request not found.",
+                    "error"
+                );
+
+                return;
+
+            }
+
+
+            if (
+                !Array.isArray(
+                    request.stages
+                )
+            ) {
+
+                showToast(
+                    "No clearance stages found for this request.",
+                    "error"
+                );
+
+                return;
+
+            }
+
+
+            const stage =
+                request.stages.find(
+                    function (item) {
+
+                        return (
+                            String(
+                                item.id
+                            ) ===
+                            String(
+                                stageId
+                            )
+                        );
+
+                    }
+                );
+
+
+            if (!stage) {
+
+                showToast(
+                    "Clearance stage not found.",
+                    "error"
+                );
+
+                return;
+
+            }
+
+
+            if (
+                !isStageAssignedToOfficer(
+                    stage
+                )
+            ) {
+
+                showToast(
+                    "This request is not assigned to your officer account.",
+                    "error"
+                );
+
+                return;
+
+            }
+
+
+            if (
+                normalizeStatus(
+                    stage.status
+                ) !==
+                "pending"
+            ) {
+
+                showToast(
+                    "This clearance stage has already been reviewed.",
+                    "error"
+                );
+
+                return;
+
+            }
+
+
+            const student =
+                getStudentById(
+                    request.studentId
+                );
+
+
+            selectedReview = {
+
+                requestId:
+                    request.id,
+
+                stageId:
+                    stage.id,
+
+                request:
+                    request,
+
+                stage:
+                    stage,
+
+                student:
+                    student
+
+            };
+
+
+            reviewComment.value =
+                stage.comment || "";
+
+
+            document
+                .getElementById(
+                    "reviewStudentInfo"
+                )
+                .innerHTML =
+                `
+
+                    <div class="review-student-photo">
+
+                        ${
+                            student &&
+                            student.profileImage
+
+                                ? `
+                                    <img
+                                        src="${escapeHTML(student.profileImage)}"
+                                        alt="Student"
+                                    >
+                                `
+
+                                : `
+                                    <i
+                                        data-lucide="user"
+                                    ></i>
+                                `
+                        }
+
+                    </div>
+
+
+
+                    <div>
+
+                        <h3>
+                            ${escapeHTML(request.studentName)}
+                        </h3>
+
+
+                        <p>
+                            ${escapeHTML(request.registrationNumber)}
+                        </p>
+
+
+                        <small>
+
+                            ${escapeHTML(request.department)}
+
+                            •
+
+                            ${escapeHTML(
+                                student
+                                    ? student.level
+                                    : ""
+                            )}
+
+                        </small>
+
+                    </div>
+
+                `;
+
+
+            document
+                .getElementById(
+                    "reviewStageInfo"
+                )
+                .innerHTML =
+                `
+
+                    <div class="review-stage-icon">
+
+                        <i
+                            data-lucide="clipboard-check"
+                        ></i>
+
+                    </div>
+
+
+
+                    <div>
+
+                        <span>
+                            CURRENT CLEARANCE STAGE
+                        </span>
+
+
+                        <strong>
+                            ${escapeHTML(stage.name)}
+                        </strong>
+
+
+                        <small>
+                            ${escapeHTML(stage.unit || "")}
+                        </small>
+
+                    </div>
+
+                `;
+
+
+            const totalStages =
+                request.stages.length;
+
+
+            const approvedStages =
+                request.stages.filter(
+                    function (item) {
+
+                        return (
+                            normalizeStatus(
+                                item.status
+                            ) ===
+                            "approved"
+                        );
+
+                    }
+                ).length;
+
+
+            const percentage =
+                totalStages > 0
+
+                    ? Math.round(
+                        (
+                            approvedStages /
+                            totalStages
+                        ) * 100
+                    )
+
+                    : 0;
+
+
+            document
+                .getElementById(
+                    "reviewProgressInfo"
+                )
+                .innerHTML =
+                `
+
+                    <div class="review-progress-label">
+
+                        <span>
+                            Clearance Progress
+                        </span>
+
+
+                        <strong>
+                            ${percentage}%
+                        </strong>
+
+                    </div>
+
+
+
+                    <div class="mini-progress-track">
+
+                        <div
+                            class="mini-progress-fill"
+                            style="width:${percentage}%"
+                        ></div>
+
+                    </div>
+
+                `;
+
+
+            reviewModal.classList.add(
+                "show-modal"
+            );
+
+
+            document.body.style.overflow =
+                "hidden";
+
+
+            if (window.lucide) {
+
+                lucide.createIcons();
+
+            }
+
+        }
+
+
+
+        /* =====================================
+           CLOSE REVIEW MODAL
+        ====================================== */
+
+        function closeReviewModal() {
+
+            reviewModal.classList.remove(
+                "show-modal"
+            );
+
+
+            document.body.style.overflow =
+                "";
+
+
+            selectedReview =
+                null;
+
+
+            reviewComment.value =
+                "";
+
+        }
+
+
+
+        /* =====================================
+           SUBMIT REVIEW
+        ====================================== */
+
+        function submitReview(decision) {
+
+            if (!selectedReview) {
+
+                showToast(
+                    "No clearance request selected.",
+                    "error"
+                );
+
+                return;
+
+            }
+
+
+            const comment =
+                reviewComment.value
+                    .trim();
+
+
+            if (
+                decision === "rejected" &&
+                !comment
+            ) {
+
+                showToast(
+                    "Please enter a reason for rejection.",
+                    "error"
+                );
+
+                return;
+
+            }
+
+
+            if (
+                typeof reviewClearanceStage !==
+                "function"
+            ) {
+
+                showToast(
+                    "Review function is missing from db.js.",
+                    "error"
+                );
+
+                return;
+
+            }
+
+
+            const result =
+                reviewClearanceStage(
+
+                    selectedReview.requestId,
+
+                    selectedReview.stageId,
+
+                    currentOfficer.id,
+
+                    decision,
+
+                    comment
+
+                );
+
+
+            if (
+                !result ||
+                !result.success
+            ) {
+
+                showToast(
+
+                    result &&
+                    result.message
+
+                        ? result.message
+
+                        : "Unable to update clearance stage.",
+
+                    "error"
+
+                );
+
+                return;
+
+            }
+
+
+            closeReviewModal();
+
+
+            refreshOfficerDashboard();
+
+
+            showToast(
+
+                decision === "approved"
+
+                    ? "Clearance stage approved successfully."
+
+                    : "Clearance stage rejected successfully.",
+
+                "success"
+
+            );
+
+        }
+
+
+
+        /* =====================================
+           REFRESH DASHBOARD
+        ====================================== */
+
+        function refreshOfficerDashboard() {
+
+            updateStatistics();
+
+            renderRecentRequests();
+
+            renderRequestsTable();
+
+        }
+
+
+
+        /* =====================================
+           REVIEW BUTTON EVENT DELEGATION
+
+           This fixes buttons after the table
+           is dynamically re-rendered.
+        ====================================== */
+
+        document.addEventListener(
+            "click",
+            function (event) {
+
+
+                const button =
+                    event.target.closest(
+                        ".review-request-button"
+                    );
+
+
+                if (
+                    !button ||
+                    button.disabled
+                ) {
+
+                    return;
+
+                }
+
+
+                openReviewModal(
+                    button.dataset.requestId,
+                    button.dataset.stageId
+                );
+
+
+            }
+        );
+
+
+
+        /* =====================================
+           NAVIGATION
+        ====================================== */
+
+        function showView(viewName) {
+
+            views.forEach(
+                function (view) {
+
+                    view.classList.toggle(
+
+                        "active-view",
+
+                        view.id ===
+                        viewName + "View"
+
+                    );
+
+                }
+            );
+
+
+            navButtons.forEach(
+                function (button) {
+
+                    button.classList.toggle(
+
+                        "active",
+
+                        button.dataset.view ===
+                        viewName
+
+                    );
+
+                }
+            );
+
+
+            const titles = {
+
+                dashboard:
+                    [
+                        "Officer Dashboard",
+                        "Manage your assigned clearance requests."
+                    ],
+
+                requests:
+                    [
+                        "Assigned Requests",
+                        "Review and manage clearance requests."
+                    ],
+
+                profile:
+                    [
+                        "My Profile",
+                        "View your officer account information."
+                    ]
+
+            };
+
+
+            if (
+                titles[viewName]
+            ) {
+
+                document
+                    .getElementById(
+                        "pageTitle"
+                    )
+                    .textContent =
+                    titles[viewName][0];
+
+
+                document
+                    .getElementById(
+                        "headerGreeting"
+                    )
+                    .textContent =
+                    titles[viewName][1];
+
+            }
+
+
+            closeMobileSidebar();
+
+        }
+
+
+
+        navButtons.forEach(
+            function (button) {
+
+                button.addEventListener(
+                    "click",
+                    function () {
+
+                        showView(
+                            button.dataset.view
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+
+
+        /* =====================================
+           SEARCH / FILTER
+        ====================================== */
+
+        document
+            .getElementById(
+                "requestSearch"
+            )
+            .addEventListener(
+                "input",
+                renderRequestsTable
+            );
+
+
+        document
+            .getElementById(
+                "requestStatusFilter"
+            )
+            .addEventListener(
+                "change",
+                renderRequestsTable
+            );
+
+
+
+        /* =====================================
+           VIEW ALL
+        ====================================== */
+
+        document
+            .getElementById(
+                "viewAllRequestsButton"
+            )
+            .addEventListener(
+                "click",
+                function () {
+
+                    showView(
+                        "requests"
+                    );
+
+                }
+            );
+
+
+
+        /* =====================================
+           MODAL EVENTS
+        ====================================== */
+
+        document
+            .getElementById(
+                "closeReviewModal"
+            )
+            .addEventListener(
+                "click",
+                closeReviewModal
+            );
+
+
+        reviewModal.addEventListener(
+            "click",
+            function (event) {
+
+                if (
+                    event.target ===
+                    reviewModal
+                ) {
+
+                    closeReviewModal();
+
+                }
+
+            }
+        );
+
+
+        document
+            .getElementById(
+                "approveButton"
+            )
+            .addEventListener(
+                "click",
+                function () {
+
+                    submitReview(
+                        "approved"
+                    );
+
+                }
+            );
+
+
+        document
+            .getElementById(
+                "rejectButton"
+            )
+            .addEventListener(
+                "click",
+                function () {
+
+                    submitReview(
+                        "rejected"
+                    );
+
+                }
+            );
+
+
+
+        /* =====================================
+           MOBILE SIDEBAR
+        ====================================== */
+
+        function openMobileSidebar() {
+
+            sidebar.classList.add(
+                "sidebar-open"
+            );
+
+
+            sidebarOverlay.classList.add(
+                "show-overlay"
+            );
+
+        }
+
+
+
+        function closeMobileSidebar() {
+
+            sidebar.classList.remove(
+                "sidebar-open"
+            );
+
+
+            sidebarOverlay.classList.remove(
+                "show-overlay"
+            );
+
+        }
+
+
+
+        document
+            .getElementById(
+                "sidebarToggle"
+            )
+            .addEventListener(
+                "click",
+                openMobileSidebar
+            );
+
+
+        sidebarOverlay.addEventListener(
+            "click",
+            closeMobileSidebar
+        );
+
+
+
+        /* =====================================
+           LOGOUT
+        ====================================== */
+
+        document
+            .getElementById(
+                "logoutButton"
+            )
+            .addEventListener(
+                "click",
+                function () {
+
+                    if (
+                        !confirm(
+                            "Are you sure you want to logout?"
+                        )
+                    ) {
+
+                        return;
+
+                    }
+
+
+                    logoutCurrentUser();
+
+
+                    window.location.href =
+                        "index.html";
+
+                }
+            );
+
+
+
+        /* =====================================
+           INITIALIZE
+        ====================================== */
+
+        loadOfficerDetails();
+
+        refreshOfficerDashboard();
+
+
+        if (window.lucide) {
+
+            lucide.createIcons();
+
+        }
+
+
+    }
+);
+
+
+</script>
+
+
+</body>
+
+</html>
