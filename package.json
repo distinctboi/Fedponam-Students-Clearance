@@ -1,41 +1,26 @@
 {
   "name": "students-clearance-management-system",
   "version": "1.0.0",
-  "description": "Federal Polytechnic Kaura Namoda Students Clearance Management System",
+  "description": "Federal Polytechnic Kaura Namoda Student Clearance Management System",
   "main": "main.js",
-  "author": "Federal Polytechnic Kaura Namoda",
-  "license": "ISC",
-
+  "author": "FEDPONAM",
+  "license": "MIT",
   "scripts": {
     "start": "electron .",
-    "dist": "electron-builder --publish never",
-    "dist-win": "electron-builder --win nsis --publish never"
+    "dist-win": "electron-builder --win nsis"
   },
-
-  "devDependencies": {
-    "electron": "22.3.27",
-    "electron-builder": "24.13.3"
-  },
-
   "build": {
-    "appId": "com.fedponam.clearance",
+    "appId": "com.fedponam.studentsclearance",
     "productName": "Students Clearance System",
-
     "directories": {
       "output": "dist"
     },
-
     "files": [
       "**/*",
-      "!node_modules",
-      "!dist",
-      "!*.md",
-      "!.git",
-      "!.github"
+      "!dist/**",
+      "!node_modules/.cache/**",
+      "!*.md"
     ],
-
-    "asar": true,
-
     "win": {
       "target": [
         {
@@ -45,19 +30,18 @@
             "ia32"
           ]
         }
-      ],
-
-      "artifactName": "${productName}-Setup-${version}.${ext}"
+      ]
     },
-
     "nsis": {
       "oneClick": false,
       "allowToChangeInstallationDirectory": true,
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true,
       "shortcutName": "Students Clearance System"
-    },
-
-    "publish": "never"
+    }
+  },
+  "devDependencies": {
+    "electron": "^22.3.27",
+    "electron-builder": "^24.13.3"
   }
 }
