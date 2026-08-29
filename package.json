@@ -8,8 +8,8 @@
 
   "scripts": {
     "start": "electron .",
-    "dist": "electron-builder",
-    "dist-win": "electron-builder --win nsis"
+    "dist": "electron-builder --publish never",
+    "dist-win": "electron-builder --win nsis --publish never"
   },
 
   "devDependencies": {
@@ -29,7 +29,9 @@
       "**/*",
       "!node_modules",
       "!dist",
-      "!*.md"
+      "!*.md",
+      "!.git",
+      "!.github"
     ],
 
     "asar": true,
@@ -44,6 +46,7 @@
           ]
         }
       ],
+
       "artifactName": "${productName}-Setup-${version}.${ext}"
     },
 
@@ -53,6 +56,8 @@
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true,
       "shortcutName": "Students Clearance System"
-    }
+    },
+
+    "publish": "never"
   }
 }
