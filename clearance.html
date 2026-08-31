@@ -1,0 +1,3768 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8"><meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<meta
+    name="theme-color"
+    content="#0f766e"
+>
+
+<meta
+    name="description"
+    content="Student Final Clearance Certificate"
+>
+
+<title>Clearance Certificate</title>
+
+<style>
+
+    /* =========================================================
+       RESET
+    ========================================================= */
+
+    * {
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+
+        background: #eef2f7;
+        color: #172033;
+
+        font-family:
+            Arial,
+            Helvetica,
+            sans-serif;
+    }
+
+    button {
+        font-family: inherit;
+    }
+
+
+    /* =========================================================
+       TOOLBAR
+    ========================================================= */
+
+    .toolbar {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        gap: 15px;
+
+        padding: 13px 18px;
+
+        background: #ffffff;
+
+        border-bottom:
+            1px solid #dbe2ea;
+
+        box-shadow:
+            0 3px 14px
+            rgba(0, 0, 0, .08);
+    }
+
+    .toolbar-brand {
+        display: flex;
+        align-items: center;
+
+        gap: 10px;
+    }
+
+    .toolbar-logo {
+        width: 40px;
+        height: 40px;
+
+        object-fit: contain;
+
+        border-radius: 8px;
+
+        border:
+            1px solid #dbe2ea;
+
+        background: #ffffff;
+    }
+
+    .toolbar-brand-text strong {
+        display: block;
+
+        color: #0f172a;
+
+        font-size: 14px;
+    }
+
+    .toolbar-brand-text small {
+        display: block;
+
+        margin-top: 2px;
+
+        color: #64748b;
+
+        font-size: 11px;
+    }
+
+    .toolbar-actions {
+        display: flex;
+        align-items: center;
+
+        gap: 8px;
+
+        flex-wrap: wrap;
+
+        justify-content: flex-end;
+    }
+
+    .btn {
+        min-height: 40px;
+
+        border: 0;
+
+        padding:
+            9px 14px;
+
+        border-radius: 8px;
+
+        cursor: pointer;
+
+        font-size: 12px;
+
+        font-weight: 800;
+
+        transition:
+            transform .15s ease,
+            opacity .15s ease;
+    }
+
+    .btn:hover {
+        transform:
+            translateY(-1px);
+    }
+
+    .btn:active {
+        transform:
+            translateY(0);
+    }
+
+    .btn:disabled {
+        opacity: .6;
+
+        cursor:
+            not-allowed;
+
+        transform: none;
+    }
+
+    .btn-back {
+        background: #e2e8f0;
+        color: #1e293b;
+    }
+
+    .btn-save {
+        background: #166534;
+        color: #ffffff;
+    }
+
+    .btn-print {
+        background: #0f766e;
+        color: #ffffff;
+    }
+
+
+    /* =========================================================
+       PAGE
+    ========================================================= */
+
+    .page {
+        width: 100%;
+
+        padding:
+            28px 12px 50px;
+    }
+
+
+    /* =========================================================
+       CERTIFICATE
+    ========================================================= */
+
+    .certificate {
+        width: 100%;
+        max-width: 900px;
+
+        margin: 0 auto;
+
+        background: #ffffff;
+
+        border:
+            1px solid #cbd5e1;
+
+        box-shadow:
+            0 18px 55px
+            rgba(15, 23, 42, .12);
+
+        overflow: hidden;
+    }
+
+    .certificate-top-line {
+        height: 7px;
+
+        background: #0f766e;
+    }
+
+    .certificate-inner {
+        padding:
+            42px 46px 35px;
+    }
+
+
+    /* =========================================================
+       INSTITUTION
+    ========================================================= */
+
+    .institution {
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        gap: 17px;
+
+        text-align: left;
+    }
+
+    .institution-logo {
+        width: 78px;
+        height: 78px;
+
+        object-fit: contain;
+
+        border-radius: 7px;
+    }
+
+    .institution-details h1 {
+        margin: 0;
+
+        color: #0f172a;
+
+        font-size: 24px;
+
+        line-height: 1.2;
+
+        font-weight: 900;
+
+        text-transform: uppercase;
+    }
+
+    .institution-details p {
+        margin:
+            6px 0 0;
+
+        color: #0f766e;
+
+        font-size: 12px;
+
+        font-weight: 900;
+
+        letter-spacing:
+            1.5px;
+    }
+
+
+    /* =========================================================
+       TITLE
+    ========================================================= */
+
+    .certificate-title {
+        margin:
+            25px 0 7px;
+
+        text-align: center;
+    }
+
+    .certificate-title h2 {
+        margin: 0;
+
+        color: #0f172a;
+
+        font-size: 27px;
+
+        font-weight: 900;
+
+        text-transform: uppercase;
+    }
+
+    .certificate-title p {
+        margin:
+            6px 0 0;
+
+        color: #64748b;
+
+        font-size: 12px;
+    }
+
+    .certificate-number {
+        display: inline-flex;
+
+        align-items: center;
+
+        gap: 8px;
+
+        margin-top: 15px;
+
+        padding:
+            8px 14px;
+
+        border:
+            1px solid #99f6e4;
+
+        border-radius: 7px;
+
+        background:
+            #f0fdfa;
+    }
+
+    .certificate-number span {
+        color: #64748b;
+
+        font-size: 10px;
+
+        font-weight: 900;
+
+        text-transform: uppercase;
+    }
+
+    .certificate-number strong {
+        color: #115e59;
+
+        font-size: 13px;
+
+        letter-spacing:
+            .7px;
+    }
+
+    .divider {
+        height: 2px;
+
+        margin:
+            23px 0;
+
+        background:
+            #0f766e;
+    }
+
+
+    /* =========================================================
+       COMPLETED
+    ========================================================= */
+
+    .completed {
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        gap: 9px;
+
+        padding: 11px;
+
+        margin-bottom: 22px;
+
+        border:
+            1px solid #bbf7d0;
+
+        border-radius: 8px;
+
+        background:
+            #f0fdf4;
+
+        color:
+            #166534;
+
+        font-size: 13px;
+
+        font-weight: 900;
+
+        text-transform: uppercase;
+    }
+
+    .completed-icon {
+        width: 25px;
+        height: 25px;
+
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 50%;
+
+        background:
+            #16a34a;
+
+        color: #ffffff;
+    }
+
+
+    /* =========================================================
+       SECTION
+    ========================================================= */
+
+    .section-heading {
+        display: flex;
+
+        align-items: center;
+
+        gap: 8px;
+
+        padding-bottom: 8px;
+
+        margin:
+            0 0 13px;
+
+        border-bottom:
+            1px solid #cbd5e1;
+    }
+
+    .section-heading h3 {
+        margin: 0;
+
+        color: #0f172a;
+
+        font-size: 15px;
+
+        font-weight: 900;
+
+        text-transform: uppercase;
+    }
+
+
+    /* =========================================================
+       STUDENT INFORMATION
+    ========================================================= */
+
+    .student-layout {
+        display: grid;
+
+        grid-template-columns:
+            1fr 140px;
+
+        gap: 20px;
+
+        margin-bottom: 25px;
+    }
+
+    .student-grid {
+        display: grid;
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+
+        gap: 10px;
+    }
+
+    .info-box {
+        padding:
+            11px 12px;
+
+        border:
+            1px solid #e2e8f0;
+
+        border-radius: 7px;
+
+        background:
+            #f8fafc;
+    }
+
+    .info-box.full {
+        grid-column:
+            1 / -1;
+    }
+
+    .info-label {
+        display: block;
+
+        margin-bottom: 3px;
+
+        color: #64748b;
+
+        font-size: 9px;
+
+        font-weight: 900;
+
+        text-transform: uppercase;
+
+        letter-spacing:
+            .5px;
+    }
+
+    .info-value {
+        display: block;
+
+        color: #0f172a;
+
+        font-size: 13px;
+
+        font-weight: 800;
+
+        overflow-wrap:
+            anywhere;
+    }
+
+    .photo-container {
+        display: flex;
+
+        align-items:
+            flex-start;
+
+        justify-content:
+            center;
+    }
+
+    .student-photo {
+        width: 130px;
+        height: 155px;
+
+        object-fit: cover;
+
+        border:
+            2px solid #0f766e;
+
+        border-radius: 6px;
+
+        background:
+            #f8fafc;
+    }
+
+
+    /* =========================================================
+       CLEARANCE TABLE
+    ========================================================= */
+
+    .table-wrapper {
+        width: 100%;
+
+        overflow-x: auto;
+
+        border:
+            1px solid #cbd5e1;
+
+        border-radius: 7px;
+    }
+
+    .clearance-table {
+        width: 100%;
+
+        min-width: 650px;
+
+        border-collapse:
+            collapse;
+    }
+
+    .clearance-table th {
+        padding:
+            10px 9px;
+
+        background:
+            #f1f5f9;
+
+        color:
+            #334155;
+
+        border-bottom:
+            2px solid #cbd5e1;
+
+        font-size: 9px;
+
+        font-weight: 900;
+
+        text-align: left;
+
+        text-transform:
+            uppercase;
+    }
+
+    .clearance-table td {
+        padding:
+            10px 9px;
+
+        border-bottom:
+            1px solid #e2e8f0;
+
+        color:
+            #334155;
+
+        font-size: 11px;
+
+        vertical-align:
+            top;
+    }
+
+    .clearance-table tr:last-child td {
+        border-bottom: 0;
+    }
+
+    .number-cell {
+        width: 40px;
+
+        text-align: center;
+    }
+
+    .stage-number {
+        color:
+            #0f766e;
+
+        font-weight: 900;
+    }
+
+    .stage-name {
+        color:
+            #0f172a;
+
+        font-weight: 900;
+    }
+
+    .stage-comment {
+        margin-top: 3px;
+
+        color:
+            #64748b;
+
+        font-size: 9px;
+    }
+
+    .stage-unit {
+        color:
+            #475569;
+    }
+
+
+    /* =========================================================
+       STATUS
+    ========================================================= */
+
+    .status {
+        display: inline-flex;
+
+        align-items: center;
+        justify-content: center;
+
+        min-width: 74px;
+
+        padding:
+            5px 8px;
+
+        border-radius:
+            999px;
+
+        font-size: 8px;
+
+        font-weight: 900;
+
+        text-transform:
+            uppercase;
+    }
+
+    .approved {
+        background:
+            #dcfce7;
+
+        color:
+            #166534;
+    }
+
+    .rejected {
+        background:
+            #fee2e2;
+
+        color:
+            #991b1b;
+    }
+
+    .pending {
+        background:
+            #fef3c7;
+
+        color:
+            #92400e;
+    }
+
+    .locked {
+        background:
+            #e2e8f0;
+
+        color:
+            #475569;
+    }
+
+    .other {
+        background:
+            #e0f2fe;
+
+        color:
+            #075985;
+    }
+
+
+    /* =========================================================
+       SUMMARY
+    ========================================================= */
+
+    .summary {
+        display: grid;
+
+        grid-template-columns:
+            repeat(
+                3,
+                minmax(0, 1fr)
+            );
+
+        gap: 10px;
+
+        margin-top: 14px;
+    }
+
+    .summary-box {
+        padding: 11px;
+
+        border:
+            1px solid #e2e8f0;
+
+        border-radius: 7px;
+
+        background:
+            #f8fafc;
+
+        text-align: center;
+    }
+
+    .summary-box small {
+        display: block;
+
+        color:
+            #64748b;
+
+        font-size: 9px;
+
+        font-weight: 900;
+
+        text-transform:
+            uppercase;
+    }
+
+    .summary-box strong {
+        display: block;
+
+        margin-top: 4px;
+
+        color:
+            #0f172a;
+
+        font-size: 16px;
+    }
+
+
+    /* =========================================================
+       DECLARATION
+    ========================================================= */
+
+    .declaration {
+        margin-top: 20px;
+
+        padding: 13px;
+
+        border:
+            1px solid #cbd5e1;
+
+        border-left:
+            4px solid #0f766e;
+
+        background:
+            #f8fafc;
+
+        color:
+            #334155;
+
+        font-size: 10px;
+
+        line-height: 1.6;
+    }
+
+    .declaration strong {
+        color:
+            #0f172a;
+    }
+
+
+    /* =========================================================
+       SIGNATURES
+    ========================================================= */
+
+    .signatures {
+        display: grid;
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+
+        gap: 50px;
+
+        margin-top: 45px;
+    }
+
+    .signature {
+        text-align:
+            center;
+    }
+
+    .signature-space {
+        height: 35px;
+    }
+
+    .signature-line {
+        padding-top: 7px;
+
+        border-top:
+            1px solid #334155;
+
+        color:
+            #475569;
+
+        font-size: 10px;
+
+        font-weight: 800;
+    }
+
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+
+    .certificate-footer {
+        display: flex;
+
+        justify-content:
+            space-between;
+
+        gap: 15px;
+
+        margin-top: 27px;
+
+        padding-top: 12px;
+
+        border-top:
+            1px solid #cbd5e1;
+
+        color:
+            #64748b;
+
+        font-size: 8px;
+    }
+
+    .footer-right {
+        text-align: right;
+    }
+
+
+    /* =========================================================
+       LOCAL RECEIPT HISTORY
+    ========================================================= */
+
+    .history {
+        width: 100%;
+
+        max-width: 900px;
+
+        margin:
+            20px auto 0;
+
+        padding: 18px;
+
+        background:
+            #ffffff;
+
+        border:
+            1px solid #cbd5e1;
+
+        border-radius: 8px;
+    }
+
+    .history-title {
+        display: flex;
+
+        align-items: center;
+        justify-content:
+            space-between;
+
+        gap: 10px;
+
+        margin-bottom:
+            12px;
+    }
+
+    .history-title h3 {
+        margin: 0;
+
+        font-size: 15px;
+    }
+
+    .history-list {
+        display: grid;
+
+        gap: 7px;
+    }
+
+    .history-item {
+        display: flex;
+
+        align-items: center;
+        justify-content:
+            space-between;
+
+        gap: 12px;
+
+        padding: 10px;
+
+        border:
+            1px solid #e2e8f0;
+
+        border-radius: 7px;
+
+        background:
+            #f8fafc;
+    }
+
+    .history-info strong {
+        display: block;
+
+        font-size: 11px;
+    }
+
+    .history-info small {
+        color:
+            #64748b;
+
+        font-size: 9px;
+    }
+
+    .empty-history {
+        padding: 15px;
+
+        color:
+            #64748b;
+
+        font-size: 11px;
+
+        text-align: center;
+    }
+
+
+    /* =========================================================
+       MESSAGE
+    ========================================================= */
+
+    .message {
+        width: 100%;
+
+        max-width: 600px;
+
+        margin:
+            80px auto;
+
+        padding:
+            35px 25px;
+
+        background:
+            #ffffff;
+
+        border:
+            1px solid #cbd5e1;
+
+        border-radius: 10px;
+
+        text-align: center;
+    }
+
+    .message-icon {
+        margin-bottom:
+            10px;
+
+        font-size: 42px;
+    }
+
+    .message h2 {
+        margin:
+            0 0 8px;
+
+        font-size: 20px;
+    }
+
+    .message p {
+        margin: 0;
+
+        color:
+            #64748b;
+
+        font-size: 12px;
+    }
+
+
+    /* =========================================================
+       TOAST
+    ========================================================= */
+
+    .toast {
+        position: fixed;
+
+        left: 50%;
+        bottom: 22px;
+
+        z-index: 9999;
+
+        max-width:
+            calc(100% - 30px);
+
+        padding:
+            11px 17px;
+
+        border-radius: 8px;
+
+        background:
+            #0f172a;
+
+        color:
+            #ffffff;
+
+        font-size: 12px;
+
+        font-weight: 800;
+
+        opacity: 0;
+
+        pointer-events: none;
+
+        transform:
+            translate(-50%, 15px);
+
+        transition:
+            .2s ease;
+    }
+
+    .toast.show {
+        opacity: 1;
+
+        transform:
+            translate(-50%, 0);
+    }
+
+    .toast.success {
+        background:
+            #166534;
+    }
+
+    .toast.error {
+        background:
+            #991b1b;
+    }
+
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 700px) {
+
+        .toolbar {
+            position: relative;
+
+            flex-direction:
+                column;
+
+            align-items:
+                stretch;
+        }
+
+        .toolbar-actions {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+        }
+
+        .btn {
+            padding:
+                9px 4px;
+
+            font-size: 10px;
+        }
+
+        .page {
+            padding:
+                10px 6px 30px;
+        }
+
+        .certificate-inner {
+            padding:
+                25px 15px;
+        }
+
+        .institution {
+            flex-direction:
+                column;
+
+            text-align:
+                center;
+        }
+
+        .institution-details h1 {
+            font-size: 18px;
+        }
+
+        .certificate-title h2 {
+            font-size: 21px;
+        }
+
+        .student-layout {
+            grid-template-columns:
+                1fr;
+        }
+
+        .photo-container {
+            order: -1;
+        }
+
+        .student-grid {
+            grid-template-columns:
+                1fr;
+        }
+
+        .info-box.full {
+            grid-column:
+                auto;
+        }
+
+        .summary {
+            grid-template-columns:
+                1fr;
+        }
+
+        .signatures {
+            grid-template-columns:
+                1fr;
+
+            gap: 30px;
+        }
+
+        .certificate-footer {
+            flex-direction:
+                column;
+        }
+
+        .footer-right {
+            text-align:
+                left;
+        }
+
+        .history-item {
+            flex-direction:
+                column;
+
+            align-items:
+                flex-start;
+        }
+    }
+
+
+    /* =========================================================
+       PRINT
+    ========================================================= */
+
+    @page {
+        size: A4;
+
+        margin: 10mm;
+    }
+
+    @media print {
+
+        html,
+        body {
+            width: 100%;
+
+            margin: 0 !important;
+
+            padding: 0 !important;
+
+            background:
+                #ffffff !important;
+        }
+
+        body {
+            -webkit-print-color-adjust:
+                exact;
+
+            print-color-adjust:
+                exact;
+        }
+
+        .no-print,
+        .toolbar,
+        .history,
+        .toast {
+            display:
+                none !important;
+        }
+
+        .page {
+            padding: 0 !important;
+        }
+
+        .certificate {
+            width: 100%;
+
+            max-width: none;
+
+            margin: 0;
+
+            border: 0;
+
+            box-shadow: none;
+
+            overflow: visible;
+        }
+
+        .certificate-inner {
+            padding:
+                7mm 5mm;
+        }
+
+        .certificate-top-line {
+            height: 4px;
+        }
+
+        .institution-logo {
+            width: 65px;
+            height: 65px;
+        }
+
+        .institution-details h1 {
+            font-size: 20px;
+        }
+
+        .certificate-title h2 {
+            font-size: 22px;
+        }
+
+        .divider {
+            margin:
+                15px 0;
+        }
+
+        .completed {
+            padding: 8px;
+
+            margin-bottom: 14px;
+        }
+
+        .student-layout {
+            margin-bottom: 15px;
+        }
+
+        .section-heading {
+            margin-bottom: 8px;
+        }
+
+        .clearance-table th,
+        .clearance-table td {
+            padding:
+                6px 7px;
+        }
+
+        .summary {
+            margin-top: 9px;
+        }
+
+        .declaration {
+            margin-top: 13px;
+        }
+
+        .signatures {
+            margin-top: 28px;
+        }
+
+        .certificate-footer {
+            margin-top: 18px;
+        }
+
+        tr,
+        .info-box,
+        .summary-box,
+        .declaration,
+        .signatures {
+            page-break-inside:
+                avoid;
+        }
+    }
+
+</style>
+
+</head><body><!-- =========================================================
+     TOOLBAR
+========================================================== -->
+
+<header class="toolbar no-print">
+
+    <div class="toolbar-brand">
+
+        <img
+            src="logo.png"
+            alt="Clearance System"
+            class="toolbar-logo"
+        >
+
+        <div class="toolbar-brand-text">
+
+            <strong>
+                Clearance Certificate
+            </strong>
+
+            <small>
+                Local Student Clearance System
+            </small>
+
+        </div>
+
+    </div>
+
+
+    <div class="toolbar-actions">
+
+        <button
+            type="button"
+            class="btn btn-back"
+            id="backBtn"
+        >
+            ← Back
+        </button>
+
+        <button
+            type="button"
+            class="btn btn-save"
+            id="saveBtn"
+        >
+            💾 Save Receipt
+        </button>
+
+        <button
+            type="button"
+            class="btn btn-print"
+            id="printBtn"
+        >
+            🖨 Print / PDF
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- =========================================================
+     CERTIFICATE PAGE
+========================================================== -->
+
+<main
+    class="page"
+    id="page"
+></main>
+
+
+<!-- =========================================================
+     HISTORY
+========================================================== -->
+
+<section
+    class="history no-print"
+    id="historySection"
+>
+
+    <div class="history-title">
+
+        <h3>
+            Local Receipt History
+        </h3>
+
+        <button
+            type="button"
+            class="btn btn-back"
+            id="clearHistoryBtn"
+        >
+            Clear History
+        </button>
+
+    </div>
+
+    <div
+        class="history-list"
+        id="historyList"
+    ></div>
+
+</section>
+
+
+<!-- =========================================================
+     TOAST
+========================================================== -->
+
+<div
+    class="toast"
+    id="toast"
+></div>
+
+
+<!-- =========================================================
+     DATABASE
+========================================================== -->
+
+<script src="db.js"></script>
+
+
+<!-- =========================================================
+     APPLICATION
+     
+     IMPORTANT:
+     NO jsPDF.
+     NO preload.js.
+     
+     Electron uses require("electron") directly because
+     main.js enables nodeIntegration and disables
+     contextIsolation.
+========================================================== -->
+
+<script>
+
+    "use strict";
+
+
+    /* =========================================================
+       ELECTRON
+    ========================================================= */
+
+    let electronAPI = null;
+
+    try {
+
+        if (
+            typeof require ===
+            "function"
+        ) {
+
+            const electron =
+                require("electron");
+
+            if (
+                electron &&
+                electron.ipcRenderer
+            ) {
+
+                electronAPI =
+                    electron.ipcRenderer;
+
+            }
+
+        }
+
+    }
+    catch (error) {
+
+        console.log(
+            "Browser/mobile mode.",
+            error
+        );
+
+    }
+
+
+    const IS_ELECTRON =
+        !!electronAPI;
+
+
+    /* =========================================================
+       STORAGE
+    ========================================================= */
+
+    const RECEIPT_KEY =
+        "clearance_saved_receipts";
+
+
+    /* =========================================================
+       GLOBAL DATA
+    ========================================================= */
+
+    let currentUser = null;
+
+    let currentStudent = null;
+
+    let currentRequest = null;
+
+    let systemInfo = {};
+
+    let generatedAt =
+        new Date();
+
+
+    /* =========================================================
+       DOM READY
+    ========================================================= */
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        init
+    );
+
+
+    /* =========================================================
+       INITIALIZE
+    ========================================================= */
+
+    function init() {
+
+        try {
+
+            /*
+             * Check database.
+             */
+
+            if (
+                typeof getCurrentUser !==
+                "function"
+            ) {
+
+                showError(
+                    "Database Error",
+                    "db.js could not be loaded correctly."
+                );
+
+                return;
+
+            }
+
+
+            /*
+             * Current user.
+             */
+
+            currentUser =
+                getCurrentUser();
+
+
+            if (!currentUser) {
+
+                showError(
+                    "Session Not Found",
+                    "Please login again before opening your clearance certificate."
+                );
+
+                return;
+
+            }
+
+
+            /*
+             * Student only.
+             */
+
+            if (
+                String(
+                    currentUser.role || ""
+                ).toLowerCase() !==
+                "student"
+            ) {
+
+                showError(
+                    "Access Denied",
+                    "Only student accounts can open this certificate."
+                );
+
+                return;
+
+            }
+
+
+            /*
+             * Student lookup.
+             */
+
+            if (
+                typeof getStudentByUserId !==
+                "function"
+            ) {
+
+                showError(
+                    "Database Error",
+                    "Student lookup is unavailable in db.js."
+                );
+
+                return;
+
+            }
+
+
+            currentStudent =
+                getStudentByUserId(
+                    currentUser.userId
+                );
+
+
+            if (!currentStudent) {
+
+                showError(
+                    "Student Not Found",
+                    "The student profile associated with this account could not be found."
+                );
+
+                return;
+
+            }
+
+
+            /*
+             * Clearance request.
+             */
+
+            if (
+                typeof getStudentClearanceRequest !==
+                "function"
+            ) {
+
+                showError(
+                    "Database Error",
+                    "Clearance request function is unavailable in db.js."
+                );
+
+                return;
+
+            }
+
+
+            currentRequest =
+                getStudentClearanceRequest(
+                    currentStudent.id
+                );
+
+
+            if (!currentRequest) {
+
+                showError(
+                    "Clearance Not Found",
+                    "No clearance record was found for this student."
+                );
+
+                return;
+
+            }
+
+
+            /*
+             * Clearance must be completed.
+             */
+
+            if (
+                typeof canStudentPrintClearance ===
+                "function"
+            ) {
+
+                if (
+                    !canStudentPrintClearance(
+                        currentStudent.id
+                    )
+                ) {
+
+                    showError(
+                        "Clearance Not Completed",
+                        "All required clearance stages must be approved before the certificate can be printed."
+                    );
+
+                    return;
+
+                }
+
+            }
+            else if (
+                currentRequest.overallStatus !==
+                "completed"
+            ) {
+
+                showError(
+                    "Clearance Not Completed",
+                    "Your clearance has not been completed."
+                );
+
+                return;
+
+            }
+
+
+            /*
+             * System information.
+             */
+
+            if (
+                typeof getSystemInfo ===
+                "function"
+            ) {
+
+                systemInfo =
+                    getSystemInfo() ||
+                    {};
+
+            }
+
+
+            renderCertificate();
+
+            setupButtons();
+
+            loadHistory();
+
+            updatePageTitle();
+
+
+            console.log(
+                IS_ELECTRON
+                    ? "CLEARANCE: Electron mode."
+                    : "CLEARANCE: Browser/mobile mode."
+            );
+
+        }
+        catch (error) {
+
+            console.error(
+                "CLEARANCE INIT ERROR:",
+                error
+            );
+
+            showError(
+                "Unable to Open Certificate",
+                "An unexpected error occurred while loading the clearance certificate."
+            );
+
+        }
+
+    }
+
+
+    /* =========================================================
+       RENDER CERTIFICATE
+    ========================================================= */
+
+    function renderCertificate() {
+
+        const page =
+            document.getElementById(
+                "page"
+            );
+
+        generatedAt =
+            new Date();
+
+
+        const institution =
+            valueOrDash(
+                systemInfo.institutionName ||
+                systemInfo.institution ||
+                "Federal Polytechnic Kaura Namoda"
+            );
+
+
+        const institutionShort =
+            valueOrDash(
+                systemInfo.institutionShortName ||
+                systemInfo.shortName ||
+                ""
+            );
+
+
+        const logo =
+            systemInfo.logo ||
+            "logo.png";
+
+
+        const photo =
+            currentStudent.profileImage ||
+            currentStudent.photo ||
+            "logo.png";
+
+
+        const certificateNumber =
+            currentRequest.certificateNumber ||
+            generateFallbackCertificateNumber();
+
+
+        let stages =
+            Array.isArray(
+                currentRequest.stages
+            )
+                ? [
+                    ...currentRequest.stages
+                ]
+                : [];
+
+
+        stages.sort(
+            function (a, b) {
+
+                return (
+                    Number(
+                        a.stageOrder || 0
+                    ) -
+                    Number(
+                        b.stageOrder || 0
+                    )
+                );
+
+            }
+        );
+
+
+        const requiredStages =
+            stages.filter(
+                function (stage) {
+
+                    return (
+                        stage.required !== false
+                    );
+
+                }
+            );
+
+
+        const approvedStages =
+            requiredStages.filter(
+                function (stage) {
+
+                    return (
+                        String(
+                            stage.status || ""
+                        ).toLowerCase() ===
+                        "approved"
+                    );
+
+                }
+            );
+
+
+        const totalStages =
+            requiredStages.length;
+
+
+        const approvedCount =
+            approvedStages.length;
+
+
+        const percentage =
+            totalStages > 0
+                ? Math.round(
+                    (
+                        approvedCount /
+                        totalStages
+                    ) * 100
+                )
+                : Number(
+                    currentRequest.percentage ||
+                    0
+                );
+
+
+        let stageRows = "";
+
+
+        if (stages.length === 0) {
+
+            stageRows = `
+                <tr>
+                    <td colspan="5">
+                        No clearance stages found.
+                    </td>
+                </tr>
+            `;
+
+        }
+        else {
+
+            stageRows =
+                stages.map(
+                    function (stage, index) {
+
+                        const status =
+                            String(
+                                stage.status ||
+                                "pending"
+                            ).toLowerCase();
+
+
+                        const statusClass =
+                            [
+                                "approved",
+                                "rejected",
+                                "pending",
+                                "locked"
+                            ].includes(status)
+                                ? status
+                                : "other";
+
+
+                        return `
+                            <tr>
+
+                                <td
+                                    class="number-cell"
+                                >
+                                    <span
+                                        class="stage-number"
+                                    >
+                                        ${
+                                            stage.stageOrder ||
+                                            index + 1
+                                        }
+                                    </span>
+                                </td>
+
+                                <td>
+
+                                    <div
+                                        class="stage-name"
+                                    >
+                                        ${
+                                            escapeHtml(
+                                                stage.name ||
+                                                "Clearance Stage"
+                                            )
+                                        }
+                                    </div>
+
+                                    ${
+                                        stage.comment
+                                            ? `
+                                                <div
+                                                    class="stage-comment"
+                                                >
+                                                    ${escapeHtml(
+                                                        stage.comment
+                                                    )}
+                                                </div>
+                                            `
+                                            : ""
+                                    }
+
+                                </td>
+
+                                <td>
+
+                                    <span
+                                        class="stage-unit"
+                                    >
+                                        ${
+                                            escapeHtml(
+                                                stage.unit ||
+                                                "—"
+                                            )
+                                        }
+                                    </span>
+
+                                </td>
+
+                                <td>
+
+                                    ${
+                                        stage.reviewedBy
+                                            ? escapeHtml(
+                                                String(
+                                                    stage.reviewedBy
+                                                )
+                                            )
+                                            : "—"
+                                    }
+
+                                </td>
+
+                                <td>
+
+                                    <span
+                                        class="status ${statusClass}"
+                                    >
+                                        ${
+                                            formatStatus(
+                                                status
+                                            )
+                                        }
+                                    </span>
+
+                                </td>
+
+                            </tr>
+                        `;
+
+                    }
+                ).join("");
+
+        }
+
+
+        page.innerHTML = `
+
+            <article
+                class="certificate"
+            >
+
+                <div
+                    class="certificate-top-line"
+                ></div>
+
+
+                <div
+                    class="certificate-inner"
+                >
+
+                    <!-- INSTITUTION -->
+
+                    <div
+                        class="institution"
+                    >
+
+                        <img
+                            src="${escapeAttribute(logo)}"
+                            alt="Institution Logo"
+                            class="institution-logo"
+                            onerror="this.onerror=null;this.src='logo.png';"
+                        >
+
+
+                        <div
+                            class="institution-details"
+                        >
+
+                            <h1>
+                                ${escapeHtml(
+                                    institution
+                                )}
+                            </h1>
+
+                            ${
+                                institutionShort !== "—"
+                                    ? `
+                                        <p>
+                                            ${escapeHtml(
+                                                institutionShort
+                                            )}
+                                        </p>
+                                    `
+                                    : ""
+                            }
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- TITLE -->
+
+                    <div
+                        class="certificate-title"
+                    >
+
+                        <h2>
+                            Final Clearance Certificate
+                        </h2>
+
+                        <p>
+                            Official Student Clearance Document
+                        </p>
+
+
+                        <div
+                            class="certificate-number"
+                        >
+
+                            <span>
+                                Certificate No.
+                            </span>
+
+                            <strong>
+                                ${escapeHtml(
+                                    certificateNumber
+                                )}
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="divider"
+                    ></div>
+
+
+                    <!-- COMPLETED -->
+
+                    <div
+                        class="completed"
+                    >
+
+                        <span
+                            class="completed-icon"
+                        >
+                            ✓
+                        </span>
+
+                        Clearance Successfully Completed
+
+                    </div>
+
+
+                    <!-- STUDENT INFORMATION -->
+
+                    <div
+                        class="section-heading"
+                    >
+
+                        <h3>
+                            Student Information
+                        </h3>
+
+                    </div>
+
+
+                    <div
+                        class="student-layout"
+                    >
+
+                        <div
+                            class="student-grid"
+                        >
+
+                            <div
+                                class="info-box full"
+                            >
+
+                                <span
+                                    class="info-label"
+                                >
+                                    Full Name
+                                </span>
+
+                                <span
+                                    class="info-value"
+                                >
+                                    ${escapeHtml(
+                                        currentStudent.fullName ||
+                                        currentRequest.studentName ||
+                                        "—"
+                                    )}
+                                </span>
+
+                            </div>
+
+
+                            <div
+                                class="info-box"
+                            >
+
+                                <span
+                                    class="info-label"
+                                >
+                                    Registration Number
+                                </span>
+
+                                <span
+                                    class="info-value"
+                                >
+                                    ${escapeHtml(
+                                        currentStudent.registrationNumber ||
+                                        currentRequest.registrationNumber ||
+                                        "—"
+                                    )}
+                                </span>
+
+                            </div>
+
+
+                            <div
+                                class="info-box"
+                            >
+
+                                <span
+                                    class="info-label"
+                                >
+                                    Department
+                                </span>
+
+                                <span
+                                    class="info-value"
+                                >
+                                    ${escapeHtml(
+                                        currentStudent.department ||
+                                        currentRequest.department ||
+                                        "—"
+                                    )}
+                                </span>
+
+                            </div>
+
+
+                            <div
+                                class="info-box"
+                            >
+
+                                <span
+                                    class="info-label"
+                                >
+                                    Level
+                                </span>
+
+                                <span
+                                    class="info-value"
+                                >
+                                    ${escapeHtml(
+                                        currentStudent.level ||
+                                        "—"
+                                    )}
+                                </span>
+
+                            </div>
+
+
+                            <div
+                                class="info-box"
+                            >
+
+                                <span
+                                    class="info-label"
+                                >
+                                    Gender
+                                </span>
+
+                                <span
+                                    class="info-value"
+                                >
+                                    ${escapeHtml(
+                                        currentStudent.gender ||
+                                        "—"
+                                    )}
+                                </span>
+
+                            </div>
+
+
+                            <div
+                                class="info-box"
+                            >
+
+                                <span
+                                    class="info-label"
+                                >
+                                    Clearance Date
+                                </span>
+
+                                <span
+                                    class="info-value"
+                                >
+                                    ${escapeHtml(
+                                        formatDate(
+                                            currentRequest.requestDate
+                                        )
+                                    )}
+                                </span>
+
+                            </div>
+
+
+                            <div
+                                class="info-box"
+                            >
+
+                                <span
+                                    class="info-label"
+                                >
+                                    Completion Date
+                                </span>
+
+                                <span
+                                    class="info-value"
+                                >
+                                    ${escapeHtml(
+                                        formatDate(
+                                            currentRequest.completedAt
+                                        )
+                                    )}
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            class="photo-container"
+                        >
+
+                            <img
+                                src="${escapeAttribute(photo)}"
+                                alt="Student Photo"
+                                class="student-photo"
+                                onerror="this.onerror=null;this.src='logo.png';"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- CLEARANCE STAGES -->
+
+                    <div
+                        class="section-heading"
+                    >
+
+                        <h3>
+                            Clearance Verification
+                        </h3>
+
+                    </div>
+
+
+                    <div
+                        class="table-wrapper"
+                    >
+
+                        <table
+                            class="clearance-table"
+                        >
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>
+                                        No.
+                                    </th>
+
+                                    <th>
+                                        Clearance Stage
+                                    </th>
+
+                                    <th>
+                                        Unit / Office
+                                    </th>
+
+                                    <th>
+                                        Reviewed By
+                                    </th>
+
+                                    <th>
+                                        Status
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody>
+
+                                ${stageRows}
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+
+                    <!-- SUMMARY -->
+
+                    <div
+                        class="summary"
+                    >
+
+                        <div
+                            class="summary-box"
+                        >
+
+                            <small>
+                                Required Stages
+                            </small>
+
+                            <strong>
+                                ${totalStages}
+                            </strong>
+
+                        </div>
+
+
+                        <div
+                            class="summary-box"
+                        >
+
+                            <small>
+                                Approved
+                            </small>
+
+                            <strong>
+                                ${approvedCount}
+                            </strong>
+
+                        </div>
+
+
+                        <div
+                            class="summary-box"
+                        >
+
+                            <small>
+                                Completion
+                            </small>
+
+                            <strong>
+                                ${percentage}%
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- DECLARATION -->
+
+                    <div
+                        class="declaration"
+                    >
+
+                        <strong>
+                            Declaration:
+                        </strong>
+
+                        This is to certify that the above-named
+                        student has successfully completed all
+                        required clearance stages recorded in the
+                        local Students Clearance Management System.
+                        This certificate is generated from the
+                        student's local clearance record and may
+                        be printed or saved as PDF.
+
+                    </div>
+
+
+                    <!-- SIGNATURES -->
+
+                    <div
+                        class="signatures"
+                    >
+
+                        <div
+                            class="signature"
+                        >
+
+                            <div
+                                class="signature-space"
+                            ></div>
+
+                            <div
+                                class="signature-line"
+                            >
+                                Student Signature
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            class="signature"
+                        >
+
+                            <div
+                                class="signature-space"
+                            ></div>
+
+                            <div
+                                class="signature-line"
+                            >
+                                Clearance Officer / Authorized Officer
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- FOOTER -->
+
+                    <div
+                        class="certificate-footer"
+                    >
+
+                        <div>
+
+                            <div>
+                                Students Clearance Management System
+                            </div>
+
+                            <div>
+                                Generated locally.
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            class="footer-right"
+                        >
+
+                            <div>
+                                Certificate:
+                                ${escapeHtml(
+                                    certificateNumber
+                                )}
+                            </div>
+
+                            <div>
+                                Generated:
+                                ${escapeHtml(
+                                    formatDateTime(
+                                        generatedAt
+                                    )
+                                )}
+                            </div>
+
+                            <div>
+                                Printed:
+                                <span
+                                    id="printedDate"
+                                >
+                                    ${
+                                        currentRequest.printedAt
+                                            ? escapeHtml(
+                                                formatDateTime(
+                                                    currentRequest.printedAt
+                                                )
+                                            )
+                                            : "Not yet printed"
+                                    }
+                                </span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        `;
+
+    }
+
+
+    /* =========================================================
+       BUTTONS
+    ========================================================= */
+
+    function setupButtons() {
+
+        const backBtn =
+            document.getElementById(
+                "backBtn"
+            );
+
+        const saveBtn =
+            document.getElementById(
+                "saveBtn"
+            );
+
+        const printBtn =
+            document.getElementById(
+                "printBtn"
+            );
+
+        const clearHistoryBtn =
+            document.getElementById(
+                "clearHistoryBtn"
+            );
+
+
+        if (backBtn) {
+
+            backBtn.addEventListener(
+                "click",
+                function () {
+
+                    window.location.href =
+                        "student.html";
+
+                }
+            );
+
+        }
+
+
+        if (saveBtn) {
+
+            saveBtn.addEventListener(
+                "click",
+                saveReceipt
+            );
+
+        }
+
+
+        if (printBtn) {
+
+            printBtn.addEventListener(
+                "click",
+                printCertificate
+            );
+
+        }
+
+
+        if (clearHistoryBtn) {
+
+            clearHistoryBtn.addEventListener(
+                "click",
+                clearHistory
+            );
+
+        }
+
+    }
+
+
+    /* =========================================================
+       SAVE RECEIPT IN LOCAL STORAGE
+       
+       This saves RECEIPT METADATA, not a PDF file.
+    ========================================================= */
+
+    function saveReceipt() {
+
+        if (
+            !currentStudent ||
+            !currentRequest
+        ) {
+
+            showToast(
+                "Certificate information is unavailable.",
+                "error"
+            );
+
+            return;
+
+        }
+
+
+        try {
+
+            const receipts =
+                readReceipts();
+
+
+            const certificateNumber =
+                currentRequest.certificateNumber ||
+                generateFallbackCertificateNumber();
+
+
+            const receipt = {
+
+                id:
+                    generateLocalId(
+                        "RECEIPT"
+                    ),
+
+                studentId:
+                    currentStudent.id,
+
+                certificateNumber:
+                    certificateNumber,
+
+                registrationNumber:
+                    currentStudent.registrationNumber ||
+                    currentRequest.registrationNumber ||
+                    "",
+
+                studentName:
+                    currentStudent.fullName ||
+                    currentRequest.studentName ||
+                    "",
+
+                department:
+                    currentStudent.department ||
+                    currentRequest.department ||
+                    "",
+
+                savedAt:
+                    new Date().toISOString(),
+
+                type:
+                    "clearance-certificate"
+
+            };
+
+
+            receipts.push(
+                receipt
+            );
+
+
+            localStorage.setItem(
+                RECEIPT_KEY,
+                JSON.stringify(
+                    receipts
+                )
+            );
+
+
+            loadHistory();
+
+
+            showToast(
+                "Receipt information saved locally.",
+                "success"
+            );
+
+        }
+        catch (error) {
+
+            console.error(
+                "RECEIPT SAVE ERROR:",
+                error
+            );
+
+            showToast(
+                "Unable to save receipt information.",
+                "error"
+            );
+
+        }
+
+    }
+
+
+    /* =========================================================
+       PRINT CERTIFICATE
+       
+       Electron:
+       main.js -> native OS print dialog
+       
+       Browser/mobile:
+       window.print()
+       
+       The browser print dialog can provide
+       "Save as PDF" on supported devices.
+    ========================================================= */
+
+    async function printCertificate() {
+
+        if (
+            !currentStudent ||
+            !currentRequest
+        ) {
+
+            showToast(
+                "Certificate information is unavailable.",
+                "error"
+            );
+
+            return;
+
+        }
+
+
+        try {
+
+            /*
+             * Verify clearance again.
+             */
+
+            if (
+                typeof canStudentPrintClearance ===
+                "function"
+            ) {
+
+                if (
+                    !canStudentPrintClearance(
+                        currentStudent.id
+                    )
+                ) {
+
+                    showToast(
+                        "Your clearance is not completed.",
+                        "error"
+                    );
+
+                    return;
+
+                }
+
+            }
+
+
+            /*
+             * Save receipt metadata.
+             */
+
+            saveReceipt();
+
+
+            /*
+             * Mark as printed.
+             */
+
+            if (
+                typeof markClearanceAsPrinted ===
+                "function"
+            ) {
+
+                try {
+
+                    markClearanceAsPrinted(
+                        currentStudent.id
+                    );
+
+                }
+                catch (error) {
+
+                    console.error(
+                        "MARK PRINTED ERROR:",
+                        error
+                    );
+
+                }
+
+            }
+
+
+            /*
+             * Refresh request.
+             */
+
+            if (
+                typeof getStudentClearanceRequest ===
+                "function"
+            ) {
+
+                try {
+
+                    currentRequest =
+                        getStudentClearanceRequest(
+                            currentStudent.id
+                        );
+
+                }
+                catch (error) {
+
+                    console.error(
+                        "REQUEST REFRESH ERROR:",
+                        error
+                    );
+
+                }
+
+            }
+
+
+            updatePrintedDate();
+
+
+            document.title =
+                currentRequest.certificateNumber ||
+                "Clearance Certificate";
+
+
+            /*
+             * Electron desktop.
+             */
+
+            if (
+                IS_ELECTRON &&
+                electronAPI
+            ) {
+
+                showToast(
+                    "Opening PC printer dialog...",
+                    "success"
+                );
+
+
+                const result =
+                    await electronAPI.invoke(
+                        "print-clearance"
+                    );
+
+
+                if (
+                    result &&
+                    result.success
+                ) {
+
+                    showToast(
+                        "Print dialog opened successfully.",
+                        "success"
+                    );
+
+                }
+                else {
+
+                    showToast(
+                        (
+                            result &&
+                            result.message
+                        ) ||
+                        "Printing was cancelled or failed.",
+                        "error"
+                    );
+
+                }
+
+
+                return;
+
+            }
+
+
+            /*
+             * Browser / Android / Acode.
+             */
+
+            showToast(
+                "Opening print dialog. Choose 'Save as PDF' to save the certificate.",
+                "success"
+            );
+
+
+            setTimeout(
+                function () {
+
+                    try {
+
+                        window.print();
+
+                    }
+                    catch (error) {
+
+                        console.error(
+                            "BROWSER PRINT ERROR:",
+                            error
+                        );
+
+                        showToast(
+                            "Printing is not available on this device.",
+                            "error"
+                        );
+
+                    }
+
+                },
+                300
+            );
+
+        }
+        catch (error) {
+
+            console.error(
+                "PRINT ERROR:",
+                error
+            );
+
+            showToast(
+                "Unable to print certificate.",
+                "error"
+            );
+
+        }
+
+    }
+
+
+    /* =========================================================
+       UPDATE PRINTED DATE
+    ========================================================= */
+
+    function updatePrintedDate() {
+
+        const element =
+            document.getElementById(
+                "printedDate"
+            );
+
+
+        if (
+            element &&
+            currentRequest
+        ) {
+
+            element.textContent =
+                currentRequest.printedAt
+                    ? formatDateTime(
+                        currentRequest.printedAt
+                    )
+                    : "Not yet printed";
+
+        }
+
+    }
+
+
+    /* =========================================================
+       RECEIPT HISTORY
+    ========================================================= */
+
+    function readReceipts() {
+
+        try {
+
+            const data =
+                localStorage.getItem(
+                    RECEIPT_KEY
+                );
+
+
+            if (!data) {
+
+                return [];
+
+            }
+
+
+            const parsed =
+                JSON.parse(
+                    data
+                );
+
+
+            return Array.isArray(
+                parsed
+            )
+                ? parsed
+                : [];
+
+        }
+        catch (error) {
+
+            console.error(
+                "HISTORY READ ERROR:",
+                error
+            );
+
+            return [];
+
+        }
+
+    }
+
+
+    function loadHistory() {
+
+        const list =
+            document.getElementById(
+                "historyList"
+            );
+
+
+        if (!list) {
+
+            return;
+
+        }
+
+
+        const receipts =
+            readReceipts()
+                .filter(
+                    function (receipt) {
+
+                        return (
+                            String(
+                                receipt.studentId
+                            ) ===
+                            String(
+                                currentStudent &&
+                                currentStudent.id
+                            )
+                        );
+
+                    }
+                )
+                .sort(
+                    function (a, b) {
+
+                        return (
+                            new Date(
+                                b.savedAt
+                            ) -
+                            new Date(
+                                a.savedAt
+                            )
+                        );
+
+                    }
+                );
+
+
+        if (
+            receipts.length ===
+            0
+        ) {
+
+            list.innerHTML = `
+
+                <div
+                    class="empty-history"
+                >
+                    No locally saved receipt records yet.
+                </div>
+
+            `;
+
+            return;
+
+        }
+
+
+        list.innerHTML =
+            receipts.map(
+                function (receipt) {
+
+                    return `
+
+                        <div
+                            class="history-item"
+                        >
+
+                            <div
+                                class="history-info"
+                            >
+
+                                <strong>
+                                    ${escapeHtml(
+                                        receipt.certificateNumber ||
+                                        "Clearance Receipt"
+                                    )}
+                                </strong>
+
+                                <small>
+                                    Saved:
+                                    ${escapeHtml(
+                                        formatDateTime(
+                                            receipt.savedAt
+                                        )
+                                    )}
+                                </small>
+
+                            </div>
+
+
+                            <button
+                                type="button"
+                                class="btn btn-print"
+                                data-history-print="true"
+                            >
+                                🖨 Print
+                            </button>
+
+                        </div>
+
+                    `;
+
+                }
+            ).join("");
+
+
+        list
+            .querySelectorAll(
+                "[data-history-print]"
+            )
+            .forEach(
+                function (button) {
+
+                    button.addEventListener(
+                        "click",
+                        printCertificate
+                    );
+
+                }
+            );
+
+    }
+
+
+    /* =========================================================
+       CLEAR HISTORY
+    ========================================================= */
+
+    function clearHistory() {
+
+        if (!currentStudent) {
+
+            return;
+
+        }
+
+
+        const answer =
+            window.confirm(
+                "Delete all locally saved receipt records for this student?"
+            );
+
+
+        if (!answer) {
+
+            return;
+
+        }
+
+
+        try {
+
+            const remaining =
+                readReceipts()
+                    .filter(
+                        function (receipt) {
+
+                            return (
+                                String(
+                                    receipt.studentId
+                                ) !==
+                                String(
+                                    currentStudent.id
+                                )
+                            );
+
+                        }
+                    );
+
+
+            localStorage.setItem(
+                RECEIPT_KEY,
+                JSON.stringify(
+                    remaining
+                )
+            );
+
+
+            loadHistory();
+
+
+            showToast(
+                "Local receipt history cleared.",
+                "success"
+            );
+
+        }
+        catch (error) {
+
+            console.error(
+                "CLEAR HISTORY ERROR:",
+                error
+            );
+
+            showToast(
+                "Unable to clear receipt history.",
+                "error"
+            );
+
+        }
+
+    }
+
+
+    /* =========================================================
+       ERROR PAGE
+    ========================================================= */
+
+    function showError(
+        title,
+        message
+    ) {
+
+        const page =
+            document.getElementById(
+                "page"
+            );
+
+
+        page.innerHTML = `
+
+            <div
+                class="message"
+            >
+
+                <div
+                    class="message-icon"
+                >
+                    ⚠️
+                </div>
+
+                <h2>
+                    ${escapeHtml(
+                        title
+                    )}
+                </h2>
+
+                <p>
+                    ${escapeHtml(
+                        message
+                    )}
+                </p>
+
+
+                <div
+                    style="margin-top:20px;"
+                >
+
+                    <button
+                        type="button"
+                        class="btn btn-back"
+                        id="errorBackButton"
+                    >
+                        ← Back to Student Dashboard
+                    </button>
+
+                </div>
+
+            </div>
+
+        `;
+
+
+        const button =
+            document.getElementById(
+                "errorBackButton"
+            );
+
+
+        if (button) {
+
+            button.addEventListener(
+                "click",
+                function () {
+
+                    window.location.href =
+                        "student.html";
+
+                }
+            );
+
+        }
+
+    }
+
+
+    /* =========================================================
+       TOAST
+    ========================================================= */
+
+    function showToast(
+        message,
+        type = ""
+    ) {
+
+        const toast =
+            document.getElementById(
+                "toast"
+            );
+
+
+        if (!toast) {
+
+            return;
+
+        }
+
+
+        toast.textContent =
+            message;
+
+
+        toast.className =
+            "toast show " +
+            type;
+
+
+        clearTimeout(
+            window.__clearanceToastTimer
+        );
+
+
+        window.__clearanceToastTimer =
+            setTimeout(
+                function () {
+
+                    toast.className =
+                        "toast";
+
+                },
+                3500
+            );
+
+    }
+
+
+    /* =========================================================
+       FORMATTING
+    ========================================================= */
+
+    function valueOrDash(
+        value
+    ) {
+
+        const result =
+            String(
+                value || ""
+            ).trim();
+
+
+        return result ||
+            "—";
+
+    }
+
+
+    function formatStatus(
+        status
+    ) {
+
+        const value =
+            String(
+                status || ""
+            )
+            .trim()
+            .toLowerCase();
+
+
+        const labels = {
+
+            approved:
+                "Approved",
+
+            rejected:
+                "Rejected",
+
+            pending:
+                "Pending",
+
+            locked:
+                "Locked",
+
+            completed:
+                "Completed"
+
+        };
+
+
+        return (
+            labels[value] ||
+            (
+                value
+                    ? value
+                        .replace(
+                            /[_-]/g,
+                            " "
+                        )
+                        .replace(
+                            /\b\w/g,
+                            function (letter) {
+                                return letter.toUpperCase();
+                            }
+                        )
+                    : "Pending"
+            )
+        );
+
+    }
+
+
+    function formatDate(
+        value
+    ) {
+
+        if (!value) {
+
+            return "—";
+
+        }
+
+
+        try {
+
+            const date =
+                new Date(
+                    value
+                );
+
+
+            if (
+                Number.isNaN(
+                    date.getTime()
+                )
+            ) {
+
+                return String(
+                    value
+                );
+
+            }
+
+
+            return date.toLocaleDateString(
+                undefined,
+                {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric"
+                }
+            );
+
+        }
+        catch (error) {
+
+            return String(
+                value
+            );
+
+        }
+
+    }
+
+
+    function formatDateTime(
+        value
+    ) {
+
+        if (!value) {
+
+            return "—";
+
+        }
+
+
+        try {
+
+            const date =
+                new Date(
+                    value
+                );
+
+
+            if (
+                Number.isNaN(
+                    date.getTime()
+                )
+            ) {
+
+                return String(
+                    value
+                );
+
+            }
+
+
+            return date.toLocaleString();
+
+        }
+        catch (error) {
+
+            return String(
+                value
+            );
+
+        }
+
+    }
+
+
+    function generateFallbackCertificateNumber() {
+
+        const year =
+            new Date()
+                .getFullYear();
+
+
+        const registration =
+            String(
+                currentStudent &&
+                (
+                    currentStudent.registrationNumber ||
+                    ""
+                )
+            )
+            .replace(
+                /[^a-zA-Z0-9]/g,
+                ""
+            )
+            .slice(-6)
+            .toUpperCase();
+
+
+        return (
+            "CL-" +
+            year +
+            "-" +
+            (
+                registration ||
+                "STUDENT"
+            )
+        );
+
+    }
+
+
+    function generateLocalId(
+        prefix
+    ) {
+
+        return (
+            prefix +
+            "_" +
+            Date.now().toString(36) +
+            "_" +
+            Math.random()
+                .toString(36)
+                .substring(2, 8)
+        ).toUpperCase();
+
+    }
+
+
+    /* =========================================================
+       SECURITY / HTML ESCAPING
+    ========================================================= */
+
+    function escapeHtml(
+        value
+    ) {
+
+        return String(
+            value ?? ""
+        )
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+        .replace(
+            /</g,
+            "&lt;"
+        )
+        .replace(
+            />/g,
+            "&gt;"
+        )
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+    }
+
+
+    function escapeAttribute(
+        value
+    ) {
+
+        return escapeHtml(
+            value
+        );
+
+    }
+
+
+    /* =========================================================
+       PAGE TITLE
+    ========================================================= */
+
+    function updatePageTitle() {
+
+        if (
+            currentRequest &&
+            currentRequest.certificateNumber
+        ) {
+
+            document.title =
+                currentRequest.certificateNumber;
+
+        }
+        else {
+
+            document.title =
+                "Clearance Certificate";
+
+        }
+
+    }
+
+
+    /* =========================================================
+       AFTER PRINT
+    ========================================================= */
+
+    window.addEventListener(
+        "afterprint",
+        function () {
+
+            try {
+
+                if (
+                    currentStudent &&
+                    typeof getStudentClearanceRequest ===
+                    "function"
+                ) {
+
+                    currentRequest =
+                        getStudentClearanceRequest(
+                            currentStudent.id
+                        );
+
+                }
+
+
+                updatePrintedDate();
+
+                loadHistory();
+
+            }
+            catch (error) {
+
+                console.error(
+                    "AFTER PRINT ERROR:",
+                    error
+                );
+
+            }
+
+        }
+    );
+
+</script>
+
+</body>
+</html>
